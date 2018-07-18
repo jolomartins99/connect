@@ -19,6 +19,12 @@ yarn install
 yarn start
 ```
 
+# Code Structure
+
+Inside the source folder there are two folders. The first folder, components, has individual components
+that are used by the elements in the second folder, pages, which consist of groups of components. This
+allows us to recycle components throughout the app but maintain the code organization with pages.
+
 # License
 
 [MIT © Upframe](../master/LICENSE)
