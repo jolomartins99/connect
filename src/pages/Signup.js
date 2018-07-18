@@ -35,9 +35,15 @@ class Signup extends Component {
 
         alert('going for it')
 
-        this.postData(`http://api-env.882xcpbbwf.eu-west-2.elasticbeanstalk.com/users/`, { answer: 42 })
-            .then(data => console.log(data)) // JSON from `response.json()` call
-            .catch(error => console.error(error));
+        this.postData(`http://api-env.882xcpbbwf.eu-west-2.elasticbeanstalk.com/users/`, { 
+            name: 'hello',
+            email: 'hello@example.com',
+            password: 'werwerwerwer',
+            passwordConfirmation: 'werwerwerwer',
+            type_user: 'mentor'
+        })
+        .then(data => console.log(data)) // JSON from `response.json()` call
+        .catch(error => console.error(error));
     }
 
     render() {
