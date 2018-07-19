@@ -8,7 +8,8 @@ class Signup extends Component {
             name : '',
             email : '',
             password : '',
-            passwordConfirmation : ''
+            passwordConfirmation : '',
+            userType : ''
         }
     }
 
@@ -16,29 +17,15 @@ class Signup extends Component {
         console.log(this.state)
     }
 
-    handleNameChange = (e) => {
-        this.setState({
-            name: e.target.value
-        })
-    }
+    handleNameChange = (e) => {this.setState({name: e.target.value})}
 
-    handleEmailChange = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }   
+    handleEmailChange = (e) => {this.setState({email: e.target.value})}   
 
-    handlePasswordChange = (e) => {
-        this.setState({
-            password: e.target.value
-        })
-    }
+    handlePasswordChange = (e) => {this.setState({password: e.target.value})}
 
-    handlePasswordConfirmationChange = (e) => {
-        this.setState({
-            passwordConfirmation: e.target.value
-        })
-    }
+    handlePasswordConfirmationChange = (e) => {this.setState({passwordConfirmation: e.target.value})}
+
+    handleUserTypeChange = (e) => {this.setState({userType : e.target.value})}
 
     render() {
         return (
@@ -51,6 +38,10 @@ class Signup extends Component {
                 <input onChange={this.handlePasswordChange} type="password" />
                 <p>Write your password (again)</p>
                 <input onChange={this.handlePasswordConfirmationChange} type="password" />
+                <select onChange={this.handleUserTypeChange}>
+                    <option value="user">User</option>
+                    <option value="mentor">Mentor</option>
+                </select>
                 <button onClick={this.signup}>Submit</button>
             </div>
         );
