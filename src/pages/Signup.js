@@ -9,12 +9,30 @@ class Signup extends Component {
             email : '',
             password : '',
             passwordConfirmation : '',
-            userType : ''
+            type_user : 'user',
+            message: ''
         }
     }
 
     signup = () => {
-        console.log(this.state)
+        let data = {
+            name : this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            passwordConfirm: this.state.passwordConfirm,
+            type_user: this.state.type_user
+        }
+        let fetchData = {
+            method: 'POST',
+            body: Object.entries(data).map(e => e.join('=')).join('&'),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        }
+        console.log(fetchData)
+        fetch('http://localhost/users/', fetchData)
+        .then(res => res.json())
+        .then(res => console.log(res))
     }
 
     handleNameChange = (e) => {this.setState({name: e.target.value})}
@@ -39,8 +57,8 @@ class Signup extends Component {
                 <p>Write your password (again)</p>
                 <input onChange={this.handlePasswordConfirmationChange} type="password" />
                 <select onChange={this.handleUserTypeChange}>
-                    <option value="user">User</option>
-                    <option value="mentor">Mentor</option>
+                    <option value="User">User</option>
+                    <option value="Mentor">Mentor</option>
                 </select>
                 <button onClick={this.signup}>Submit</button>
             </div>
