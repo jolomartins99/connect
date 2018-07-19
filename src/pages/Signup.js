@@ -19,7 +19,7 @@ class Signup extends Component {
             name : this.state.name,
             email: this.state.email,
             password: this.state.password,
-            passwordConfirm: this.state.passwordConfirm,
+            passwordConfirmation: this.state.passwordConfirmation,
             type_user: this.state.type_user
         }
         let fetchData = {
