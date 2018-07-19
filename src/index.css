@@ -4,6 +4,98 @@ body {
   font-family: sans-serif;
 }
 
+/* Design theme */
+
+/* Coloring */
+:root {
+  --pink: rgb(255, 8, 79);
+}
+
+/* Font design */
+
+.bold {
+  font-weight: 700;
+}
+
+.thin {
+  font-weight: 400;
+}
+
+/* Basics */
+
+input,
+button {
+  transition: .25s ease-in-out all;
+}
+
+input {
+  outline: none;
+}
+
+input[type="button"]:hover,
+button:hover {
+  cursor: pointer;
+}
+
+input[type="text"]:hover {
+  cursor: text;
+}
+
+/* Buttons and UI */
+
+/* Input boxes */
+
+input[type="text"] {
+  padding: 0.75em;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+input[type="button"],
+input[type="submit"],
+button {
+  padding: 0.75em;
+  border-radius: .25em;
+  border: 1px solid #ccc;
+  background: transparent;
+  outline: none;
+}
+
+input[type="button"].active,
+input[type="submit"].active,
+button.active {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.dark {
+  background-color: #ccc;
+}
+
+/* Home page */
+
+.search {
+  width: 50em;
+  max-width: 70%;
+  margin: auto;
+}
+
+.search-tags {
+  margin-top: 1em;
+}
+
+.search input[type="text"] {
+  max-width: 60%;
+  width: 30em;
+  margin: 1em;
+  margin-left: 0;
+}
+
+.search-tags button {
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
 /* Settings Page */
 
 #top-right-image {

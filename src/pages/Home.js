@@ -6,17 +6,18 @@ import SearchTags from '../components/searchtags';
 class Home extends Component {
 
     search = () => {
-        
     }
 
     render() {
         return (
             <div>
                 <Navbar />
-                <h1>What can we help you with</h1>
-                <input type="text" />
-                <button onClick={this.search}>Search</button>
-                <SearchTags />
+                <div class="search">
+                    <h1>What can we help you with?</h1>
+                    <input type="text" />
+                    <button class="dark" onClick={this.search}>Search</button>
+                    <SearchTags />
+                </div>
             </div>
         );
     }

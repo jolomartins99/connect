@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 
 class SearchTags extends Component {
+    activateTag = (e) => {
+        if(!e.target.classList.contains("active")) e.target.classList.add("active");
+        else e.target.classList.remove("active");
+    }
+
     render() {
         return (
-            <div>
-                <button>We</button>
-                <button>Are</button>
-                <button>Search</button>
-                <button>Tags</button>
-                <button>B2B</button>
+            <div class="search-tags">
+                <button onClick={this.activateTag}>We</button>
+                <button onClick={this.activateTag}>Are</button>
+                <button onClick={this.activateTag}>Search</button>
+                <button onClick={this.activateTag}>Tags</button>
+                <button onClick={this.activateTag}>B2B</button>
             </div>
         );
     }
