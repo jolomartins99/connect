@@ -6,6 +6,7 @@ import SearchTags from '../components/searchtags';
 class Home extends Component {
 
     search = () => {
+        
     }
 
     render() {
