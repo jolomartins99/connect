@@ -32,7 +32,7 @@ export default class MentorSettings extends Component {
     render() {
         return (
             <div>
-                <p>Mentor Settings - Personal Account</p>
+                <p>User Settings - Personal Account</p>
                 <button onClick={this.handlePublicProfileTab}>Public Profile</button>
                 <button onClick={this.handleAccountTab}>Account</button>
                 <button onClick={this.handleSyncTab}>Sync</button>

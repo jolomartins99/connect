@@ -3,3 +3,38 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* Settings Page */
+
+#top-right-image {
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#upframe-logo {
+  position: absolute;
+  left: 20px;
+  top: 0px;
+}
+
+#navbar {
+  margin-bottom: 100px;
+}
+
+#login-link {
+  position: absolute;
+  top: 30px;
+  right: 80px;
+}
+
+#signup-link {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+
+/* Settings Page */
