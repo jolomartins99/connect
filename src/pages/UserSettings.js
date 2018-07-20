@@ -4,6 +4,8 @@ import PublicProfileTab from '../components/publicprofiletab';
 import AccountTab from '../components/accounttab';
 import SyncCalendarTab from '../components/synccalendartab';
 
+import Navbar from '../components/navbar';
+
 export default class MentorSettings extends Component {
 
     constructor(props) {
@@ -32,6 +34,7 @@ export default class MentorSettings extends Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <p>User Settings - Personal Account</p>
                 <button onClick={this.handlePublicProfileTab}>Public Profile</button>
                 <button onClick={this.handleAccountTab}>Account</button>

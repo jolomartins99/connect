@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {BrowserRouter, Link} from 'react-router-dom';
 
 class Navbar extends Component {
 
-    isLoggedIn = () => {
-        return false;
+    constructor (props) {
+        super (props)
+        this.state = {
+            loggedIn: (localStorage.getItem('token') ? true : false)
+        }
     }
 
     handleLogout = () => {
-        alert('Hello')
+        localStorage.setItem('token', '')
+        this.setState({
+            loggedIn: false
+        })
     }
 
     render() {
-        if (this.isLoggedIn()) {
+        if (this.state.loggedIn) {
             return (
                 <div id="navbar">
                     <h1 id="upframe-logo">Upframe</h1>

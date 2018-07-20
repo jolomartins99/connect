@@ -6,8 +6,11 @@ import Login from './Login';
 
 export default class Settings extends Component {
 
-    isLoggedIn = () => {//TODO
-        return true;
+    constructor(props) {
+        super(props)
+        this.state = {
+            loggedIn: (localStorage.getItem('token') ? true : false)
+        }
     }
 
     isMentor = () => {//TODO
@@ -17,7 +20,7 @@ export default class Settings extends Component {
     render() {
         return (
             <div>
-                {this.isLoggedIn()
+                {this.state.loggedIn
                     ?
                 (this.isMentor()
                     ?

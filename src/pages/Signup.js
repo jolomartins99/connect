@@ -32,7 +32,18 @@ class Signup extends Component {
         console.log(fetchData)
         fetch('http://localhost/users/', fetchData)
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => {
+            //Nesta resposta podemos ter erro ou então
+            //um objeto user com token.
+            if (res.token) {
+                localStorage.setItem('token', res.token)
+                
+            } else {
+                //Error handling
+                //TODO
+            }
+            console.log(res)
+        })
     }
 
     handleNameChange = (e) => {this.setState({name: e.target.value})}
@@ -57,8 +68,8 @@ class Signup extends Component {
                 <p>Write your password (again)</p>
                 <input onChange={this.handlePasswordConfirmationChange} type="password" />
                 <select onChange={this.handleUserTypeChange}>
-                    <option value="User">User</option>
-                    <option value="Mentor">Mentor</option>
+                    <option value="user">User</option>
+                    <option value="mentor">Mentor</option>
                 </select>
                 <button onClick={this.signup}>Submit</button>
             </div>
