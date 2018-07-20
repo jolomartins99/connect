@@ -38,13 +38,8 @@ input[type="submit"]:hover,
 button:hover {
   cursor: pointer;
 }
-/*
-input[type="text"]:hover {
-  cursor: text;
-}
-*/
-/* Buttons and UI */
 
+/* Buttons and UI */
 /* Input boxes */
 
 input[type="text"] {
@@ -79,6 +74,58 @@ button.active {
 .dark {
   background-color: #ccc;
 }
+
+/* Header + Navbar */
+
+header > div {
+  max-width: 90%;
+  width: 70em;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+}
+
+header .logo {
+  justify-self: center;
+}
+
+header .search-bar {
+  grid-column-start: 2;
+  align-self: center;
+  justify-self: center;
+  width: 75%;
+}
+
+header .search-bar input {
+  width: 100%;
+}
+
+header #nav {
+  grid-column-start: 3;
+  justify-self: center;
+  align-self: center;
+}
+
+header #nav a {
+  display: inline-block;
+}
+
+header #nav a:nth-of-type(1) {
+  margin-right: 1em;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+
+
+
+
+
 
 /* Home page */
 
@@ -119,10 +166,6 @@ button.active {
   position: absolute;
   left: 20px;
   top: 0px;
-}
-
-#navbar {
-  margin-bottom: 100px;
 }
 
 #login-link {
