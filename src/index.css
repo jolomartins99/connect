@@ -21,26 +21,28 @@ body {
   font-weight: 400;
 }
 
-/* Basics */
+/* Basic animations */
 
 input,
 button {
   transition: .25s ease-in-out all;
 }
 
-input {
+input,
+button {
   outline: none;
 }
 
 input[type="button"]:hover,
+input[type="submit"]:hover,
 button:hover {
   cursor: pointer;
 }
-
+/*
 input[type="text"]:hover {
   cursor: text;
 }
-
+*/
 /* Buttons and UI */
 
 /* Input boxes */
@@ -59,6 +61,12 @@ button {
   border: 1px solid #ccc;
   background: transparent;
   outline: none;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+button:hover {
+  box-shadow: 0px 0px 10px 2px #ccc;
 }
 
 input[type="button"].active,
