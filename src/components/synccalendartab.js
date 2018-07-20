@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SyncCalendarTab extends Component {
+export default class SyncCalendarTab extends Component {
 
     syncGoogle = () => {
 
@@ -15,5 +15,3 @@ class SyncCalendarTab extends Component {
         );
     }
 }
-
-export default SyncCalendarTab

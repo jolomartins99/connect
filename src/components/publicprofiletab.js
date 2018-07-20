@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class PublicProfileTab extends Component {
+export default class PublicProfileTab extends Component {
 
     constructor (props) {
         super(props);
@@ -57,5 +57,3 @@ class PublicProfileTab extends Component {
         )
     }
 }
-
-export default PublicProfileTab

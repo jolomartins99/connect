@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AccountTab extends Component {
+export default class AccountTab extends Component {
     render() {
         let email = "hello@upframe.io"
         return (
@@ -16,5 +16,3 @@ class AccountTab extends Component {
         );
     }
 }
-
-export default AccountTab

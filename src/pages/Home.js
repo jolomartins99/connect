@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Navbar from '../components/navbar';
 import SearchTags from '../components/searchtags';
 
-class Home extends Component {
+export default class Home extends Component {
 
     search = () => {
     }
@@ -22,5 +22,3 @@ class Home extends Component {
         );
     }
 }
-
-export default Home
