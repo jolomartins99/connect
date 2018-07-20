@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Signup extends Component {
+export default class Signup extends Component {
 
     constructor(props) {
         super(props);
@@ -37,7 +37,7 @@ class Signup extends Component {
             //um objeto user com token.
             if (res.token) {
                 localStorage.setItem('token', res.token)
-                
+
             } else {
                 //Error handling
                 //TODO
@@ -76,5 +76,3 @@ class Signup extends Component {
         );
     }
 }
-
-export default Signup
