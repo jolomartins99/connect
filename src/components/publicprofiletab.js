@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { timingSafeEqual } from 'crypto';
 
 export default class PublicProfileTab extends Component {
 
