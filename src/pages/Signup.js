@@ -37,7 +37,6 @@ export default class Signup extends Component {
             //um objeto user com token.
             if (res.token) {
                 localStorage.setItem('token', res.token)
-
             } else {
                 //Error handling
                 //TODO

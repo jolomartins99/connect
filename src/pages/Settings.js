@@ -9,12 +9,9 @@ export default class Settings extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: (localStorage.getItem('token') ? true : false)
+            isMentor: true, //(localStorage.getItem('isMentor') ? true : false),
+            loggedIn: true //(localStorage.getItem('token') ? true : false)
         }
-    }
-
-    isMentor = () => {//TODO
-        return false;
     }
 
     render() {
@@ -22,7 +19,7 @@ export default class Settings extends Component {
             <div>
                 {this.state.loggedIn
                     ?
-                (this.isMentor()
+                (this.state.isMentor
                     ?
                 <MentorSettings />
                     :
