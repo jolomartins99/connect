@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { timingSafeEqual } from 'crypto';
 
 export default class PublicProfileTab extends Component {
 
     constructor (props) {
         super(props);
+
         this.state = {
             location: '',
             role: '',
@@ -21,7 +23,7 @@ export default class PublicProfileTab extends Component {
     onBioChange = (event) => { this.setState({ bio: event.target.value }) }
 
     saveChanges = () => {
-        
+       console.log(this.state) 
     }
 
     updatePhoto = () => {
@@ -41,17 +43,17 @@ export default class PublicProfileTab extends Component {
                     <button onClick={this.removePhoto}>Remove</button>
                 </div>
                 Your name
-                <input type="text" />
+                <input type="text" onChange={this.onNameChange}/>
                 Location
-                <input type="text" />
+                <input type="text" onChange={this.onLocationChange}/>
                 Current Position
-                <input type="text" />
+                <input type="text" onChange={this.onRoleChange}/>
                 Company
-                <input type="text" />
+                <input type="text" onChange={this.onCompanyChange}/>
                 Website
-                <input type="text" />
+                <input type="text" onChange={this.onHomepageChange}/>
                 Bio
-                <input type="text" />
+                <input type="text" onChange={this.onBioChange}/>
                 <button onClick={this.saveChanges}>Save Changes</button>
             </div>
         )

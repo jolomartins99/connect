@@ -34,12 +34,7 @@ export default class MentorSettings extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <p>User Settings - Personal Account</p>
-                <button onClick={this.handlePublicProfileTab}>Public Profile</button>
-                <button onClick={this.handleAccountTab}>Account</button>
-                <button onClick={this.handleSyncTab}>Sync</button>
-                {this.showTab()}
+                <h1>User Settings</h1>
             </div>
         )
     }

@@ -34,7 +34,10 @@ export default class Login extends Component {
                 //um objeto user com token.
                 if (res.token) {
                     localStorage.setItem('token', res.token)
-                    this.setState({isLoggedIn: true})
+                    localStorage.setItem('isMentor', this.state.type_user === "mentor")
+                    this.setState({
+                        isLoggedIn: true,
+                    })
                 } else {
                     //Error handling
                     //TODO
