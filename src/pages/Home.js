@@ -32,14 +32,19 @@ export default class Home extends Component {
         }]
         return (
             <div>
-                <Navbar />
-                <div class="search">
-                    <h1>What can we help you with?</h1>
-                    <input type="text" />
-                    <button className="dark" onClick={this.search}>Search</button>
-                    <SearchTags />
-                </div>
-                <MentorList mentors={list}/>
+                <Navbar search={false} />
+                <main id="home">
+                    <div class="wrapper">
+                        <div class="search">
+                            <h1>Connect with Mentors</h1>
+                            <h2>and get your Startup growing</h2>
+                            <input type="text" />
+                            <button className="dark" onClick={this.search}>Search</button>
+                            <SearchTags />
+                        </div>
+                        <MentorList mentors={list}/>
+                    </div>
+                </main>
             </div>
         );
     }
