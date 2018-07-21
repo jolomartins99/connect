@@ -119,6 +119,16 @@ header a {
   color: black;
 }
 
+/* Page exclusive content */
+
+main .wrapper {
+  max-width: 90%;
+  width: 50em;
+  margin: 0 auto;
+  display: grid;
+}
+
+
 
 
 
@@ -133,6 +143,7 @@ header a {
   width: 50em;
   max-width: 70%;
   margin: auto;
+  justify-content: center;
 }
 
 .search-tags {
