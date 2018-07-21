@@ -23,13 +23,11 @@ export default class MentorList extends Component {
   mentorToElement = (mentor) => { //We turn it into an element and for each expertise tag
     return (
       <div className="mentor-card">
-        <img className="mentor-card-image" src={mentor.profilePic}></img>
+        <img className="mentor-card-image" src={mentor.profilePic} alt="upframe mentor"></img>
         <div className="mentor-card-info">
-          <p>Name: {mentor.name}</p>
-          <p>Position: {mentor.position}</p>
-          <p>Bio: {mentor.bio}</p>
-          <p>Tags:
-          </p>
+          <p><strong>{mentor.name}</strong></p>
+          <p>{mentor.position}</p>
+          <p>{mentor.bio}</p>
         </div>
         <ul className="mentor-card-tags">
           {this.mentorTagsToElement(mentor.tags)}
