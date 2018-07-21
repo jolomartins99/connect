@@ -27,7 +27,7 @@ export default class Home extends Component {
             name: 'Mário',
             position: 'CTO',
             bio: 'Eu sou o Mário',
-            tags: ['UX', 'UI', 'Crowdfunding', 'Cash'],
+                tags: ['UX', 'UI', 'Crowdfunding', 'Cash', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello'],
             profilePic: 'http://via.placeholder.com/350x350'
         }]
         return (
