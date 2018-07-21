@@ -7,7 +7,35 @@ import MentorList from '../components/mentorlist';
 
 export default class Home extends Component {
 
-    search = () => {
+        signup = () => {
+            let data = {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                passwordConfirmation: this.state.passwordConfirmation,
+                type_user: this.state.type_user
+            }
+            let fetchData = {
+                method: 'POST',
+                body: Object.entries(data).map(e => e.join('=')).join('&'),
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                }
+            }
+            console.log(fetchData)
+            fetch('http://localhost/users/', fetchData)
+                .then(res => res.json())
+                .then(res => {
+                    //Nesta resposta podemos ter erro ou então
+                    //um objeto user com token.
+                    if (res.token) {
+                        localStorage.setItem('token', res.token)
+                    } else {
+                        //Error handling
+                        //TODO
+                    }
+                    console.log(res)
+                })
     }
 
     render() {
