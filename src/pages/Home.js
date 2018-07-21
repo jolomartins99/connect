@@ -15,17 +15,20 @@ export default class Home extends Component {
             name: 'Mentor1',
             position: 'CEO',
             bio: 'Batatas feias',
-            tags: ['UX', 'UI']
+            tags: ['UX', 'UI'],
+            profilePic: 'http://via.placeholder.com/350x350'
         }, {
-            name: 'Mentor2',
+            name: 'Filipa',
             position: 'CEO',
-            bio: 'Batatas feias',
-            tags: ['UX', 'UI']
+            bio: 'Batatas linda',
+            tags: ['User Research', 'UI'],
+            profilePic: 'http://via.placeholder.com/350x350'
         }, {
-            name: 'Mentor3',
-            position: 'CEO',
-            bio: 'Batatas feias',
-            tags: ['UX', 'UI']
+            name: 'Mário',
+            position: 'CTO',
+            bio: 'Eu sou o Mário',
+            tags: ['UX', 'UI', 'Crowdfunding', 'Cash'],
+            profilePic: 'http://via.placeholder.com/350x350'
         }]
         return (
             <div>

@@ -4,8 +4,6 @@ import PublicProfileTab from '../components/publicprofiletab';
 import AccountTab from '../components/accounttab';
 import SyncCalendarTab from '../components/synccalendartab';
 
-import Navbar from '../components/navbar';
-
 export default class MentorSettings extends Component {
 
     constructor(props) {
