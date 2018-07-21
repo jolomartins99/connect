@@ -189,8 +189,6 @@ main .wrapper {
   top: 0px;
 }
 
-/* Settings Page */
-
 .tab-button {
   background: transparent;
   border: none;
@@ -211,6 +209,11 @@ main .wrapper {
 
 .tab-content {
   margin-top: 1em;
+}
+
+.tab-content .profile-pic img {
+  display: block;
+
 }
 
 /* End of Settings */
