@@ -80,9 +80,6 @@ button.active {
 /* Search bar */
 
 .search {
-  width: 50em;
-  max-width: 70%;
-  margin: auto;
   justify-content: center;
 }
 
@@ -148,6 +145,21 @@ main .wrapper {
 
 /* Home page */
 
+#home {
+  margin-top: 5%;
+}
+
+#home .wrapper {
+  justify-items: center;
+}
+
+#home .search h1 {
+  font-size: 2.5em;
+}
+
+#home .search h2 {
+  font-size: 1.8em;
+}
 
 .search-tags {
   margin-top: 1em;
