@@ -209,7 +209,45 @@ main .wrapper {
 /* End of Settings */
 
 /* Mentor Cards */
-.mentor-tags-list-element {
+
+.mentor-card {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: auto 50px;
+  grid-template-areas: 
+    "img info"
+    "img tags";
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 70%;
+  max-height: 200px;
+  margin: auto auto 50px auto;
+}
+
+.mentor-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.mentor-card-image {
+  grid-area: img;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.mentor-card-info {
+  grid-area: info;
+  padding-left: 20px;
+}
+
+.mentor-card-tags {
+  grid-area: tags;
+  list-style: none;
+  margin: 10px 0 0 10px;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.mentor-card-tags > li {
   background: #eee;
   border-radius: 3px 0 0 3px;
   color: #999;
@@ -221,39 +259,5 @@ main .wrapper {
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
-}
-
-.mentor-tags-list {
-  list-style: none;
-  margin: 10px 0 0 0;
-  overflow: hidden; 
-  padding: 0;
-}
-
-.mentor-card {
-  display: grid;
-  grid-template-columns: 200px auto;
-  grid-template-areas: "img info";
-
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 60%;
-  max-height: 200px;
-  margin: auto auto 50px auto;
-}
-
-.mentor-card-info {
-  grid-area: "info";
-  padding-left: 20px;
-}
-
-.mentor-card-image {
-  grid-area: "img";
-  max-width: 200px;
-  max-height: 200px;
-}
-
-.mentor-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 /* End of Mentor of Cards */

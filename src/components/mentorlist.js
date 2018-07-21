@@ -9,7 +9,9 @@ export default class MentorList extends Component {
     }
   }
 
-  //We turn it into a tag too
+  //We turn it into a tag too. We only show 2 of these tags. We need to find a way
+  //to limit the number of chars to make sure that the tags don't go below
+  //
   mentorTagsToElement = (tags) => {
     return tags.map(tag => {
       return (
@@ -27,11 +29,11 @@ export default class MentorList extends Component {
           <p>Position: {mentor.position}</p>
           <p>Bio: {mentor.bio}</p>
           <p>Tags:
-          <ul className="mentor-tags-list">
-              {this.mentorTagsToElement(mentor.tags)}
-            </ul>
           </p>
         </div>
+        <ul className="mentor-card-tags">
+          {this.mentorTagsToElement(mentor.tags)}
+        </ul>
       </div>
     )
   }
