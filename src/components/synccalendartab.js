@@ -8,7 +8,7 @@ export default class SyncCalendarTab extends Component {
 
     render() {
         return (
-            <div>
+            <div className="tab-content">
                 <button onClick={this.syncGoogle}>Sync with Google</button>
             </div>
 
