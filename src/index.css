@@ -21,6 +21,13 @@ body {
   font-weight: 400;
 }
 
+/* * * * * * * * * * *
+ *                   *
+ *    Components     *
+ *      Style        *
+ *                   *
+ * * * * * * * * * * */
+
 /* Basic animations */
 
 input,
@@ -39,7 +46,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* Buttons and UI */
 /* Input boxes */
 
 input[type="text"] {
@@ -71,8 +77,20 @@ button.active {
   border-color: var(--pink);
 }
 
-.dark {
-  background-color: #ccc;
+/* Search bar */
+
+.search {
+  width: 50em;
+  max-width: 70%;
+  margin: auto;
+  justify-content: center;
+}
+
+.search input[type="text"] {
+  max-width: 60%;
+  width: 30em;
+  margin: 1em;
+  margin-left: 0;
 }
 
 /* Header + Navbar */
@@ -119,7 +137,7 @@ header a {
   color: black;
 }
 
-/* Page exclusive content */
+/* Default page */
 
 main .wrapper {
   max-width: 90%;
@@ -128,33 +146,11 @@ main .wrapper {
   display: grid;
 }
 
-
-
-
-
-
-
-
-
-
 /* Home page */
 
-.search {
-  width: 50em;
-  max-width: 70%;
-  margin: auto;
-  justify-content: center;
-}
 
 .search-tags {
   margin-top: 1em;
-}
-
-.search input[type="text"] {
-  max-width: 60%;
-  width: 30em;
-  margin: 1em;
-  margin-left: 0;
 }
 
 .search-tags button {
