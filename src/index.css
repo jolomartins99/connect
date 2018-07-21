@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
-  background: #ff3333;
-  color: white;
+  background: wheat;
+  color: black;
 }
 
 /* Design theme */
@@ -133,7 +133,7 @@ header #nav a:nth-of-type(1) {
 
 header a {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 /* Default page */
@@ -252,6 +252,9 @@ main .wrapper {
     "img info"
     "img tags";
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background: white;
+  color: black;
+  border-radius: 4px;
   transition: 0.3s;
   max-height: 200px;
   margin: auto auto 50px auto;
@@ -265,6 +268,7 @@ main .wrapper {
   grid-area: img;
   max-width: 200px;
   max-height: 200px;
+  border-radius: 4px 0px 0px 4px;
 }
 
 .mentor-card-info {
@@ -295,15 +299,3 @@ main .wrapper {
   transition: color 0.2s;
 }
 /* End of Mentor of Cards */
-
-/* */
-.calendar {
-  margin: 30px auto auto auto;
-  width: 80%;
-  height: 600px;
-}
-
-.rbc-month-view {
-  height: 1000px;
-}
-/* */
