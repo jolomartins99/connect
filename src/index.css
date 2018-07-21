@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  background: #ff3333;
+  color: white;
 }
 
 /* Design theme */
@@ -131,7 +133,7 @@ header #nav a:nth-of-type(1) {
 
 header a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 /* Default page */
@@ -221,12 +223,32 @@ main .wrapper {
 /* End of Settings */
 
 /* Mentor Cards */
+.mentor-tags-list-element {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.mentor-tags-list {
+  list-style: none;
+  margin: 10px 0 0 0;
+  overflow: hidden;
+  padding: 0;
+}
 
 .mentor-card {
   display: grid;
   grid-template-columns: 200px auto;
   grid-template-rows: auto 50px;
-  grid-template-areas: 
+  grid-template-areas:
     "img info"
     "img tags";
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -254,7 +276,7 @@ main .wrapper {
   grid-area: tags;
   list-style: none;
   margin: 10px 0 0 10px;
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0;
 }
 
