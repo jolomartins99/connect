@@ -273,3 +273,15 @@ main .wrapper {
   transition: color 0.2s;
 }
 /* End of Mentor of Cards */
+
+/* */
+.calendar {
+  margin: 30px auto auto auto;
+  width: 80%;
+  height: 600px;
+}
+
+.rbc-month-view {
+  height: 1000px;
+}
+/* */
