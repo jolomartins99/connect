@@ -37,6 +37,8 @@ export default class SyncCalendarTab extends Component {
                     <button onClick={this.syncGoogle}>Sync with Google</button>
                     <BigCalendar
                         selectable
+                        defaultView={BigCalendar.Views.WEEK}
+                        defaultDate={new Date()}
                         events={this.state.events}
                         startAccessor='startDate'
                         endAccessor='endDate'
