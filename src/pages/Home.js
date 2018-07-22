@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
 import SearchTags from '../components/searchtags';
@@ -6,6 +7,13 @@ import SearchTags from '../components/searchtags';
 import MentorList from '../components/mentorlist';
 
 export default class Home extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            searchQuery: ''
+        }
+    }
 
         signup = () => {
             let data = {
@@ -38,6 +46,8 @@ export default class Home extends Component {
                 })
     }
 
+    handleSearchChange = (e) => { this.setState({ searchQuery: e.target.value }) }
+
     render() {
         let list = [{
             name: 'Mentor1',
@@ -66,8 +76,9 @@ export default class Home extends Component {
                         <div class="search">
                             <h1>Connect with Mentors</h1>
                             <h2>and get your Startup growing</h2>
-                            <input type="text" />
-                            <button className="dark" onClick={this.search}>Search</button>
+                            <input type="text" onChange={this.handleSearchChange}/>
+                            <Link to={"/search/" + this.state.searchQuery} class="button">Search</Link>
+                            {/* <button className="dark" onClick={this.search}>Search</button> */}
                             <SearchTags />
                         </div>
                         <MentorList mentors={list}/>
