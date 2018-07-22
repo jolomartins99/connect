@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Settings from './pages/Settings';
+import Search from './pages/Search';
 
 // Do not forget to read https://reacttraining.com/react-router/web/example/auth-workflow
 // If you need any help with routing. Don't follow online tutorials, most of them
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
 
+            <Route path='/search/:token' component={Search} />
             <Route exact path='/settings' component={Settings} />
         </div>
     </Router>, 
