@@ -30,7 +30,7 @@ export default class SyncCalendarTab extends Component {
     }
 
     render() {
-        let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+        // let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
         return (
             <div className="tab-content">
                 <div className="calendar">

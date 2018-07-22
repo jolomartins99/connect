@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class AccountTab extends Component {
     render() {
-        let email = "hello@upframe.io"
+        let email = localStorage.getItem("email");
         return (
             <div className="tab-content">
                 <h1>Email</h1>

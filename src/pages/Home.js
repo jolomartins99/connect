@@ -11,6 +11,7 @@ export default class Home extends Component {
     constructor(props){
         super(props)
         this.state = {
+            reload: true,
             searchQuery: ''
         }
     }
@@ -48,6 +49,12 @@ export default class Home extends Component {
 
     handleSearchChange = (e) => { this.setState({ searchQuery: e.target.value }) }
 
+    refreshSettings = () => {
+        this.setState({
+            reload: !this.state.reload
+        })
+    }
+
     render() {
         let list = [{
             name: 'Mentor1',
@@ -65,19 +72,19 @@ export default class Home extends Component {
             name: 'Mário',
             position: 'CTO',
             bio: 'Eu sou o Mário',
-                tags: ['UX', 'UI', 'Crowdfunding', 'Cash', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello'],
+            tags: ['UX', 'UI', 'Crowdfunding', 'Cash', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello', 'Hello'],
             profilePic: 'http://via.placeholder.com/350x350'
         }]
         return (
             <div>
-                <Navbar search={false} />
+                <Navbar search={false} refreshSettings={this.refreshSettings}/>
                 <main id="home">
-                    <div class="wrapper">
-                        <div class="search">
+                    <div className="wrapper">
+                        <div className="search">
                             <h1>Connect with Mentors</h1>
                             <h2>and get your Startup growing</h2>
                             <input type="text" onChange={this.handleSearchChange}/>
-                            <Link to={"/search/" + this.state.searchQuery} class="button">Search</Link>
+                            <Link to={"/search/" + this.state.searchQuery} className="button">Search</Link>
                             {/* <button className="dark" onClick={this.search}>Search</button> */}
                             <SearchTags />
                         </div>

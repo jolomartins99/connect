@@ -8,7 +8,7 @@ export default class SearchTags extends Component {
 
     render() {
         return (
-            <div class="search-tags">
+            <div className="search-tags">
                 <button onClick={this.activateTag}>We</button>
                 <button onClick={this.activateTag}>Are</button>
                 <button onClick={this.activateTag}>Search</button>

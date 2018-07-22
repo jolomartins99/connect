@@ -9,9 +9,16 @@ export default class Settings extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isMentor: true, //(localStorage.getItem('isMentor') ? true : false),
-            loggedIn: true //(localStorage.getItem('token') ? true : false)
+            reload: true,
+            isMentor: (localStorage.getItem('isMentor') ? true : false),
+            loggedIn: (localStorage.getItem('token') ? true : false)
         }
+    }
+
+    refreshSettings = () => {
+        this.setState({
+            reload: !this.state.reload
+        })
     }
 
     render() {
@@ -21,7 +28,7 @@ export default class Settings extends Component {
                     ?
                 (this.state.isMentor
                     ?
-                <MentorSettings />
+                <MentorSettings refreshSettings={this.refreshSettings}/>
                     :
                 <UserSettings />)
                     :

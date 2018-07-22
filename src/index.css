@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
-  background: wheat;
   color: black;
 }
 
@@ -93,6 +92,10 @@ button.active {
 }
 
 /* Header + Navbar */
+
+header {
+  margin-top: 20px;
+}
 
 header > div {
   max-width: 90%;

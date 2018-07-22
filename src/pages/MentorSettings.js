@@ -36,10 +36,10 @@ export default class MentorSettings extends Component {
         let thirdButton = 'tab-button' + (this.state.currentTab === 2 ? ' tab-button-selected' : '');
         return (
             <div>
-                <Navbar />
+                <Navbar refreshSettings={this.props.refreshSettings} search={false}/>
                 <main id="mentor-settings">
-                    <div class="wrapper">
-                        <div class="nav">
+                    <div className="wrapper">
+                        <div className="nav">
                             <button className={firstButton} onClick={this.handlePublicProfileTab}>Public Profile</button>
                             <button className={secondButton} onClick={this.handleAccountTab}>Account</button>
                             <button className={thirdButton} onClick={this.handleSyncTab}>Sync</button>

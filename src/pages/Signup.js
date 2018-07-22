@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom'
 
 export default class Signup extends Component {
 
@@ -37,6 +38,7 @@ export default class Signup extends Component {
             //um objeto user com token.
             if (res.token) {
                 localStorage.setItem('token', res.token)
+                window.location.reload();
             } else {
                 //Error handling
                 //TODO
@@ -53,25 +55,29 @@ export default class Signup extends Component {
 
     handlePasswordConfirmationChange = (e) => {this.setState({passwordConfirmation: e.target.value})}
 
-    handleUserTypeChange = (e) => {this.setState({userType : e.target.value})}
+    // handleUserTypeChange = (e) => {this.setState({userType : e.target.value})}
 
     render() {
-        return (
-            <div>
-                <p>Hello! Welcome to our platform. What can we call you?</p>
-                <input onChange={this.handleNameChange} type="text"/>
-                <p>Whats your email?</p>
-                <input onChange={this.handleEmailChange} type="email"/>
-                <p>Write your password</p>
-                <input onChange={this.handlePasswordChange} type="password" />
-                <p>Write your password (again)</p>
-                <input onChange={this.handlePasswordConfirmationChange} type="password" />
-                <select onChange={this.handleUserTypeChange}>
-                    <option value="user">User</option>
-                    <option value="mentor">Mentor</option>
-                </select>
-                <button onClick={this.signup}>Submit</button>
-            </div>
-        );
+        if (localStorage.getItem('token')) {
+            return <Redirect to="/settings" />;
+        } else {
+            return (
+                <div>
+                    <p>Hello! Welcome to our platform. What can we call you?</p>
+                    <input onChange={this.handleNameChange} type="text" />
+                    <p>Whats your email?</p>
+                    <input onChange={this.handleEmailChange} type="email" />
+                    <p>Write your password</p>
+                    <input onChange={this.handlePasswordChange} type="password" />
+                    <p>Write your password (again)</p>
+                    <input onChange={this.handlePasswordConfirmationChange} type="password" />
+                    {/* <select onChange={this.handleUserTypeChange}>
+                        <option value="user">User</option>
+                        <option value="mentor">Mentor</option>
+                    </select> */}
+                    <button onClick={this.signup}>Submit</button>
+                </div>
+            );
+        }
     }
 }

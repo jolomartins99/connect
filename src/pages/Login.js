@@ -35,9 +35,8 @@ export default class Login extends Component {
                 if (res.token) {
                     localStorage.setItem('token', res.token)
                     localStorage.setItem('isMentor', this.state.type_user === "mentor")
-                    this.setState({
-                        isLoggedIn: true,
-                    })
+                    localStorage.setItem('email', res.email)
+                    window.location.reload();
                 } else {
                     //Error handling
                     //TODO
@@ -53,7 +52,7 @@ export default class Login extends Component {
 
     handlePasswordChange = (e) => { this.setState({ password: e.target.value }) }
 
-    handleUserTypeChange = (e) => { this.setState({ userType: e.target.value }) }
+    // handleUserTypeChange = (e) => { this.setState({ userType: e.target.value }) }
 
     render() {
         if (localStorage.getItem('token')) {
@@ -64,10 +63,10 @@ export default class Login extends Component {
                     <h1>Welcome Mentor, login here</h1>
                     <input onChange={this.handleEmailChange} type="email" placeholder="hello@example.com" />
                     <input onChange={this.handlePasswordChange} type="password" />
-                    <select onChange={this.handleUserTypeChange}>
+                    {/* <select onChange={this.handleUserTypeChange}>
                         <option value="user">User</option>
                         <option value="mentor">Mentor</option>
-                    </select>
+                    </select> */}
                     <button onClick={this.login}>Log In</button>
                 </div>
             );
