@@ -26,15 +26,15 @@ export default class Navbar extends Component {
                     <div className="logo">
                         <img src="/media/logotype.svg"></img>
                     </div>  
-                    {/* this.state.loggedIn ? (
-                        {/*<div className="profile">
+                    { this.state.loggedIn ? (
+                        <div className="profile">
                             <img onClick={this.handleLogout} id="profile" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
                     </div>
                     ) : (
-                        <div id="nav">
+                        <div className="login">
                             <Link to="/login" className="button">Login</Link>
                         </div>
-                    )*/}
+                    )}
                 </div>
             </nav>
         </div>

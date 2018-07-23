@@ -135,7 +135,9 @@ nav .logo {
 }
 
 nav .profile {
-  grid-area: profile;
+  position: absolute;
+  width: 10em;
+  right: 10rem;
 }
 
 nav .logo img {
@@ -146,6 +148,11 @@ nav .profile img {
   border-radius: 50%;
   max-width: 50px;
   max-height: 50px;
+}
+
+nav .login {
+  position: absolute;
+  right: 10rem;
 }
 
 nav .search-bar {
