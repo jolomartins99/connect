@@ -18,6 +18,12 @@ export default class Navbar extends Component {
         window.location.reload();
     }
 
+    handleDropdown = () => {
+        if(document.querySelector("nav .profile #dropdown").classList.contains("show")) {
+            document.querySelector("nav .profile #dropdown").classList.remove("show");
+        } else document.querySelector("nav .profile #dropdown").classList.add("show");
+    }
+
     render() {
         return (
         <div>
@@ -28,8 +34,14 @@ export default class Navbar extends Component {
                     </div>  
                     { this.state.loggedIn ? (
                         <div className="profile">
-                            <img onClick={this.handleLogout} id="profile" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
-                    </div>
+                            <div>
+                                <img id="profile" src={localStorage.getItem('profilePicture')} alt="profile-pic" onClick={this.handleDropdown}></img>
+                                <div id="dropdown">
+                                    <a href="/settings">Settings</a>
+                                    <a href="#" onClick={this.handleLogout}>Logout</a>
+                                </div>
+                            </div>
+                        </div>
                     ) : (
                         <div className="login">
                             <Link to="/login" className="button">Login</Link>
