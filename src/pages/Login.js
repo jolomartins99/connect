@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import Navbar from '../components/navbar';
 
 export default class Login extends Component {
 
@@ -78,14 +79,17 @@ export default class Login extends Component {
         } else {
             return (
                 <div>
-                    <h1>Welcome Mentor, login here</h1>
-                    <input onChange={this.handleEmailChange} type="email" placeholder="hello@example.com" />
-                    <input onChange={this.handlePasswordChange} type="password" />
-                    {/* <select onChange={this.handleUserTypeChange}>
-                        <option value="user">User</option>
-                        <option value="mentor">Mentor</option>
-                    </select> */}
-                    <button onClick={this.login}>Log In</button>
+                    <Navbar refreshSettings={this.refreshSettings}/>
+                    <main id="home">
+                        <h1>Welcome Mentor, login here</h1>
+                        <input onChange={this.handleEmailChange} type="email" placeholder="hello@example.com" />
+                        <input onChange={this.handlePasswordChange} type="password" />
+                        {/* <select onChange={this.handleUserTypeChange}>
+                            <option value="user">User</option>
+                            <option value="mentor">Mentor</option>
+                        </select> */}
+                        <button onClick={this.login}>Log In</button>
+                    </main>
                 </div>
             );
         }
