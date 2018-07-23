@@ -122,30 +122,26 @@ nav {
 }
 
 nav > div {
-  max-width: 70%;
   width: 70em;
   height: 100%;
   margin: 0 auto;
   display: grid;
-  justify-items: center;
+  grid-template-columns: 25% 50% 25%;
 }
 
 nav .logo {
+  grid-column-start: 2;
   display: grid;
-  align-items: center;
-}
-
-nav .profile {
-  position: absolute;
-  width: 10em;
-  height: 100%;
-  right: 10rem;
-  display: grid;
-  align-items: center;
+  justify-items: center;
 }
 
 nav .logo img {
   height: 2em;
+  vertical-align: middle;
+}
+
+nav .profile {
+  grid-column-start: 3;
 }
 
 nav .profile img {
