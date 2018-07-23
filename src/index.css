@@ -245,6 +245,7 @@ main .wrapper {
 
 /* Mentor Cards */
 .mentor-tags-list-element {
+  cursor: pointer;
   background: #eee;
   border-radius: 3px 0 0 3px;
   color: #999;
@@ -255,6 +256,8 @@ main .wrapper {
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s
 }
 
 .mentor-tags-list {
