@@ -34,7 +34,7 @@ export default class Login extends Component {
                 //um objeto user com token.
                 if (res.token) {
                     localStorage.setItem('token', res.token)
-                    localStorage.setItem('isMentor', this.state.type_user === "mentor")
+                    localStorage.setItem('type_user', res.type_user);
                     localStorage.setItem('email', res.email)
                     //Optionals - Debug
                     localStorage.setItem("name", "Ulisses");

@@ -14,7 +14,7 @@ export default class Navbar extends Component {
 
     handleLogout = () => {
         localStorage.setItem('token', '')
-        return (<Redirect to="/settings" />)
+        return (<Link to="/settings">Login</Link>)
         window.location.reload();
     }
 
@@ -27,6 +27,8 @@ export default class Navbar extends Component {
                         <Link to={"/"}>Upframe</Link>
                     </div>  
                     { this.state.loggedIn ? (
+
+                            // <Link to="/settings">Login</Link>
                             <img onClick={this.handleLogout} id="top-right-image" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
                     ) : (
                         <div id="nav">
