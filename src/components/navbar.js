@@ -14,7 +14,7 @@ export default class Navbar extends Component {
 
     handleLogout = () => {
         localStorage.setItem('token', '')
-        return (<Redirect to="/settings" />)
+        return (<Link to="/settings">Login</Link>)
         window.location.reload();
     }
 

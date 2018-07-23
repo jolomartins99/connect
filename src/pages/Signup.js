@@ -39,6 +39,7 @@ export default class Signup extends Component {
             if (res.token) {
                 localStorage.setItem('token', res.token)
                 localStorage.setItem("email", res.email);
+                localStorage.setItem('type_user',res.type_user)
                 //optionals
                 localStorage.setItem("name", res.name);
                 localStorage.setItem("location", res.location);
