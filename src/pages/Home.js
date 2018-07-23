@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
 import SearchTags from '../components/searchtags';
-
-import MentorList from '../components/mentorlist';
 
 export default class Home extends Component {
 
@@ -48,6 +45,13 @@ export default class Home extends Component {
     }
 
     handleSearchChange = (e) => { this.setState({ searchQuery: e.target.value }) }
+    handleKeyUp = (e) => {
+        if(e.target.value !== "" && e.keyCode === 13) {
+            // handle search
+        }
+        
+        return;
+    }
 
     refreshSettings = () => {
         this.setState({
@@ -66,7 +70,7 @@ export default class Home extends Component {
                         </div>
                         <div className="search">
                             <div>
-                                <input placeholder="Try looking for a topic, a person or a company..." type="text" onChange={this.handleSearchChange}/>
+                                <input placeholder="Try looking for a topic, a person or a company..." type="text" onChange={this.handleSearchChange} onKeyUp={this.handleKeyUp}/>
                             </div>
                             <SearchTags />
                         </div>

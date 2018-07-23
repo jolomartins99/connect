@@ -34,7 +34,7 @@ export default class AccountTab extends Component {
     changePassword = () => {
       let newPassword = prompt("Please enter your new password. Warning: YOUR PASSWORD WILL BE VISIBLE");
       let newPasswordConfirm = prompt("Please enter your new password again")
-      if (newPassword == newPasswordConfirm) {
+      if (newPassword === newPasswordConfirm) {
         //Backend para mudar a password
         let data = {
           password: newPassword,
