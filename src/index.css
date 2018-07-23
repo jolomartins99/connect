@@ -137,7 +137,10 @@ nav .logo {
 nav .profile {
   position: absolute;
   width: 10em;
+  height: 100%;
   right: 10rem;
+  display: grid;
+  align-items: center;
 }
 
 nav .logo img {
