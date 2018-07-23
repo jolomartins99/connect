@@ -65,7 +65,7 @@ export default class AccountTab extends Component {
 
     render() {
         let email = localStorage.getItem("email");
-        return <div className="tab-content">
+        return (<div className="tab-content">
             <h1>Email</h1>
             <p>
               Your email address is <a href={"mailto:" + email}>{email}</a>. This information will not be publicly displayed
@@ -74,6 +74,6 @@ export default class AccountTab extends Component {
             <h1>Password</h1>
             <p>Set a unique password to protect your account</p>
             <button onClick={this.changePassword}>Change Password</button>
-          </div>;
+    </div>);
     }
 }
