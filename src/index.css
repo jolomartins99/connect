@@ -9,7 +9,7 @@ body {
 
 /* Coloring */
 :root {
-  --pink: rgb(255, 8, 79);
+  --main: #ff004b;
 }
 
 /* Font design */
@@ -409,7 +409,7 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
 /*Xtras From Neuville*/
 .upLogo{
   text-decoration: none;
-  color: #ff004b;
+  color: var(--main);
   font-size: 150%;
   font-weight: bold;
   width: 211px;
@@ -433,8 +433,12 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
 .checkAll{
   width: 195px;
   height: 55px;
-  background-color: #ff004b;
+  background-color: var(--main);
   color: white;
   font-weight: bold;
   border-radius: 100px;
+}
+
+.rbc-event {
+  background-color: var(--main);
 }
