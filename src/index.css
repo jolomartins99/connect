@@ -199,9 +199,9 @@ main .wrapper {
 
 #home .search input[type="text"] {
   background: url(/media/baseline-search-24px.jpg) no-repeat 0.125em 0.125em;
-  background-position-y: 0.5em;
-  background-position-x: 1.0em; 
   background-size: 1.8em;
+  background-position: left center;
+  background-position-x: 1rem;
 }
 
 .search-tags {
