@@ -38,6 +38,16 @@ export default class Signup extends Component {
             //um objeto user com token.
             if (res.token) {
                 localStorage.setItem('token', res.token)
+                localStorage.setItem("email", res.email);
+                //optionals
+                localStorage.setItem("name", res.name);
+                localStorage.setItem("location", res.location);
+                localStorage.setItem("position", res.position);
+                localStorage.setItem("company", res.company);
+                localStorage.setItem("website", res.website);
+                localStorage.setItem("bio", res.bio);
+                localStorage.setItem("tags", JSON.stringify(res.tags));
+                localStorage.setItem("profilePicture", res.image);
                 window.location.reload();
             } else {
                 //Error handling
