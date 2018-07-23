@@ -9,6 +9,7 @@ export default class Search extends Component {
     this.state = {
       mentors: []
     }
+    /*
     console.log('http://localhost/search/' + this.props.match.params.token)
     fetch('http://localhost/search/' + this.props.match.params.token)
       .then(res => res.json())
@@ -22,7 +23,7 @@ export default class Search extends Component {
           //TODO
         }
       })
-
+      */
   }
 
   updateMentorsList = (listOfMentors) => {
@@ -34,8 +35,8 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <Navbar search={true} />
-        <MentorList mentors={this.state.mentors} />
+        <Navbar />
+        
       </div>
     );
   }

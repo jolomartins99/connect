@@ -58,17 +58,16 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Navbar search={false} refreshSettings={this.refreshSettings}/>
+                <Navbar refreshSettings={this.refreshSettings}/>
                 <main id="home">
                     <div className="wrapper">
+                        <div id="intro">
+                            <p>Hello! Connect with mentors and get your startup growing</p>
+                        </div>
                         <div className="search">
-                            <h1>Connect with Mentors</h1>
-                            <h2>and get your Startup growing</h2>
                             <div>
-                                <input type="text" onChange={this.handleSearchChange}/>
-                                <Link to={"/search/" + this.state.searchQuery} className="button">Search</Link>
+                                <input placeholder="Try looking for a topic, a person or a company..." type="text" onChange={this.handleSearchChange}/>
                             </div>
-                            {/* <button className="dark" onClick={this.search}>Search</button> */}
                             <SearchTags />
                         </div>
                     </div>
