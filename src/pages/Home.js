@@ -62,7 +62,7 @@ export default class Home extends Component {
                 <main id="home">
                     <div className="wrapper">
                         <div id="intro">
-                            <p>Hello! Connect with mentors and get your startup growing</p>
+                            <p className="intro">Hello! Connect with mentors and get your startup growing</p>
                         </div>
                         <div className="search">
                             <div>

@@ -24,7 +24,7 @@ export default class Navbar extends Component {
             <header>
                 <div>
                     <div className="logo">
-                        <Link to={"/"}>Upframe</Link>
+                        <Link to={"/"} className="upLogo">Upframe</Link>
                     </div>  
                     { this.state.loggedIn ? (
                             <img onClick={this.handleLogout} id="top-right-image" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
