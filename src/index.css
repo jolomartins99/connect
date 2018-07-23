@@ -48,7 +48,6 @@ button:hover {
 }
 
 /* Links */
-
 a {
   text-decoration: none;
   color: black;
@@ -85,6 +84,7 @@ button.active,
 
 .search {
   justify-content: center;
+  
 }
 
 .search div:nth-of-type(1) {
@@ -93,17 +93,26 @@ button.active,
 }
 
 .search input[type="text"] {
-  max-width: 60%;
   width: 30em;
   margin: 1em;
   margin-left: 0;
   color: #979797;
+  margin: 1em;
+  margin-left: 0;
+  color: #979797;
+  width: 770px;
+  height: 50px;
+  background-color: #ffffff;
+  border: solid 1px #dcdde0;
+  text-align: left;
+  border-radius: 5px;
 }
 
 /* Header + Navbar */
 
-header {
-  height: 5em;
+nav {
+  height: 4em;
+  line-height: 4em;
   position: fixed;
   top: 0;
   left: 0;
@@ -111,43 +120,50 @@ header {
   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
 }
 
-header > div {
-  max-width: 90%;
+nav > div {
+  max-width: 70%;
   width: 70em;
   height: 100%;
-  align-items: center;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 20% auto 20%;
+  justify-items: center;
 }
 
-header .logo {
-  justify-self: center;
+nav .logo {
+  display: grid;
+  align-items: center;
 }
 
-header .search-bar {
+nav .profile {
+  position: absolute;
+  width: 10em;
+  right: 10rem;
+}
+
+nav .logo img {
+  height: 2em;
+}
+
+nav .profile img {
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+nav .login {
+  position: absolute;
+  right: 10rem;
+}
+
+nav .search-bar {
   grid-column-start: 2;
   align-self: center;
   justify-self: center;
   width: 75%;
 }
 
-header .search-bar input {
+nav .search-bar input {
   width: 100%;
-}
-
-header #nav {
-  grid-column-start: 3;
-  justify-self: center;
-  align-self: center;
-}
-
-header #nav a {
-  display: inline-block;
-}
-
-header #nav a:nth-of-type(1) {
-  margin-right: 1em;
 }
 
 /* Default page */
@@ -190,6 +206,9 @@ main .wrapper {
 
 .search-tags {
   margin-top: 1em;
+  color: rgb(70, 69, 69);
+  position: relative;
+  right: 250px;
 }
 
 .search-tags button {
@@ -383,4 +402,36 @@ div.ReactTags__suggestions li mark {
 div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
     background: #b7cfe0;
     cursor: pointer;
+}
+/*Xtras From Neuville*/
+.upLogo{
+  text-decoration: none;
+  color: #ff004b;
+  font-size: 150%;
+  font-weight: bold;
+  width: 211px;
+  height: 53px;
+}
+
+.intro{
+  color: rgb(70, 69, 69);
+  width: 743.5px;
+  height: 27px;
+  font-weight: bold;
+  font-size: 120%;
+  position: relative;
+  right: 100px;
+}
+
+.popularTags{
+  height: 33px;
+}
+
+.checkAll{
+  width: 195px;
+  height: 55px;
+  background-color: #ff004b;
+  color: white;
+  font-weight: bold;
+  border-radius: 100px;
 }

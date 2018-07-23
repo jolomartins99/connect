@@ -21,22 +21,22 @@ export default class Navbar extends Component {
     render() {
         return (
         <div>
-            <header>
-                <div>
+            <nav>
+                <div className="wrapper">
                     <div className="logo">
-                        <Link to={"/"}>Upframe</Link>
+                    <Link to="/" className ="logo"><img src="/media/logotype.svg"></img></Link>
                     </div>  
                     { this.state.loggedIn ? (
-
-                            // <Link to="/settings">Login</Link>
-                            <img onClick={this.handleLogout} id="top-right-image" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
+                        <div className="profile">
+                            <img onClick={this.handleLogout} id="profile" src={localStorage.getItem('profilePicture')} alt="profile-pic"></img>
+                    </div>
                     ) : (
-                        <div id="nav">
+                        <div className="login">
                             <Link to="/login" className="button">Login</Link>
                         </div>
                     )}
                 </div>
-            </header>
+            </nav>
         </div>
         )
     }

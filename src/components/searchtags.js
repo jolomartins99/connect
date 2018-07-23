@@ -9,13 +9,15 @@ export default class SearchTags extends Component {
     render() {
         return (
             <div className="search-tags">
-                <h1>Popular Tags</h1>
+                <h1 className="popularTags">Popular Tags</h1>
                 <button onClick={this.activateTag}>We</button>
                 <button onClick={this.activateTag}>Are</button>
                 <button onClick={this.activateTag}>Search</button>
                 <button onClick={this.activateTag}>Tags</button>
                 <button onClick={this.activateTag}>B2B</button>
+                <button className="checkAll">Check All Tags</button>
             </div>
+            
         );
     }
 }
