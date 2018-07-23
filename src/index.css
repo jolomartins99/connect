@@ -118,6 +118,7 @@ nav {
   left: 0;
   width: 100%;
   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+  background: #fff;
 }
 
 nav > div {
@@ -149,8 +150,7 @@ nav .logo img {
 
 nav .profile img {
   border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
+  max-height: 2.5em;
 }
 
 nav .login {
