@@ -24,7 +24,7 @@ export default class Navbar extends Component {
             <nav>
                 <div className="wrapper">
                     <div className="logo">
-                        <img src="/media/logotype.svg"></img>
+                    <Link to="/" className ="logo"><img src="/media/logotype.svg"></img></Link>
                     </div>  
                     { this.state.loggedIn ? (
                         <div className="profile">
