@@ -65,7 +65,7 @@ export default class PublicProfileTab extends Component {
         }
       }
       console.log(fetchData)
-      fetch('http://localhost/users/' + localStorage.getItem('token'), fetchData)
+      fetch('http://api.upframe.io/users/' + localStorage.getItem('token'), fetchData)
         .then(res => res.json())
         .then(res => {
           if (res.message) {

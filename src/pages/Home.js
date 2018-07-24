@@ -30,7 +30,7 @@ export default class Home extends Component {
                 }
             }
             console.log(fetchData)
-            fetch('http://localhost/users/', fetchData)
+            fetch('https://api.upframe.io/users/', fetchData)
                 .then(res => res.json())
                 .then(res => {
                     //Nesta resposta podemos ter erro ou então

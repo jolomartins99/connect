@@ -28,7 +28,7 @@ export default class Login extends Component {
             }
         }
         console.log(fetchData)
-        fetch('http://localhost/users/login', fetchData)
+        fetch('https://api.upframe.io/users/login', fetchData)
             .then(res => res.json())
             .then(res => {
                 //Nesta resposta podemos ter erro ou então
