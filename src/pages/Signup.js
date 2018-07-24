@@ -10,7 +10,7 @@ export default class Signup extends Component {
             email : '',
             password : '',
             passwordConfirmation : '',
-            type_user : 'user',
+            type_user : 'mentor',
             message: ''
         }
     }
