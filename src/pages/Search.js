@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MentorList from '../components/mentorlist';
 import Navbar from '../components/navbar';
 import SearchBar from '../components/searchbar';
-import SearchTags from '../components/searchtags';
 
 export default class Search extends Component {
 
@@ -41,7 +40,6 @@ export default class Search extends Component {
         <main id="search">
           <div>
             <SearchBar />
-            <SearchTags />
           </div>
         </main>
       </div>

@@ -16,11 +16,15 @@ import Search from './pages/Search';
 ReactDOM.render(
     <Router>
         <div>
-            <Route exact path='/' component={Home} />
+            {/*<Route exact path='/' component={Home} />*/}
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
 
-            <Route path='/search' component={Search} />
+            {/*
+                <Route path='/search' component={Search} />
+            */}
+            {/* Temporary */}
+            <Route exact path='/' component={Search} />
             <Route exact path='/settings' component={Settings} />
         </div>
     </Router>, 

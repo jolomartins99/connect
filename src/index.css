@@ -10,6 +10,7 @@ body {
 /* Coloring */
 :root {
   --main: #ff004b;
+  --second: #898b8e; 
 }
 
 /* Font design */
@@ -56,17 +57,16 @@ a {
 /* Input boxes */
 
 input[type="text"] {
-  padding: 0.75em;
+  padding: 1em;
   border: solid 1px #dcdde0;
 }
 
 input[type="button"],
 input[type="submit"],
-button,
-.button {
+button {
   color: #d0d2d6;
   padding: 0.75em;
-  border-radius: .25em;
+  border-radius: .3em;
   border: 1px solid #d0d2d6;
   background: transparent;
   outline: none;
@@ -74,10 +74,53 @@ button,
 
 input[type="button"].active,
 input[type="submit"].active,
-button.active,
-.button.active {
+button.active {
   background: var(--pink);
   border-color: var(--pink);
+}
+
+/* button styling */
+
+button.main,
+button.second {
+  width: 12em;
+  height: 3.5em;
+  background-color: #fff;
+  font-weight: bold;
+}
+
+button.main {
+  color: var(--main);
+  border: solid 1px var(--main);
+}
+
+button.second {
+  color: var(--second);
+  border: solid 1px var(--second);
+}
+
+button.main.fill {
+  background-color: var(--main);
+  color: #fff;
+}
+
+button.second.fill {
+  background-color: var(--second);
+  color: #fff;
+}
+
+button.main:not(.fill):hover {
+  background: var(--main);
+  color: #fff;
+}
+
+button.second:not(.fill):hover {
+  background: var(--second);
+  color: #fff;
+}
+
+.round {
+  border-radius: 3em;
 }
 
 /* Search bar */
@@ -88,32 +131,45 @@ button.active,
   align-content: center;
 }
 
+.search-bar div:first-of-type {
+  display: flex;
+  align-items: center;
+}
+
 .search-bar input[type="text"] {
-  width: 30em;
-  margin: 1em;
-  margin-left: 0;
+  margin: 0 1em 0 0;
+  border-radius: .25em;
+  font-size: 1.2em;
+  width: 70vw;
+  text-indent: 3rem;
+  text-align: left;
   color: #979797;
-  margin: 1em;
-  margin-left: 0;
-  color: #979797;
-  width: 770px;
-  height: 50px;
   background-color: #ffffff;
   border: solid 1px #dcdde0;
-  text-align: left;
-  border-radius: 5px;
-  font-size: 1.2em;
-  width: 60rem;
-  text-indent: 3rem;
   background: url(/media/baseline-search-24px.jpg) no-repeat 0.125em 0.125em;
   background-size: 1.8em;
   background-position: left center;
   background-position-x: 1rem;
 }
 
+.search-bar button.main {
+  height: 4.4em;
+}
+
+.search-tags {
+  margin-top: 1em;
+  color: rgb(70, 69, 69);
+}
+
+.search-tags button {
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
 /* Header + Navbar */
 
 nav {
+  display: flex;
   height: 4em;
   position: fixed;
   top: 0;
@@ -154,11 +210,6 @@ nav .profile img {
   vertical-align: middle;
 }
 
-nav .login {
-  position: absolute;
-  right: 10rem;
-}
-
 /* User dropdown */
 
 nav .profile div:first-of-type {
@@ -194,8 +245,6 @@ nav .profile #dropdown a {
   font-size: 0.9em;
 }
 
-
-
 /* Default page */
 
 main {
@@ -228,32 +277,7 @@ main .wrapper {
   justify-items: center;
 }
 
-.search-tags {
-  margin-top: 1em;
-  color: rgb(70, 69, 69);
-}
-
-.search-tags button {
-  margin-right: 1em;
-  margin-bottom: 1em;
-}
-
 /* Settings Page */
-
-#top-right-image {
-  border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-#upframe-logo {
-  position: absolute;
-  left: 20px;
-  top: 0px;
-}
 
 .tab-button {
   background: transparent;
@@ -446,15 +470,6 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
 
 .popularTags{
   font-size: 1.2em;
-}
-
-.checkAll{
-  width: 195px;
-  height: 55px;
-  background-color: var(--main);
-  color: white;
-  font-weight: bold;
-  border-radius: 100px;
 }
 
 .rbc-event {

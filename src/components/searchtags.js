@@ -10,14 +10,19 @@ export default class SearchTags extends Component {
         return (
             <div className="search-tags">
                 <h1 className="popularTags">Popular Tags</h1>
-                <button onClick={this.activateTag}>We</button>
-                <button onClick={this.activateTag}>Are</button>
-                <button onClick={this.activateTag}>Search</button>
-                <button onClick={this.activateTag}>Tags</button>
-                <button onClick={this.activateTag}>B2B</button>
-                <button className="checkAll">Check All Tags</button>
+                <div>
+                    <button onClick={this.activateTag}>We</button>
+                    <button onClick={this.activateTag}>Are</button>
+                    <button onClick={this.activateTag}>Search</button>
+                    <button onClick={this.activateTag}>Tags</button>
+                    <button onClick={this.activateTag}>B2B</button>
+                    <button className={this.props.buttonClass}>See all Tags</button>
+                </div>
             </div>
-            
         );
     }
+}
+
+SearchTags.defaultProps = {
+    buttonClass: "second round"
 }
