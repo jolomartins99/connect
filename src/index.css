@@ -23,6 +23,14 @@ body {
   font-weight: 400;
 }
 
+p.main {
+  color: var(--main);
+}
+
+p.second {
+  color: var(--second);
+}
+
 /* * * * * * * * * * *
  *                   *
  *    Components     *
@@ -66,6 +74,7 @@ input[type="submit"],
 button {
   color: #d0d2d6;
   padding: 0.75em;
+  margin: 1em;
   border-radius: .3em;
   border: 1px solid #d0d2d6;
   background: transparent;
@@ -300,18 +309,41 @@ main .wrapper {
   margin-top: 1em;
 }
 
-.tab-content .profile-pic img {
-  display: block;
-  max-width: 15rem;
-}
-
 /* Public profile */
 
-.tab-content.public-profile input[type="file"] {
+#mentor-settings .profile-pic img {
+  display: block;
+  max-width: 12em;
+}
+
+#mentor-settings .public-profile input[type="file"] {
   display: none;
 }
 
-.profile
+#mentor-settings .public-profile .profile-pic {
+  display: flex;
+}
+
+#mentor-settings .public-profile div:first-of-type {
+  margin-right: 2em;
+}
+
+#mentor-settings .public-profile div:nth-of-type(2) h1 {
+  font-weight: 400;
+  margin: 0;
+}
+
+#mentor-settings .public-profile div:nth-of-type(2) button.main {
+  margin-left: 0;
+}
+
+#mentor-settings .public-profile div:nth-last-of-type(2) p:first-of-type {
+  margin-bottom: 0;
+}
+
+#mentor-settings .public-profile div:nth-last-of-type(2) p:nth-of-type(2) {
+  margin-top: 0;
+}
 
 /* End of Settings */
 

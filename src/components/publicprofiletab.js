@@ -141,11 +141,17 @@ export default class PublicProfileTab extends Component {
       const {tags, delimiters} = this.state;
         return <div className="tab-content public-profile">
             <div className="profile-pic">
-              
-              <img alt="profile-pic" src={this.state.image} />
-              <input type="file" accept="image/*" onChange={this.uploadPhoto} />
-              <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
-              <button onClick={this.removePhoto}>Remove</button>
+              <div>
+                <img alt="profile-pic" src={this.state.image} />
+              </div>
+              <div>
+                <h1>Profile Picture</h1>
+                <input type="file" accept="image/*" onChange={this.uploadPhoto} />
+                <p className="second">We're big on pictures around here.</p>
+                <p className="second">Add an updated picture so you don't like</p>
+                <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
+                <button className="second round" onClick={this.removePhoto}>Remove</button>
+              </div>
             </div>
             <div className="profile-info">
               <div>
