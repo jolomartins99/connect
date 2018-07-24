@@ -45,15 +45,6 @@ export default class Home extends Component {
                 })
     }
 
-    handleSearchChange = (e) => { this.setState({ searchQuery: e.target.value }) }
-    handleKeyUp = (e) => {
-        if(e.target.value !== "" && e.keyCode === 13) {
-            // handle search
-        }
-        
-        return;
-    }
-
     refreshSettings = () => {
         this.setState({
             reload: !this.state.reload
