@@ -305,6 +305,14 @@ main .wrapper {
   max-width: 15rem;
 }
 
+/* Public profile */
+
+.tab-content.public-profile input[type="file"] {
+  display: none;
+}
+
+.profile
+
 /* End of Settings */
 
 /* Mentor Cards */

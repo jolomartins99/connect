@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
+import sjcl from 'sjcl';
+import firebase from 'firebase';
 
 const KeyCodes = {
   comma: 188,
@@ -24,12 +26,6 @@ export default class PublicProfileTab extends Component {
           tags: [
           ],
           suggestions: [
-            // { id: 'USA', text: 'USA' },
-            // { id: 'Germany', text: 'Germany' },
-            // { id: 'Austria', text: 'Austria' },
-            // { id: 'Costa Rica', text: 'Costa Rica' },
-            // { id: 'Sri Lanka', text: 'Sri Lanka' },
-            // { id: 'Thailand', text: 'Thailand' }
           ]
 
         };
@@ -77,11 +73,40 @@ export default class PublicProfileTab extends Component {
        console.log(this.state) 
     }
 
+    openUploadDialog = (event) => {
+      document.querySelector(".tab-content.public-profile input[type='file']").click();
+    }
+
     uploadPhoto = (event) => {
-      console.log(event.target.value)
-        this.setState({
-          image: event.target.value
+      let file = event.target.files[0];
+
+      let bitArr = sjcl.hash.sha256.hash(localStorage.getItem("email"));
+      let hash = sjcl.codec.hex.fromBits(bitArr);
+
+      firebase.storage().ref("profilepics/" + hash + ".jpg").put(file).then((snapshot) => {
+        firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
+          localStorage.setItem("profilePicture", url);
+          this.setState({image: url});
         })
+        .catch(error => {
+          switch (error.code) {
+            case "storage/object_not_found":
+              // file doesn't exist
+              break;
+
+            case "storage/unauthorized":
+              // unauthorized access
+              break;
+            case "storage/canceled":
+              // canceled upload
+              break; 
+            default:
+              // unknown error
+          }
+        })
+      }).catch((err) =>  {
+        console.log(err);
+      })
     }
 
     removePhoto = () => {
@@ -114,11 +139,12 @@ export default class PublicProfileTab extends Component {
 
     render() {
       const {tags, delimiters} = this.state;
-        return <div className="tab-content">
+        return <div className="tab-content public-profile">
             <div className="profile-pic">
               
               <img alt="profile-pic" src={this.state.image} />
               <input type="file" accept="image/*" onChange={this.uploadPhoto} />
+              <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
               <button onClick={this.removePhoto}>Remove</button>
             </div>
             <div className="profile-info">

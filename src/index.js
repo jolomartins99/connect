@@ -4,6 +4,8 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import firebase from 'firebase';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -30,4 +32,15 @@ ReactDOM.render(
     </Router>, 
     document.getElementById('root')
 );
+
+const config = {
+    apiKey: "AIzaSyB8x5WHsTP7DMoaqo5KDJ0KmZkFWub68s4",
+    authDomain: "upframeconnect.firebaseapp.com",
+    databaseURL: "https://upframeconnect.firebaseio.com",
+    projectId: "upframeconnect",
+    storageBucket: "upframeconnect.appspot.com",
+    messagingSenderId: "673573936602"
+};
+  
+firebase.initializeApp(config);
 registerServiceWorker();
