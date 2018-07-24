@@ -6,8 +6,12 @@ export default class SearchBar extends Component {
 
     return (
       <div className="search-bar">
-        <input type="text" />
+          <input placeholder="Try looking for a topic, a person or a company..." type="text"/>
       </div>
     )
   }
 }
+  
+SearchBar.defaultProps = {
+  display: true
+};

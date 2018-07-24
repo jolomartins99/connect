@@ -82,17 +82,13 @@ button.active,
 
 /* Search bar */
 
-.search {
-  justify-content: center;
-  
-}
-
-.search div:nth-of-type(1) {
+.search-bar {
   display: grid;
-  justify-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
-.search input[type="text"] {
+.search-bar input[type="text"] {
   width: 30em;
   margin: 1em;
   margin-left: 0;
@@ -106,13 +102,19 @@ button.active,
   border: solid 1px #dcdde0;
   text-align: left;
   border-radius: 5px;
+  font-size: 1.2em;
+  width: 60rem;
+  text-indent: 3rem;
+  background: url(/media/baseline-search-24px.jpg) no-repeat 0.125em 0.125em;
+  background-size: 1.8em;
+  background-position: left center;
+  background-position-x: 1rem;
 }
 
 /* Header + Navbar */
 
 nav {
   height: 4em;
-  line-height: 4em;
   position: fixed;
   top: 0;
   left: 0;
@@ -127,6 +129,7 @@ nav > div {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 25% 50% 25%;
+  align-items: center;
 }
 
 nav .logo {
@@ -153,17 +156,6 @@ nav .profile img {
 nav .login {
   position: absolute;
   right: 10rem;
-}
-
-nav .search-bar {
-  grid-column-start: 2;
-  align-self: center;
-  justify-self: center;
-  width: 75%;
-}
-
-nav .search-bar input {
-  width: 100%;
 }
 
 /* User dropdown */
@@ -207,6 +199,8 @@ nav .profile #dropdown a {
 
 main {
   margin-top: calc(5% + 4em);
+  max-width: 90vw;
+  margin: calc(5% + 4em) auto 0 auto;
 }
 
 main .wrapper {
@@ -228,24 +222,14 @@ main .wrapper {
   grid-row-gap: 1em;
 }
 
-#home .search input[type="text"] {
-  font-size: 1.2em;
-  width: 60rem;
-  text-indent: 3rem;
-}
-
-#home .search input[type="text"] {
-  background: url(/media/baseline-search-24px.jpg) no-repeat 0.125em 0.125em;
-  background-size: 1.8em;
-  background-position: left center;
-  background-position-x: 1rem;
+.search div:nth-of-type(1) {
+  display: grid;
+  justify-items: center;
 }
 
 .search-tags {
   margin-top: 1em;
   color: rgb(70, 69, 69);
-  position: relative;
-  right: 250px;
 }
 
 .search-tags button {
@@ -460,7 +444,7 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
 }
 
 .popularTags{
-  height: 33px;
+  font-size: 1.2em;
 }
 
 .checkAll{

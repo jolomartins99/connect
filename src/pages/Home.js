@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Navbar from '../components/navbar';
+import SearchBar from '../components/searchbar';
 import SearchTags from '../components/searchtags';
 
 export default class Home extends Component {
@@ -69,9 +70,7 @@ export default class Home extends Component {
                             <p className="intro">Hello! Connect with mentors and get your startup growing</p>
                         </div>
                         <div className="search">
-                            <div>
-                                <input placeholder="Try looking for a topic, a person or a company..." type="text" onChange={this.handleSearchChange} onKeyUp={this.handleKeyUp}/>
-                            </div>
+                            <SearchBar />
                             <SearchTags />
                         </div>
                     </div>
