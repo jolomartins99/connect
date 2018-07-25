@@ -24,12 +24,14 @@ body {
 }
 
 p.main,
-input.main {
+input.main,
+textarea.main {
   color: var(--main);
 }
 
 p.second,
-input.second {
+input.second,
+textarea.second {
   color: var(--second);
 }
 
@@ -43,12 +45,14 @@ input.second {
 /* Basic animations */
 
 input,
-button {
+button,
+textarea {
   transition: .25s ease-in-out all;
 }
 
 input,
-button {
+button,
+textarea {
   outline: none;
 }
 
@@ -66,7 +70,8 @@ a {
 
 /* Input boxes */
 
-input[type="text"] {
+input[type="text"],
+textarea {
   padding: 1em;
   border: solid 1px #dcdde0;
   border-radius: .25em;
@@ -376,8 +381,15 @@ main#mentor-settings {
   flex-wrap: wrap;
 }
 
+#mentor-settings .profile-info div textarea {
+  resize: none;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
 #mentor-settings .profile-info div input {
-  width: 100%
+  width: 100%;
 }
 
 #mentor-settings .profile-info p {
