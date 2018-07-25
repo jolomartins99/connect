@@ -105,23 +105,28 @@ export default class PublicProfileTab extends Component {
   }
 
   saveChanges = (e) => {
-    // Needs to get finished
+    let reqBody = this.state,
+        newTags = [];
+    
+    for(let field of reqBody.tags) {
+      newTags.push(field.text);
+    }
+    reqBody.tags = {"tags": newTags};
+    
 
-
-    /* Old code (try it if you want)
     let reqHeaders = new Headers({
       "Content-Type": "application/json"
     })
     fetch("http://localhost/users/" + this.state.token, {
-      mode: "PUT",
-      body: JSON.parse(JSON.stringify(this.state)),
+      method: "PUT",
+      mode: "cors",
+      body: JSON.stringify(this.state),
       headers: reqHeaders,
       credentials: "same-origin"
     })
     .then(res => res.json())
     .catch(err => console.log("Error:", err))
     .then(result => console.log("Success", result));
-    */
   }
 
     render() {
