@@ -16,21 +16,43 @@ export default class PublicProfileTab extends Component {
     super(props);
 
     this.state = {
-      token: localStorage.getItem("token"),
-      image: localStorage.getItem('profilePicture'),
-      location: localStorage.getItem('location'),
-      role: localStorage.getItem('role'),
-      company: localStorage.getItem('company'),
-      homepage: localStorage.getItem('homepage'),
-      bio: localStorage.getItem('bio'),
-      name: localStorage.getItem('name'),
-      tags: [],
-      suggestions: []
-    };
+      bio: "",
+      company: "",
+      email: "",
+      homepage: "",
+      location: "",
+      name: "",
+      role: "",
+      image: ""
+    }
+
+    this.loadProfile();
+
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
 
+  }
+
+  loadProfile = () => {
+    fetch("http://localhost/users/" + localStorage.getItem("token"), {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin"
+    })
+    .then(res => res.json())
+    .catch(err => console.log("Error: ", err))
+    .then(data => {
+      let newState = {};
+      for(let key in data) {
+        if(data.hasOwnProperty(key)) {
+          newState[key] = data[key];
+        }
+      }
+      newState.imageHash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(data.email));
+      
+      this.setState(newState, this.loadPhoto);
+    })
   }
 
   onNameChange = (event) => { this.setState({ name: event.target.value }) }
@@ -40,16 +62,15 @@ export default class PublicProfileTab extends Component {
   onHomepageChange = (event) => { this.setState({ homepage: event.target.value }) }
   onBioChange = (event) => { this.setState({ bio: event.target.value }) }
 
+  /* profile picture */
   openUploadDialog = (event) => {
     document.querySelector(".tab-content.public-profile input[type='file']").click();
   }
 
   uploadPhoto = (event) => {
-    let file = event.target.files[0];
-
-    let bitArr = sjcl.hash.sha256.hash(localStorage.getItem("email"));
-    let hash = sjcl.codec.hex.fromBits(bitArr);
-
+    let file = event.target.files[0],
+        hash = this.state.image;
+    
     firebase.storage().ref("profilepics/" + hash + ".jpg").put(file).then((snapshot) => {
       firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
         localStorage.setItem("profilePicture", url);
@@ -82,6 +103,15 @@ export default class PublicProfileTab extends Component {
     })
   }
 
+  loadPhoto = () => {
+    firebase.storage().ref("profilepics/" + this.state.imageHash + ".jpg").getDownloadURL().then(url => {
+      let newState = {};
+      newState.image = url;
+      
+      this.setState(newState);
+    })
+  }
+
   handleDelete(i) {
     const { tags } = this.state;
     this.setState({
@@ -107,11 +137,12 @@ export default class PublicProfileTab extends Component {
   saveChanges = (e) => {
     let reqBody = this.state,
         newTags = [];
-    
+    console.log(reqBody);
+    /*
     for(let field of reqBody.tags) {
       newTags.push(field.text);
     }
-    reqBody.tags = {"tags": newTags};
+    reqBody.tags = {"tags": newTags};*/
     
 
     let reqHeaders = new Headers({
@@ -130,7 +161,8 @@ export default class PublicProfileTab extends Component {
   }
 
     render() {
-      const {tags, delimiters} = this.state;
+      //const tags = this.state.tags;
+
         return <div className="tab-content public-profile">
             <div className="profile-pic">
               <div>
@@ -174,11 +206,11 @@ export default class PublicProfileTab extends Component {
               <div>
                 <h2 className="second">Your skills</h2>
                 <p>Add up to 7 skills to display in your profile.</p>
-                <ReactTags tags={tags}
+                {/*<ReactTags tags={tags}
                 handleDelete={this.handleDelete}
                 handleAddition={this.handleAddition}
                 handleDrag={this.handleDrag}
-                delimiter={delimiters} />
+                delimiter={delimiters} />*/}
               </div>
               <div className="save">
                 <button className="second round" onClick={this.saveChanges}>Save</button>
