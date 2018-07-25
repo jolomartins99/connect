@@ -484,9 +484,12 @@ main#mentor-settings {
 /* Tags */
 div.ReactTags__tags {
     position: relative;
+    margin-top: 1em; 
 }
 
 /* Styles for the input */
+
+/*
 div.ReactTags__tagInput {
     width: 200px;
     border-radius: 2px;
@@ -501,6 +504,7 @@ div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
     border: 1px solid #eee;
     padding: 0 4px;
 }
+*/
 
 /* Styles for selected tags */
 div.ReactTags__selected span.ReactTags__tag {
@@ -509,7 +513,7 @@ div.ReactTags__selected span.ReactTags__tag {
     font-size: 12px;
     display: inline-block;
     padding: 5px;
-    margin: 0 5px;
+    margin: 0em 5px 1em 0;
     cursor: move;
     border-radius: 2px;
 }

@@ -9,7 +9,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        Upframe &copy; 2018
+        Upframe &trade; 2018
       </footer>
     )
   }
