@@ -352,6 +352,7 @@ main#mentor-settings {
 
 #mentor-settings .profile-pic img {
   display: block;
+  min-width: 12em;
   max-width: 12em;
 }
 
