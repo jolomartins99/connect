@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 import PublicProfileTab from '../components/publicprofiletab';
 import AccountTab from '../components/accounttab';
 import SyncCalendarTab from '../components/synccalendartab';
-import Navbar from '../components/navbar';
 
 export default class MentorSettings extends Component {
 
@@ -31,15 +32,15 @@ export default class MentorSettings extends Component {
     }
 
     render() {
-        let firstButton = 'tab-button' + (this.state.currentTab === 0 ? ' tab-button-selected' : '');
-        let secondButton = 'tab-button' + (this.state.currentTab === 1 ? ' tab-button-selected' : '');
-        let thirdButton = 'tab-button' + (this.state.currentTab === 2 ? ' tab-button-selected' : '');
+        let firstButton = 'tab-button' + (this.state.currentTab === 0 ? ' active' : '');
+        let secondButton = 'tab-button' + (this.state.currentTab === 1 ? ' active' : '');
+        let thirdButton = 'tab-button' + (this.state.currentTab === 2 ? ' active' : '');
         return (
             <div>
                 <Navbar refreshSettings={this.props.refreshSettings}/>
                 <main id="mentor-settings">
                     <div className="wrapper">
-                        <div className="nav">
+                        <div className="tab-list">
                             <button className={firstButton} onClick={this.handlePublicProfileTab}>Public Profile</button>
                             <button className={secondButton} onClick={this.handleAccountTab}>Account</button>
                             <button className={thirdButton} onClick={this.handleSyncTab}>Sync</button>
@@ -47,6 +48,7 @@ export default class MentorSettings extends Component {
                         {this.showTab()}
                     </div>
                 </main>
+                <Footer />
             </div>
         )
     }

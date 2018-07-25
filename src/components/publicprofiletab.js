@@ -42,37 +42,6 @@ export default class PublicProfileTab extends Component {
     onHomepageChange = (event) => { this.setState({ homepage: event.target.value }) }
     onBioChange = (event) => { this.setState({ bio: event.target.value }) }
 
-    saveChanges = () => {
-      let data = {
-        image: this.state.image,
-        location: this.state.location,
-        role: this.state.role,
-        company: this.state.company,
-        homepage: this.state.homepage,
-        bio: this.state.bio,
-        name: this.state.name,
-        tags: JSON.stringify(this.state.tags)
-      }
-      let fetchData = {
-        method: 'PUT',
-        body: Object.entries(data).map(e => e.join('=')).join('&'),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-        }
-      }
-      console.log(fetchData)
-      fetch('http://api.upframe.io/users/' + localStorage.getItem('token'), fetchData)
-        .then(res => res.json())
-        .then(res => {
-          if (res.message) {
-            alert(res.message)
-          } else {
-            alert('All information saved successfully"!')
-          }
-        })
-       console.log(this.state) 
-    }
-
     openUploadDialog = (event) => {
       document.querySelector(".tab-content.public-profile input[type='file']").click();
     }
@@ -155,35 +124,39 @@ export default class PublicProfileTab extends Component {
             </div>
             <div className="profile-info">
               <div>
-                Your name
-                <input type="text" onChange={this.onNameChange} value={this.state.name} />
+                <p>Your name</p>
+                <input className="second" type="text" onChange={this.onNameChange} value={this.state.name} />
               </div>
               <div>
-                Location
-                <input type="text" onChange={this.onLocationChange} value={this.state.location} />
+                <p>Location</p>
+                <input className="second" type="text" onChange={this.onLocationChange} value={this.state.location} />
               </div>
               <div>
-                Current Position
-                <input type="text" onChange={this.onRoleChange} value={this.state.role} />
+                <p>Current Position</p>
+                <input className="second" type="text" onChange={this.onRoleChange} value={this.state.role} />
               </div>
               <div>
-                Company
-                <input type="text" onChange={this.onCompanyChange} value={this.state.company} />
+                <p>Company</p>
+                <input className="second" type="text" onChange={this.onCompanyChange} value={this.state.company} />
               </div>
               <div>
-                Website
-                <input type="text" onChange={this.onHomepageChange} value={this.state.homepage} />
+                <p>Website</p>
+                <input className="second" type="text" onChange={this.onHomepageChange} value={this.state.homepage} />
               </div>
               <div>
-                Bio
-                <input type="text" onChange={this.onBioChange} value={this.state.bio} />
+                <p>Bio</p>
+                <input className="second" type="text" onChange={this.onBioChange} value={this.state.bio} />
               </div>
-              <ReactTags tags={tags}
+              <hr></hr>
+              <div>
+                <h2 className="second">Your skills</h2>
+                <p>Add up to 7 skills to display in your profile.</p>
+                <ReactTags tags={tags}
                 handleDelete={this.handleDelete}
                 handleAddition={this.handleAddition}
                 handleDrag={this.handleDrag}
                 delimiter={delimiters} />
-              <button onClick={this.saveChanges}>Save Changes</button>
+              </div>
             </div>
           </div>;
     }

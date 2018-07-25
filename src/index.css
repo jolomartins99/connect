@@ -23,11 +23,13 @@ body {
   font-weight: 400;
 }
 
-p.main {
+p.main,
+input.main {
   color: var(--main);
 }
 
-p.second {
+p.second,
+input.second {
   color: var(--second);
 }
 
@@ -67,6 +69,7 @@ a {
 input[type="text"] {
   padding: 1em;
   border: solid 1px #dcdde0;
+  border-radius: .25em;
 }
 
 input[type="button"],
@@ -219,8 +222,6 @@ nav .profile img {
   vertical-align: middle;
 }
 
-/* User dropdown */
-
 nav .profile div:first-of-type {
   position: relative;
   display: inline-block;
@@ -252,6 +253,13 @@ nav .profile #dropdown a {
   display: block;
   margin: 0 1em;
   font-size: 0.9em;
+}
+
+footer {
+  text-align: center;
+  height: 5em;
+  line-height: 5em;
+  margin-top: 2em;
 }
 
 /* Default page */
@@ -291,29 +299,33 @@ main .wrapper {
 .tab-button {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #e6e8eb;
-  border-radius: 0;
-  width: 120px;
-  font-weight: 500;
-}
-
-.tab-button-selected {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid;
-  font-weight: bold;
-}
-
-.tab-content {
-  margin-top: 1em;
-}
-
-/* Public profile */
-
-#mentor-settings .profile-pic img {
+  padding: 0;
   display: block;
-  max-width: 12em;
+  color: var(--second);
+  font-size: 1em;
+}
+
+.tab-button.active {
+  color: black;
+}
+
+/* Settings (Public profile tab)*/
+
+main#mentor-settings {
+  max-width: 100%;
+  margin: calc(5% + 4em) 1em 0 1em;
+}
+
+#mentor-settings .wrapper {
+  justify-content: center;
+  grid-template-columns: 15% 70% 15%;
+  max-width: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+#mentor-settings .public-profile {
+  justify-self: center;
 }
 
 #mentor-settings .public-profile input[type="file"] {
@@ -324,7 +336,12 @@ main .wrapper {
   display: flex;
 }
 
-#mentor-settings .public-profile div:first-of-type {
+#mentor-settings .profile-pic img {
+  display: block;
+  max-width: 12em;
+}
+
+#mentor-settings .public-profile .profile-pic div:first-of-type {
   margin-right: 2em;
 }
 
@@ -343,6 +360,14 @@ main .wrapper {
 
 #mentor-settings .public-profile div:nth-last-of-type(2) p:nth-of-type(2) {
   margin-top: 0;
+}
+
+#mentor-settings .profile-info div input {
+  width: 100%
+}
+
+#mentor-settings .profile-info p {
+  margin-bottom: 0.5em;
 }
 
 /* End of Settings */

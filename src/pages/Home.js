@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 import SearchBar from '../components/searchbar';
 import SearchTags from '../components/searchtags';
 
@@ -66,6 +67,7 @@ export default class Home extends Component {
                         </div>
                     </div>
                 </main>
+                <Footer />
             </div>
         );
     }
