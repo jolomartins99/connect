@@ -150,7 +150,7 @@ export default class PublicProfileTab extends Component {
                 <input className="second" type="text" onChange={this.onLocationChange} value={this.state.location} />
               </div>
               <div className="field-group">
-                <p>Current Position</p>
+                <p>Your position</p>
                 <input className="second" type="text" onChange={this.onRoleChange} value={this.state.role} />
               </div>
               <div className="field-group">
