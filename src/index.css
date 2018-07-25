@@ -262,6 +262,15 @@ footer {
   margin-top: 2em;
 }
 
+/* horizontal breaklines */
+
+span.hr {
+  display: block;
+  width: 100%;
+  border: solid 1px #e3e3e6;
+  margin: 2em 0;
+}
+
 /* Default page */
 
 main {
@@ -362,12 +371,21 @@ main#mentor-settings {
   margin-top: 0;
 }
 
+#mentor-settings .profile-info div.field-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #mentor-settings .profile-info div input {
   width: 100%
 }
 
 #mentor-settings .profile-info p {
   margin-bottom: 0.5em;
+}
+
+#mentor-settings .profile-info .save {
+  text-align: center;
 }
 
 /* End of Settings */

@@ -123,31 +123,31 @@ export default class PublicProfileTab extends Component {
               </div>
             </div>
             <div className="profile-info">
-              <div>
+              <div className="field-group">
                 <p>Your name</p>
                 <input className="second" type="text" onChange={this.onNameChange} value={this.state.name} />
               </div>
-              <div>
+              <div className="field-group">
                 <p>Location</p>
                 <input className="second" type="text" onChange={this.onLocationChange} value={this.state.location} />
               </div>
-              <div>
+              <div className="field-group">
                 <p>Current Position</p>
                 <input className="second" type="text" onChange={this.onRoleChange} value={this.state.role} />
               </div>
-              <div>
+              <div className="field-group">
                 <p>Company</p>
                 <input className="second" type="text" onChange={this.onCompanyChange} value={this.state.company} />
               </div>
-              <div>
+              <div className="field-group">
                 <p>Website</p>
                 <input className="second" type="text" onChange={this.onHomepageChange} value={this.state.homepage} />
               </div>
-              <div>
+              <div className="field-group">
                 <p>Bio</p>
                 <input className="second" type="text" onChange={this.onBioChange} value={this.state.bio} />
               </div>
-              <hr></hr>
+              <span className="hr"></span>
               <div>
                 <h2 className="second">Your skills</h2>
                 <p>Add up to 7 skills to display in your profile.</p>
@@ -156,6 +156,9 @@ export default class PublicProfileTab extends Component {
                 handleAddition={this.handleAddition}
                 handleDrag={this.handleDrag}
                 delimiter={delimiters} />
+              </div>
+              <div className="save">
+                <button class="second round">Save</button>
               </div>
             </div>
           </div>;
