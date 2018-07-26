@@ -12,6 +12,9 @@ export default class SyncCalendarTab extends Component {
     constructor(props){
         super(props)
         this.state = {
+            calendarNames: [],
+            token: '',
+            refreshToken: '',
             currId: 0,
             events: [],
             syncStatus: 0 //localStorage.getItem('syncStatus')
@@ -50,7 +53,46 @@ export default class SyncCalendarTab extends Component {
     }
 
     showCalendars = () => {
+        console.log('We got called')
+    }
 
+    calendarList() {
+        let customHeaders = new Headers();
+        customHeaders.append("Authorization", "Bearer " + this.state.token);
+
+        return (fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList",
+            {
+                method: "GET",
+                mode: "cors",
+                headers: customHeaders
+            }
+        )
+            .then(response => response.json())
+            .then(data => {
+                if (data.error && data.error.code === 401) { // Invalid credentials / invalid token
+                    let error = { error: 401, message: data.error.message };
+                    throw error;
+                }
+                console.log(data)
+                return data;
+            }))
+    }
+
+    getCalendarList() {
+        let promise = this.calendarList(),
+        newCalendarMap = { calendarNames: [] };
+        promise.then(data => {
+            for (let calendar of data.items) {
+                newCalendarMap.calendarNames.push([calendar.id, calendar.summary]);
+            }
+            console.log('Mapa' + newCalendarMap)
+            this.setState(newCalendarMap);
+        }).catch(err => {
+            // let's recommend unlink + link
+            console.log(err);
+            //alert("We highly recommend linking your account again");
+            //this.googleUnlink();
+        });
     }
 
     googleLink = () => {
@@ -58,40 +100,51 @@ export default class SyncCalendarTab extends Component {
         
         provider.addScope("email");
         provider.addScope("profile");
-        provider.addScope("https://www.googleapis.com/auth/admin.directory.resource.calendar");
+        //provider.addScope("https://www.googleapis.com/auth/admin.directory.resource.calendar");
+        provider.addScope("https://www.googleapis.com/auth/calendar");
         
         // display browser default language
         firebase.auth().useDeviceLanguage();
         
         provider.setCustomParameters({
-            "access_type": "offline"
+            "access_type": "offline",
+            "prompt": "consent"
         });
 
         firebase.auth().signInWithPopup(provider).then(result => {
-            /**
-             * Access token - Used for API requests
-             */
-            let accessToken = result.credential.accessToken;
-            console.log("accessToken:\n", accessToken);
-            /**
-             * Refresh token - Used to get a new access token
-             */
-            let refreshToken = result.user.refreshToken;
-            console.log("refreshToken:\n", refreshToken);
-            console.log(result);
+            console.log(result)
+            this.setState({
+                token: result.credential.accessToken,
+                refreshToken: result.user.refreshToken
+            })
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
+        if (this.state.token) {
+           this.calendarList()
+        }
         return (
             <div className="tab-content calendar-sync">
-                { this.state.syncStatus === 0 ? (
+                { this.state.token === '' ? (
+                    <div>
+
                     <button className="main" onClick={this.googleLink}>Sync with Google Calendar</button>
+                    <BigCalendar
+                        selectable
+                        defaultDate={new Date()}
+                        defaultView="week"
+                        events={this.state.events}
+                        onSelectEvent={event => this.deleteFreeSlot(event)}
+                        onSelectSlot={slot => this.addFreeSlot(slot)}
+                    />
+                    </div>
                 ) : (
                     <div>
-                    
+                        You are synced with access: {this.state.token} and {this.state.refreshToken}
+                        {this.showCalendars()}
                     </div>
                 )}
             </div>

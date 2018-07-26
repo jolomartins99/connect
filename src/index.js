@@ -33,13 +33,13 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-const config = {
-    apiKey: "AIzaSyBSxeo5ZG_tCwtM_gWAPMr12xUuQZg04do",
-    authDomain: "upframe-mvp.firebaseapp.com",
-    databaseURL: "https://upframe-mvp.firebaseio.com",
-    projectId: "upframe-mvp",
-    storageBucket: "upframe-mvp.appspot.com",
-    messagingSenderId: "382317917178"
+let config = {
+    apiKey: ,
+    authDomain: ,
+    databaseURL: ,
+    projectId: ,
+    storageBucket: ,
+    messagingSenderId: 
 };
   
 firebase.initializeApp(config);
