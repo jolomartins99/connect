@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 import moment from 'moment';
 
 import MentorSettings from './MentorSettings';
@@ -43,7 +44,7 @@ export default class Settings extends Component {
                     :
                 <UserSettings />)
                     :
-                (< Login />)
+                ( <Redirect to="/login" />)
                 }
             </div> 
         )
