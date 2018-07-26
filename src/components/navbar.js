@@ -24,6 +24,11 @@ export default class Navbar extends Component {
     }
 
     render() {
+        let login;
+        
+        if(this.props.loginButton) {
+            login = <a href="/login" className="button">Login</a>;
+        }
         return (
         <div>
             <nav>
@@ -43,7 +48,7 @@ export default class Navbar extends Component {
                         </div>
                     ) : (
                         <div className="login">
-                            <Link to="/login" className="button">Login</Link>
+                            {login}
                         </div>
                     )}
                 </div>
@@ -51,4 +56,8 @@ export default class Navbar extends Component {
         </div>
         )
     }
+}
+
+Navbar.defaultProps = {
+    loginButton: true
 }

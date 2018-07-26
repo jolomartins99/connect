@@ -50,6 +50,12 @@ export default class Login extends Component {
             })
     }
 
+    handleKeyUp = (e) => {
+        if(e.keyCode == 13) {
+            this.login();
+        }
+    }
+
     handleEmailChange = (e) => { this.setState({ email: e.target.value }) }
 
     handlePasswordChange = (e) => { this.setState({ password: e.target.value }) }
@@ -60,16 +66,16 @@ export default class Login extends Component {
         } else {
             return (
                 <div>
-                    <Navbar refreshSettings={this.refreshSettings} />
+                    <Navbar loginButton={false} refreshSettings={this.refreshSettings} />
                     <main id="login">
                         <div className="wrapper">
                             <div>
                                 <p>Your email</p>
-                                <input onChange={this.handleEmailChange} type="email" placeholder="Your email" />
+                                <input onKeyUp={this.handleKeyUp} onChange={this.handleEmailChange} type="email" placeholder="Your email" />
                             </div>
                             <div>
                                 <p>Your password</p>
-                                <input onChange={this.handlePasswordChange} type="password"  placeholder="Your password" />
+                                <input onKeyUp={this.handleKeyUp} onChange={this.handlePasswordChange} type="password"  placeholder="Your password" />
                             </div>
                             <button className="main round" onClick={this.login}>Log In</button>
                         </div>
