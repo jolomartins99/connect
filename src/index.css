@@ -72,6 +72,8 @@ a {
 /* Input boxes */
 
 input[type="text"],
+input[type="email"],
+input[type="password"],
 textarea {
   min-height: 2em;
   padding: 1em;
@@ -99,6 +101,10 @@ button.active {
 }
 
 /* button styling */
+
+button {
+  justify-self: center;
+}
 
 button.main,
 button.second {
@@ -308,6 +314,26 @@ main .wrapper {
 .search div:nth-of-type(1) {
   display: grid;
   justify-items: center;
+}
+
+/* Login page */
+
+main#login .wrapper {
+  max-width: 35%;
+  grid-row-gap: 1em;
+  justify-content: center;
+  grid-template-columns: 100%;
+}
+
+main#login .wrapper div {
+  display: flex;
+  flex-direction: column;
+}
+
+main#login .wrapper p {
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-size: 1.1em;
 }
 
 /* Settings Page */

@@ -61,11 +61,18 @@ export default class Login extends Component {
             return (
                 <div>
                     <Navbar refreshSettings={this.refreshSettings} />
-                    <main id="home">
-                        <h1>Welcome Mentor, login here</h1>
-                        <input onChange={this.handleEmailChange} type="email" placeholder="hello@example.com" />
-                        <input onChange={this.handlePasswordChange} type="password" />
-                        <button onClick={this.login}>Log In</button>
+                    <main id="login">
+                        <div className="wrapper">
+                            <div>
+                                <p>Your email</p>
+                                <input onChange={this.handleEmailChange} type="email" placeholder="Your email" />
+                            </div>
+                            <div>
+                                <p>Your password</p>
+                                <input onChange={this.handlePasswordChange} type="password"  placeholder="Your password" />
+                            </div>
+                            <button className="main round" onClick={this.login}>Log In</button>
+                        </div>
                     </main>
                 </div>
             );
