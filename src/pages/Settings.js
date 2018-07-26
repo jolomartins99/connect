@@ -17,7 +17,7 @@ export default class Settings extends Component {
     }
 
     async componentWillMount() {
-        await fetch("http://localhost/users/" + localStorage.getItem("token"), {
+        await fetch("https://api.upframe.io/users/" + localStorage.getItem("token"), {
             method: "GET",
             mode: "cors",
             body: {}
