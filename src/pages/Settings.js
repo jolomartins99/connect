@@ -19,8 +19,7 @@ export default class Settings extends Component {
     async componentWillMount() {
         await fetch("https://api.upframe.io/users/" + localStorage.getItem("token"), {
             method: "GET",
-            mode: "cors",
-            body: {}
+            mode: "cors"
         })
         .then(res => res.json())
         .catch(err => console.log("Error: ", err))
