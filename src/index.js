@@ -12,6 +12,17 @@ import Signup from './pages/Signup';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
 
+const config = {
+    apiKey: process.env.CONNECT_FIREBASE_APIKEY,
+    authDomain: process.env.CONNECT_FIREBASE_AUTHDOMAIN,
+    databaseURL: process.env.CONNECT_FIREBASE_DBURL,
+    projectId: process.env.CONNECT_FIREBASE_PROJECTID,
+    storageBucket: process.env.CONNECT_FIREBASE_STORAGE,
+    messagingSenderId: process.env.CONNECT_FIREBASE_SENDERID
+};
+
+firebase.initializeApp(config);
+
 // Do not forget to read https://reacttraining.com/react-router/web/example/auth-workflow
 // If you need any help with routing. Don't follow online tutorials, most of them
 // are outdated
@@ -33,14 +44,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-let config = {
-    apiKey: process.env.CONNECT_FIREBASE_APIKEY,
-    authDomain: process.env.CONNECT_FIREBASE_AUTHDOMAIN,
-    databaseURL: process.env.CONNECT_FIREBASE_DBURL,
-    projectId: process.env.CONNECT_FIREBASE_PROJECTID,
-    storageBucket: process.env.CONNECT_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.CONNECT_FIREBASE_SENDERID
-};
-  
-firebase.initializeApp(config);
 registerServiceWorker();
