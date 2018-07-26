@@ -27,7 +27,7 @@ export default class Settings extends Component {
         .then(data => {
             let newState = {
                 isMentor: data.type_user == "mentor",
-                loggedIn: moment(new Date()).isAfter(data.token_date_end) ? false : true
+                loggedIn: ((moment(new Date()).isAfter(data.token_date_end) ? false : true) && localStorage.getItem("token") != null)
             };
             this.setState(newState);
         })
