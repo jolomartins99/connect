@@ -15,15 +15,13 @@ import Signup from './pages/Signup';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
 
-//import 
-
 const config = {
-    apiKey: process.env.CONNECT_FIREBASE_APIKEY,
-    authDomain: process.env.CONNECT_FIREBASE_AUTHDOMAIN,
-    databaseURL: process.env.CONNECT_FIREBASE_DBURL,
-    projectId: process.env.CONNECT_FIREBASE_PROJECTID,
-    storageBucket: "upfame-mvp-1.appspot.com",
-    messagingSenderId: process.env.CONNECT_FIREBASE_SENDERID
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DBURL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID
 };
 
 firebase.initializeApp(config);
