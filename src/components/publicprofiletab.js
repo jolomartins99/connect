@@ -38,7 +38,7 @@ export default class PublicProfileTab extends Component {
 
   loadProfile = (data = undefined) => {
     if(data == undefined) {
-      fetch("http://localhost/users/" + localStorage.getItem("token"), {
+      fetch("https://api.upframe.io/users/" + localStorage.getItem("token"), {
         method: "GET",
         mode: "cors",
         credentials: "same-origin"
