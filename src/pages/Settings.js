@@ -36,16 +36,14 @@ export default class Settings extends Component {
     render() {
         return (
             <div>
-                {this.state.loggedIn
-                    ?
-                (this.state.isMentor
-                    ?
-                <MentorSettings refreshSettings={this.refreshSettings}/>
+                {this.state.loggedIn ?
+                    (this.state.isMentor ?
+                        <MentorSettings refreshSettings={this.refreshSettings}/>
                     :
-                <UserSettings />)
-                    :
-                ( <Redirect to="/login" />)
-                }
+                        <UserSettings />)
+                : (
+                    < Login />
+                )}
             </div> 
         )
     }
