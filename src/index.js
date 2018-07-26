@@ -6,11 +6,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import firebase from 'firebase';
 
+// Redirect
+import RedirectSettings from './pages/RedirectSettings';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
+
+//import 
 
 const config = {
     apiKey: process.env.CONNECT_FIREBASE_APIKEY,
@@ -38,6 +43,7 @@ ReactDOM.render(
             */}
             {/* Temporary */}
             <Route exact path='/' component={Search} />
+            <Route exact path="/setting" component={RedirectSettings} />
             <Route exact path='/settings' component={Settings} />
         </div>
     </Router>, 

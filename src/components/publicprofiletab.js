@@ -221,7 +221,7 @@ export default class PublicProfileTab extends Component {
               <img alt="profile-pic" src={this.state.image} />
             </div>
             <div>
-              <h1>Profile Picture</h1>
+              <h1 className="regular">Profile Picture</h1>
               <input type="file" accept="image/*" onChange={this.uploadPhoto} />
               <p className="second">We're big on pictures around here.</p>
               <p className="second">Add an updated picture so you don't like</p>
@@ -256,7 +256,7 @@ export default class PublicProfileTab extends Component {
             </div>
             <span className="hr"></span>
             <div>
-              <h2>Your skills</h2>
+              <h2 className="regular">Your skills</h2>
               <p className="second">Add up to 7 skills to display in your profile.</p>
               <ReactTags tags={tags}
                 handleDelete={this.handleDelete}

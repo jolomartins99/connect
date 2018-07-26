@@ -17,11 +17,11 @@ body {
 /* Font design */
 
 .bold {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
-.thin {
-  font-weight: 400;
+.regular {
+  font-weight: 400 !important;
 }
 
 p.main,

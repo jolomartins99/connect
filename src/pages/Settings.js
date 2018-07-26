@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
 import moment from 'moment';
 
 import MentorSettings from './MentorSettings';
