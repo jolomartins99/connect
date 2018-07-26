@@ -17,7 +17,7 @@ const config = {
     authDomain: process.env.CONNECT_FIREBASE_AUTHDOMAIN,
     databaseURL: process.env.CONNECT_FIREBASE_DBURL,
     projectId: process.env.CONNECT_FIREBASE_PROJECTID,
-    storageBucket: process.env.CONNECT_FIREBASE_STORAGE,
+    storageBucket: "upfame-mvp-1.appspot.com",
     messagingSenderId: process.env.CONNECT_FIREBASE_SENDERID
 };
 
