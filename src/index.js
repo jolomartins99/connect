@@ -37,8 +37,8 @@ let config = {
     apiKey: process.env.CONNECT_FIREBASE_APIKEY,
     authDomain: process.env.CONNECT_FIREBASE_AUTHDOMAIN,
     databaseURL: process.env.CONNECT_FIREBASE_DBURL,
-    projectId: proccess.env.CONNECT_FIREBASE_PROJECTID,
-    storageBucket: proccess.env.CONNECT_FIREBASE_STORAGEBUCKET,
+    projectId: process.env.CONNECT_FIREBASE_PROJECTID,
+    storageBucket: process.env.CONNECT_FIREBASE_STORAGEBUCKET,
     messagingSenderId: process.env.CONNECT_FIREBASE_SENDERID
 };
   
