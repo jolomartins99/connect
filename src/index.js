@@ -34,12 +34,12 @@ ReactDOM.render(
 );
 
 const config = {
-    apiKey: "AIzaSyB8x5WHsTP7DMoaqo5KDJ0KmZkFWub68s4",
-    authDomain: "upframeconnect.firebaseapp.com",
-    databaseURL: "https://upframeconnect.firebaseio.com",
-    projectId: "upframeconnect",
-    storageBucket: "upframeconnect.appspot.com",
-    messagingSenderId: "673573936602"
+    apiKey: "AIzaSyBSxeo5ZG_tCwtM_gWAPMr12xUuQZg04do",
+    authDomain: "upframe-mvp.firebaseapp.com",
+    databaseURL: "https://upframe-mvp.firebaseio.com",
+    projectId: "upframe-mvp",
+    storageBucket: "upframe-mvp.appspot.com",
+    messagingSenderId: "382317917178"
 };
   
 firebase.initializeApp(config);

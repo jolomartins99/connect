@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from 'moment';
-import GoogleLogin from 'react-google-login';
+
+import firebase from 'firebase';
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
@@ -52,41 +53,72 @@ export default class SyncCalendarTab extends Component {
 
     }
 
-    responseGoogle = (response) => {
-        console.log(response);
+    googleLink = () => {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        
+        provider.addScope("email");
+        provider.addScope("profile");
+        provider.addScope("https://www.googleapis.com/auth/admin.directory.resource.calendar");
+        
+        // display browser default language
+        firebase.auth().useDeviceLanguage();
+        
+        provider.setCustomParameters({
+            "access_type": "offline"
+        });
+
+        firebase.auth().signInWithPopup(provider).then(result => {
+            /**
+             * Access token - Used for API requests
+             */
+            let accessToken = result.credential.accessToken;
+            console.log("accessToken:\n", accessToken);
+            /**
+             * Refresh token - Used to get a new access token
+             */
+            let refreshToken = result.user.refreshToken;
+            console.log("refreshToken:\n", refreshToken);
+            console.log(result);
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
-        // let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+        return (
+            <div className="tab-content calendar-sync">
+                { this.state.syncStatus === 0 ? (
+                    <button className="main" onClick={this.googleLink}>Sync with Google Calendar</button>
+                ) : (
+                    <div>
+                    
+                    </div>
+                )}
+            </div>
+        );
+        /*
         if (this.state.syncStatus === 0) {
             //Ainda não foi visto synced
-            return (
-                <GoogleLogin
-                    clientId="673573936602-l44mdj79hsmpimil0s7ui8llo4lm20pv.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                /> 
-            )
         } else {
             //Já foi feito o login. Temos acesso a um token
             //Temos que ir buscar a lista de calendarios
             return (
                 <div className="tab-content">
                     <div>
-                        {this.showCalendars()}
-                        Aqui vai estar a lista de calendarios
+                        <div>
+                            {this.showCalendars()}
+                        </div>
+                        <BigCalendar
+                            selectable
+                            defaultDate={new Date()}
+                            defaultView="week"
+                            events={this.state.events}
+                            onSelectEvent={event => this.deleteFreeSlot(event)}
+                            onSelectSlot={slot => this.addFreeSlot(slot)}
+                        />
                     </div>
-                    <BigCalendar
-                        selectable
-                        defaultDate={new Date()}
-                        defaultView="week"
-                        events={this.state.events}
-                        onSelectEvent={event => this.deleteFreeSlot(event)}
-                        onSelectSlot={slot => this.addFreeSlot(slot)}
-                    />
                 </div>
             )
-        }
+        }*/
     }
 }
