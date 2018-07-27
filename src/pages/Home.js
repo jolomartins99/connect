@@ -49,7 +49,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Navbar refreshSettings={this.refreshSettings}/>
+                <Navbar/>
                 <main id="home">
                     <div className="wrapper">
                         <div id="intro">
