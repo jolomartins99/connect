@@ -26,7 +26,7 @@ export default class Navbar extends Component {
       let login
 
       if (this.props.loginButton) {
-        login = <a href='/login' className='button'>Login</a>
+        login = <Link to='/login' className='button'>Login</Link>
       }
       return (
         <div>
