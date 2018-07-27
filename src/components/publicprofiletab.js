@@ -94,7 +94,7 @@ export default class PublicProfileTab extends Component {
           newState[key] = sentData[key]
         }
       }
-
+      alert('Info saved')
       this.setState(newState)
     }
   }
@@ -213,7 +213,7 @@ export default class PublicProfileTab extends Component {
             <h1 className='regular'>Profile Picture</h1>
             <input type='file' accept='image/*' onChange={this.uploadPhoto} />
             <p className='second'>We're big on pictures around here.</p>
-            <p className='second'>Add an updated picture so you don't like</p>
+            <p className='second'>Add an updated picture so you don't like a 🤖</p>
             <button className='main round' onClick={this.openUploadDialog}>Upload new photo</button>
             <button className='second round' onClick={this.removePhoto}>Remove</button>
           </div>
