@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 
 import SearchTags from './searchtags'
 
 export default class SearchBar extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   handleKeyPress = (event) => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       // Handle the search
       console.log(event.target.value)
     }

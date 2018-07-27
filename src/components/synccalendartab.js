@@ -106,7 +106,7 @@ export default class SyncCalendarTab extends Component {
   }
 
   getCalendarList(token) {
-    if (token != "") {
+    if (token !== "") {
       let customHeaders = new Headers()
       customHeaders.append('Authorization', 'Bearer ' + token)
       return fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',

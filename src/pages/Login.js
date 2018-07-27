@@ -44,7 +44,7 @@ export default class Login extends Component {
     }
 
     handleKeyUp = (e) => {
-      if (e.keyCode == 13) {
+      if (e.keyCode === 13) {
         this.login()
       }
     }

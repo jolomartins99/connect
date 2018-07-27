@@ -39,7 +39,8 @@ export default class PublicProfileTab extends Component {
   }
 
   loadProfile = (sentData = undefined) => {
-    if (sentData == undefined) {
+    let tagList = []
+    if (sentData === undefined) {
       fetch('https://api.upframe.io/users/' + localStorage.getItem('token'), {
         method: 'GET',
         mode: 'cors',
@@ -51,17 +52,15 @@ export default class PublicProfileTab extends Component {
           let newState = {}
           for (let key in res) {
             if (res.hasOwnProperty(key)) {
-              if (key == 'tags') {
-                if (res[key] == '') continue
-                if (JSON.parse(res[key]).tags == '') continue
+              if (key === 'tags') {
+                if (res[key] === '') continue
+                if (JSON.parse(res[key]).tags === '') continue
 
                 // This all could be:
                 // newState[key] = JSON.parse(res[key]).tags.map(value => { id: value, text: value })
                 // continue
 
-                let tagList = new Array()
-
-                JSON.parse(res[key]).tags.map((value, index) => {
+                JSON.parse(res[key]).tags.map((value) => {
                   tagList.push({id: value, text: value})
                 })
 
@@ -78,12 +77,10 @@ export default class PublicProfileTab extends Component {
       let newState = {}
       for (let key in sentData) {
         if (sentData.hasOwnProperty(key)) {
-          if (key == 'tags') {
-            if (sentData[key] == '') continue
-            if (JSON.parse(sentData[key]).tags == '') continue
+          if (key === 'tags') {
+            if (sentData[key] === '') continue
+            if (JSON.parse(sentData[key]).tags === '') continue
 
-            // Same as line 58. Don't copy code. DRY.
-            let tagList = new Array()
             JSON.parse(sentData[key]).tags.map((value, index) => {
               tagList.push({ id: value, text: value })
             })

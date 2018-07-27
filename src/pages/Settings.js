@@ -26,7 +26,7 @@ export default class Settings extends Component {
     .then(res => res.json())
     .catch(err => console.log('Error: ', err))
     .then(data => {
-      newState.isMentor = data.type_user == 'mentor'
+      newState.isMentor = data.type_user === 'mentor'
       newState.loggedIn = ((!moment(new Date()).isAfter(data.token_date_end)) && localStorage.getItem('token') != null)
     })
     // await fetch('https://api.upframe.io/users/token/' + localStorage.getItem('token'), {

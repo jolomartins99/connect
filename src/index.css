@@ -273,6 +273,7 @@ nav .profile #dropdown::before {
   border-color: rgba(0,0,0,0.7) transparent transparent transparent;
 }
 
+nav .profile #dropdown button,
 nav .profile #dropdown a {
   display: block;
   margin: 0 1em;
