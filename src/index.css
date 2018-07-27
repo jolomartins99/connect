@@ -397,6 +397,8 @@ main#mentor-settings {
   display: block;
   min-width: 9em;
   max-width: 9em;
+  min-height: 9em;
+  max-height: 9em;
 }
 
 #mentor-settings .public-profile .profile-pic div:first-of-type {
