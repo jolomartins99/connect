@@ -105,7 +105,7 @@ export default class SyncCalendarTab extends Component {
           refreshToken: result.user.refreshToken
         })
       })
-      //this.saveTokens(result.credential.accessToken, result.user.refreshToken);
+      this.saveTokens(result.credential.accessToken, result.user.refreshToken);
     }).catch(err => {
       console.log(err)
     })
