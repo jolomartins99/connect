@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 export default class MentorList extends Component {
   constructor (props) {
     super(props)
+    console.log(this.props.mentors)
     this.state = {
-      mentors: props.mentors
+      mentors: this.props.mentors
     }
   }
 

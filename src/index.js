@@ -36,9 +36,9 @@ ReactDOM.render(
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={Signup} />
 
-      {/*
-                <Route path='/search' component={Search} />
-            */}
+      
+      {/* <Route path='/search' component={Search} /> */}
+           
       {/* Temporary */}
       <Route exact path='/' component={Search} />
       <Route exact path='/setting' component={RedirectSettings} />
