@@ -37,7 +37,7 @@ export default class PublicProfileTab extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   loadProfile = (data = undefined) => {
@@ -111,14 +111,16 @@ export default class PublicProfileTab extends Component {
 
   uploadPhoto = (event) => {
     let file = event.target.files[0],
-        hash = this.state.image;
+        hash = this.state.imageHash;
+    
+    console.log(hash);
     
     firebase.storage().ref("profilepics/" + hash + ".jpg").put(file).then((snapshot) => {
       firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
-        localStorage.setItem("profilePicture", url);
         this.setState({image: url});
       })
       .catch(error => {
+        console.log(error)
         switch (error.code) {
           case "storage/object_not_found":
             // file doesn't exist
