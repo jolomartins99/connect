@@ -2,6 +2,8 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
 import userService from './userService'
 
+const { fetch, Headers, localStorage } = window;
+
 export class CalendarService extends Component {
   /* let's get the engines working */
   constructor () {
@@ -35,7 +37,7 @@ export class CalendarService extends Component {
         if (event.start.dateTime) {
           convertedEvent.start = new Date(event.start.dateTime)
           convertedEvent.end = new Date(event.end.dateTime)
-          if (convertedEvent.start.getDate() == 10 && convertedEvent.end.getMonth() == 4) console.log(event)
+          if (convertedEvent.start.getDate() === 10 && convertedEvent.end.getMonth() === 4) console.log(event)
         } else {
           convertedEvent.start = new Date(event.start.date)
           convertedEvent.end = new Date(event.end.date)
