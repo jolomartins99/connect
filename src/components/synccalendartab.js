@@ -86,18 +86,18 @@ export default class SyncCalendarTab extends Component {
     }
 
     render = () => {
+        let list = await this.getCalendarList(this.state.token)
         if (this.state.token) {
-            let list = this.getCalendarList(this.state.token)
+            // .then(output => {
+            //     anotherList = output.map((element) =>
+            //         <h1>{element}</h1>
+            //     )
+            //     console.log(anotherList)
+            // })
+
             console.log(list)
             return (
                 <div>
-                    {
-                        list.map((index) => {
-                            return (
-                                <h1>{index}</h1>
-                            )
-                        })
-                    }
                     <h1>Habemus</h1>
                     <BigCalendar
                         selectable
