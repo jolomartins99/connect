@@ -3,6 +3,7 @@ import BigCalendar from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
 import firebase from 'firebase'
+import '../calendar.css'
 
 // Compatiblity
 const { Headers, fetch, localStorage } = window
@@ -38,10 +39,12 @@ export default class SyncCalendarTab extends Component {
   }
 
   deleteFreeSlot = (event) => {
-    let listOfEvents = this.state.events
-    this.setState({
-      events: listOfEvents.filter(singleEvent => singleEvent.id !== event.id)
-    })
+    if (event.title === 'Upframe Free Slot') {
+      let listOfEvents = this.state.events
+      this.setState({
+        events: listOfEvents.filter(singleEvent => singleEvent.id !== event.id)
+      })
+    }
   }
 
   addFreeSlot = (slot) => {
@@ -57,7 +60,6 @@ export default class SyncCalendarTab extends Component {
       events: currentEvents,
       currId: currentId + 1
     })
-    console.log(this.state)
   }
 
   googleLink = () => {
