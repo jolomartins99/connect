@@ -200,7 +200,7 @@ button.second:not(.fill):hover {
 
 nav {
   display: flex;
-  height: 4em;
+  height: 6em;
   position: fixed;
   top: 0;
   left: 0;
