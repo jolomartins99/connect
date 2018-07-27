@@ -14,15 +14,7 @@ export default class SyncCalendarTab extends Component {
     super(props)
 
     this.state = {
-      calendars: [{
-        id: '123',
-        checked: true,
-        name: 'Um Dois Tres'
-      },{
-          id: '321',
-          checked: false,
-          name: 'Tres Dois Um'
-      }],
+      calendars: [],
       token: '',
       currId: 0,
       events: []
@@ -141,9 +133,8 @@ export default class SyncCalendarTab extends Component {
         }
       })
     }
-    this.calendarEvents('ulissesvf@gmail.com')
-
-    //this.setState(newState)
+    this.getCalendarEvents()
+    this.setState(newState)
   }
 
   calendarEvents = (calendarId) => {
@@ -162,10 +153,6 @@ export default class SyncCalendarTab extends Component {
   }
 
   convertEvents(element) {
-    //id
-    //start
-    //end
-    //title
     if (element.start.dateTime) {
       return {
         id: element.id,
@@ -200,7 +187,6 @@ export default class SyncCalendarTab extends Component {
     .then(final => {
       let newState = final.map(element => this.convertEvents(element))
       this.setState({
-        //events: final.map(element => this.convertEvents(element))
         events: newState
       })
     })
@@ -224,7 +210,7 @@ export default class SyncCalendarTab extends Component {
               )
             })
           }
-          <button onClick={this.getCalendarEvents}>Get Events</button>
+          {/* <button onClick={this.getCalendarEvents}>Get Events</button> */}
           <BigCalendar
             selectable
             defaultDate={new Date()}
