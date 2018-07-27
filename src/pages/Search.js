@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import sjcl from 'sjcl'
 import firebase from 'firebase'
 
-// import MentorList from '../components/mentorlist';
+import MentorList from '../components/mentorlist';
 import Navbar from '../components/navbar'
 import SearchBar from '../components/searchbar'
 
@@ -10,7 +10,19 @@ export default class Search extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      mentors: []
+      mentors: [{
+        profilePic: 'https://steemitimages.com/0x0/http://ipfs.io/ipfs/QmTQo4cxDZ5MoszQAK93JyhFedeMuj7j4x5P7tQnvRi4A5',
+        name: 'Ulisses',
+        position: 'CTO',
+        bio: 'I am awesome',
+        tags: ['ux', 'ul']
+      }, {
+        profilePic: 'https://steemitimages.com/0x0/http://ipfs.io/ipfs/QmTQo4cxDZ5MoszQAK93JyhFedeMuj7j4x5P7tQnvRi4A5',
+        name: 'Ulisses',
+        position: 'CTO',
+        bio: 'I am awesome',
+        tags: ['ux', 'ul']
+      }]
     }
     /*
     console.log('http://localhost/search/' + this.props.match.params.token)
@@ -63,6 +75,7 @@ export default class Search extends Component {
             <SearchBar />
           </div>
         </main>
+        <MentorList mentors={this.state.mentors}/>
       </div>
     )
   }

@@ -482,17 +482,18 @@ main#mentor-settings {
   grid-template-areas:
     "img info"
     "img tags";
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0.2px 2px 0 rgba(0, 0, 0, 0.5);
   background: white;
   color: black;
   border-radius: 4px;
   transition: 0.3s;
   max-height: 200px;
   margin: auto auto 50px auto;
+  max-width: 50em
 }
 
 .mentor-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0.1px 2px 0 rgba(0,0,0,0.5);
 }
 
 .mentor-card-image {
