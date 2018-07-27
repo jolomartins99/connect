@@ -48,7 +48,7 @@ export default class Navbar extends Component {
                         </div>
                     ) : (
                         <div className="login">
-                            {login}
+                            <Link to="/login">Login</Link>
                         </div>
                     )}
                 </div>
