@@ -39,15 +39,6 @@ export default class Signup extends Component {
             localStorage.setItem('token', res.token)
             localStorage.setItem('email', res.email)
             localStorage.setItem('type_user', res.type_user)
-            // optionals
-            localStorage.setItem('name', res.name)
-            localStorage.setItem('location', res.location)
-            localStorage.setItem('position', res.position)
-            localStorage.setItem('company', res.company)
-            localStorage.setItem('website', res.website)
-            localStorage.setItem('bio', res.bio)
-            localStorage.setItem('tags', JSON.stringify(res.tags))
-            localStorage.setItem('profilePicture', res.image)
             window.location.reload()
           } else {
             alert('Could not sign you up')
