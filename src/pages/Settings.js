@@ -37,7 +37,7 @@ export default class Settings extends Component {
             <div>
                 {this.state.loggedIn ?
                     (this.state.isMentor ?
-                        <MentorSettings refreshSettings={this.refreshSettings}/>
+                        <MentorSettings />
                     :
                         <UserSettings />)
                 : (

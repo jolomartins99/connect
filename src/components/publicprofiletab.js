@@ -36,6 +36,10 @@ export default class PublicProfileTab extends Component {
 
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   loadProfile = (data = undefined) => {
     if(data == undefined) {
       fetch("https://api.upframe.io/users/" + localStorage.getItem("token"), {

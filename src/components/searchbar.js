@@ -13,6 +13,7 @@ export default class SearchBar extends Component {
     if (event.key == 'Enter') {
       //Handle the search
       console.log(event.target.value)
+      
     }
   }
 

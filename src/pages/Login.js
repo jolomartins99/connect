@@ -37,21 +37,15 @@ export default class Login extends Component {
                     localStorage.setItem('token', res.token)
                     localStorage.setItem('email', res.email)
                     localStorage.setItem('token_date_end', res.dateEnd);
-                    this.setState({
-                        isLoggedIn: true
-                    });
-
                     window.location.reload();
                 } else {
-                    //Error handling
-                    //TODO
-                    console.log(res);
+                    alert('Could not log you in')
                 }
             })
     }
 
     handleKeyUp = (e) => {
-        if(e.keyCode == 13) {
+        if (e.keyCode == 13) {
             this.login();
         }
     }

@@ -51,8 +51,7 @@ export default class Signup extends Component {
                 localStorage.setItem("profilePicture", res.image);
                 window.location.reload();
             } else {
-                //Error handling
-                //TODO
+                alert('Could not sign you up')
             }
             console.log(res)
         })
