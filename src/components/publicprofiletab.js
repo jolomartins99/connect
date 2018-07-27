@@ -217,63 +217,67 @@ export default class PublicProfileTab extends Component {
     .then(result => this.loadProfile(result));
   }
 
-    render() {
-      const {tags} = this.state;
+  imageLoading = (event) => {
+    console.log(event.target.visibility);
+  }
 
-      return (
-        <div className="tab-content public-profile">
-          <div className="profile-pic">
-            <div>
-              <img alt="profile-pic" src={this.state.image} />
-            </div>
-            <div>
-              <h1 className="regular">Profile Picture</h1>
-              <input type="file" accept="image/*" onChange={this.uploadPhoto} />
-              <p className="second">We're big on pictures around here.</p>
-              <p className="second">Add an updated picture so you don't like</p>
-              <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
-              <button className="second round" onClick={this.loadDefaultPhoto}>Remove</button>
-            </div>
+  render() {
+    const { tags } = this.state;
+
+    return (
+      <div className="tab-content public-profile">
+        <div className="profile-pic">
+          <div>
+            <img alt="profile-pic" onLoad={this.imageLoading} src={this.state.image} />
           </div>
-          <div className="profile-info">
-            <div className="field-group">
-              <p>Your name</p>
-              <input className="second" type="text" onChange={this.onNameChange} value={this.state.name} />
-            </div>
-            <div className="field-group">
-              <p>Location</p>
-              <input className="second" type="text" onChange={this.onLocationChange} value={this.state.location} />
-            </div>
-            <div className="field-group">
-              <p>Your position</p>
-              <input className="second" type="text" onChange={this.onRoleChange} value={this.state.role} />
-            </div>
-            <div className="field-group">
-              <p>Company</p>
-              <input className="second" type="text" onChange={this.onCompanyChange} value={this.state.company} />
-            </div>
-            <div className="field-group">
-              <p>Website</p>
-              <input className="second" type="text" onChange={this.onHomepageChange} value={this.state.homepage} />
-            </div>
-            <div className="field-group">
-              <p>Bio</p>
-              <textarea rows="5" className="second" type="text" onChange={this.onBioChange} value={this.state.bio} />
-            </div>
-            <span className="hr"></span>
-            <div>
-              <h2 className="regular">Your skills</h2>
-              <p className="second">Add up to 7 skills to display in your profile.</p>
-              <ReactTags tags={tags}
-                handleDelete={this.handleDelete}
-                handleAddition={this.handleAddition}
-                handleDrag={this.handleDrag}
-                delimiter={delimiters} />
-            </div>
-            <div className="save">
-              <button className="second round" onClick={this.saveChanges}>Save</button>
-            </div>
+          <div>
+            <h1 className="regular">Profile Picture</h1>
+            <input type="file" accept="image/*" onChange={this.uploadPhoto} />
+            <p className="second">We're big on pictures around here.</p>
+            <p className="second">Add an updated picture so you don't like</p>
+            <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
+            <button className="second round" onClick={this.loadDefaultPhoto}>Remove</button>
           </div>
-        </div>)
-    }
+        </div>
+        <div className="profile-info">
+          <div className="field-group">
+            <p>Your name</p>
+            <input className="second" type="text" onChange={this.onNameChange} value={this.state.name} />
+          </div>
+          <div className="field-group">
+            <p>Location</p>
+            <input className="second" type="text" onChange={this.onLocationChange} value={this.state.location} />
+          </div>
+          <div className="field-group">
+            <p>Your position</p>
+            <input className="second" type="text" onChange={this.onRoleChange} value={this.state.role} />
+          </div>
+          <div className="field-group">
+            <p>Company</p>
+            <input className="second" type="text" onChange={this.onCompanyChange} value={this.state.company} />
+          </div>
+          <div className="field-group">
+            <p>Website</p>
+            <input className="second" type="text" onChange={this.onHomepageChange} value={this.state.homepage} />
+          </div>
+          <div className="field-group">
+            <p>Bio</p>
+            <textarea rows="5" className="second" type="text" onChange={this.onBioChange} value={this.state.bio} />
+          </div>
+          <span className="hr"></span>
+          <div>
+            <h2 className="regular">Your skills</h2>
+            <p className="second">Add up to 7 skills to display in your profile.</p>
+            <ReactTags tags={tags}
+              handleDelete={this.handleDelete}
+              handleAddition={this.handleAddition}
+              handleDrag={this.handleDrag}
+              delimiter={delimiters} />
+          </div>
+          <div className="save">
+            <button className="second round" onClick={this.saveChanges}>Save</button>
+          </div>
+        </div>
+      </div>)
+  }
 }
