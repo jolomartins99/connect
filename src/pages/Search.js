@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import sjcl from 'sjcl';
-import firebase from 'firebase';
+import React, { Component } from 'react'
+import sjcl from 'sjcl'
+import firebase from 'firebase'
 
-//import MentorList from '../components/mentorlist';
-import Navbar from '../components/navbar';
-import SearchBar from '../components/searchbar';
+// import MentorList from '../components/mentorlist';
+import Navbar from '../components/navbar'
+import SearchBar from '../components/searchbar'
 
 export default class Search extends Component {
-
   constructor (props) {
     super(props)
     this.state = {
@@ -30,20 +29,20 @@ export default class Search extends Component {
       */
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let newState = {}
-    if (localStorage.getItem("email") != null) {
-      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
-      firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
-        newState.profilePicUrl = url;
-        this.setState(newState);
+    if (localStorage.getItem('email') != null) {
+      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem('email')))
+      firebase.storage().ref('profilepics/' + hash + '.jpg').getDownloadURL().then(url => {
+        newState.profilePicUrl = url
+        this.setState(newState)
       })
         .catch(err => {
-          firebase.storage().ref("profilepics/defaultAvatar.svg").getDownloadURL().then(url => {
-            newState.profilePicUrl = url;
-            this.setState(newState);
+          firebase.storage().ref('profilepics/defaultAvatar.svg').getDownloadURL().then(url => {
+            newState.profilePicUrl = url
+            this.setState(newState)
           }).catch(err => {
-            console.log("MentorSettings.js : ", err);
+            console.log('MentorSettings.js : ', err)
           })
         })
     }
@@ -55,16 +54,16 @@ export default class Search extends Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <Navbar profilePic={this.state.profilePicUrl} />
-        <main id="search">
+        <main id='search'>
           <div>
             <SearchBar />
           </div>
         </main>
       </div>
-    );
+    )
   }
 }

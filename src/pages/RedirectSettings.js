@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
 
-function RedirectSettings() {
-  return <Redirect to="/settings" />
+function RedirectSettings () {
+  return <Redirect to='/settings' />
 }
 
-export default RedirectSettings;
+export default RedirectSettings

@@ -1,87 +1,85 @@
-import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import moment from 'moment';
+import React, { Component } from 'react'
+import BigCalendar from 'react-big-calendar'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+import moment from 'moment'
 
-import GoogleLogin from 'react-google-login';
-import firebase from 'firebase';
+import GoogleLogin from 'react-google-login'
+import firebase from 'firebase'
 
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
+BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
 
 export default class SyncCalendarTab extends Component {
+  constructor (props) {
+    super(props)
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            token: '',
-            currId: 0,
-            events: []
-        }
-
+    this.state = {
+      token: '',
+      currId: 0,
+      events: []
     }
+  }
 
     deleteFreeSlot = (event) => {
-        console.log(event)
-        let listOfEvents = this.state.events
-        this.setState({
-            events: listOfEvents.filter(singleEvent => singleEvent.id !== event.id)
-        })
+      console.log(event)
+      let listOfEvents = this.state.events
+      this.setState({
+        events: listOfEvents.filter(singleEvent => singleEvent.id !== event.id)
+      })
     }
 
     addFreeSlot = (slot) => {
-        console.log(this.state)
-        let currentEvents = this.state.events
-        let currentId = this.state.currId
-        currentEvents.push({
-            id: currentId,
-            start: slot.start,
-            end: slot.end,
-            title: 'Upframe Free Slot'
-        })
-        this.setState({
-            events: currentEvents,
-            currId: currentId + 1
-        })
+      console.log(this.state)
+      let currentEvents = this.state.events
+      let currentId = this.state.currId
+      currentEvents.push({
+        id: currentId,
+        start: slot.start,
+        end: slot.end,
+        title: 'Upframe Free Slot'
+      })
+      this.setState({
+        events: currentEvents,
+        currId: currentId + 1
+      })
     }
 
     googleLink = () => {
-        let provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope("email");
-        provider.addScope("profile");
-        provider.addScope("https://www.googleapis.com/auth/calendar");
-        firebase.auth().useDeviceLanguage();
-        provider.setCustomParameters({
-            "access_type": "offline",
-            "prompt": "consent"
-        });
-        firebase.auth().signInWithPopup(provider).then(result => {
-            this.setState({
-                token: result.credential.accessToken,
-                refreshToken: result.user.refreshToken
-            })
-        }).catch(err => {
-            console.log(err);
+      let provider = new firebase.auth.GoogleAuthProvider()
+      provider.addScope('email')
+      provider.addScope('profile')
+      provider.addScope('https://www.googleapis.com/auth/calendar')
+      firebase.auth().useDeviceLanguage()
+      provider.setCustomParameters({
+        'access_type': 'offline',
+        'prompt': 'consent'
+      })
+      firebase.auth().signInWithPopup(provider).then(result => {
+        this.setState({
+          token: result.credential.accessToken,
+          refreshToken: result.user.refreshToken
         })
+      }).catch(err => {
+        console.log(err)
+      })
     }
 
     async getCalendarList (token) {
-        let customHeaders = new Headers();
-        customHeaders.append("Authorization", "Bearer " + this.state.token);
-        fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList",
-            {
-                method: "GET",
-                mode: "cors",
-                headers: customHeaders
-            }
-        )
+      let customHeaders = new Headers()
+      customHeaders.append('Authorization', 'Bearer ' + this.state.token)
+      fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',
+        {
+          method: 'GET',
+          mode: 'cors',
+          headers: customHeaders
+        }
+      )
         .then(response => response.json())
         .then(data => {
-            let output = []
-            data.items.forEach(calendar => {
-                output.push(calendar.id)
-            })
-            return output
+          let output = []
+          data.items.forEach(calendar => {
+            output.push(calendar.id)
+          })
+          return output
         })
     }
 

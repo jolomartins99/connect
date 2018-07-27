@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { timingSafeEqual } from 'crypto';
+import React, { Component } from 'react'
+import { timingSafeEqual } from 'crypto'
 
 export default class TagsComponent extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       tags: [],
@@ -11,7 +10,7 @@ export default class TagsComponent extends Component {
     }
   }
 
-  handleTagChange = (event) => {this.setState({newTag: event.target.value})}
+  handleTagChange = (event) => { this.setState({newTag: event.target.value}) }
 
   addTag = () => {
     let array = this.state.tags
@@ -20,17 +19,17 @@ export default class TagsComponent extends Component {
     })
   }
 
-  render() {
+  render () {
     console.log(this.state.tags)
     // let output = this.state.tags.map((tag) => {
     //   return <li className="mentor-tags-list-element">{tag}</li>;
     // })
     return <div>
-        <ul className="mentor-card-tags">
+      <ul className='mentor-card-tags'>
         {/* {output} */}
-        </ul>
-        <input onChange={this.handleTagChange} type="text" />
-        <button onClick={this.addTag} />
-      </div>;
+      </ul>
+      <input onChange={this.handleTagChange} type='text' />
+      <button onClick={this.addTag} />
+    </div>
   }
 }
