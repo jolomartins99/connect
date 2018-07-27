@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import MentorList from '../components/mentorlist';
+import sjcl from 'sjcl';
+import firebase from 'firebase';
+
+//import MentorList from '../components/mentorlist';
 import Navbar from '../components/navbar';
 import SearchBar from '../components/searchbar';
 
@@ -27,6 +30,25 @@ export default class Search extends Component {
       */
   }
 
+  componentDidMount() {
+    let newState = {}
+    if (localStorage.getItem("email") != null) {
+      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
+      firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
+        newState.profilePicUrl = url;
+        this.setState(newState);
+      })
+        .catch(err => {
+          firebase.storage().ref("profilepics/defaultAvatar.svg").getDownloadURL().then(url => {
+            newState.profilePicUrl = url;
+            this.setState(newState);
+          }).catch(err => {
+            console.log("MentorSettings.js : ", err);
+          })
+        })
+    }
+  }
+
   updateMentorsList = (listOfMentors) => {
     this.setState({
       mentors: listOfMentors
@@ -36,7 +58,7 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar profilePic={this.state.profilePicUrl} />
         <main id="search">
           <div>
             <SearchBar />

@@ -40,8 +40,8 @@ export default class PublicProfileTab extends Component {
     window.scrollTo(0, 0);
   }
 
-  loadProfile = (data = undefined) => {
-    if(data == undefined) {
+  loadProfile = (sentData = undefined) => {
+    if(sentData == undefined) {
       fetch("https://api.upframe.io/users/" + localStorage.getItem("token"), {
         method: "GET",
         mode: "cors",
@@ -54,6 +54,7 @@ export default class PublicProfileTab extends Component {
         for(let key in res) {
           if(res.hasOwnProperty(key)) {
             if(key == "tags") {
+              if(res[key] == "") continue;
               if(JSON.parse(res[key]).tags == "") continue;
 
               let tagList = new Array();
@@ -73,20 +74,21 @@ export default class PublicProfileTab extends Component {
       })
     } else {
       let newState = {};
-      for (let key in data) {
-        if (data.hasOwnProperty(key)) {
+      for (let key in sentData) {
+        if (sentData.hasOwnProperty(key)) {
           if (key == "tags") {
-            if(JSON.parse(data[key]).tags == "") continue;
+            if(sentData[key] == "") continue;
+            if(JSON.parse(sentData[key]).tags == "") continue;
 
             let tagList = new Array();
-            JSON.parse(data[key]).tags.map((value, index) => {
+            JSON.parse(sentData[key]).tags.map((value, index) => {
               tagList.push({ id: value, text: value })
             });
 
             newState[key] = tagList;
             continue;
           }
-          newState[key] = data[key];
+          newState[key] = sentData[key];
         }
       }
 

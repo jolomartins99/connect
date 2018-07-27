@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import sjcl from 'sjcl';
+import firebase from 'firebase';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -11,7 +13,31 @@ export default class Home extends Component {
         super(props)
         this.state = {
             reload: true,
-            searchQuery: ''
+            searchQuery: "",
+            profilePicUrl: ""
+        }
+
+    }
+
+    componentDidMount() {
+        let newState = {}
+        if (localStorage.getItem("email") != null) {
+            console.log(localStorage.getItem("email"));
+            let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
+            firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
+                newState.profilePicUrl = url;
+                console.log(url);
+                this.setState(newState);
+            })
+            .catch(err => {
+                firebase.storage().ref("profilepics/defaultAvatar.svg").getDownloadURL().then(url => {
+                    newState.profilePicUrl = url;
+                    console.log(url);
+                    this.setState(newState);
+                }).catch(err => {
+                    console.log("MentorSettings.js : ", err);
+                })
+            })
         }
     }
 
@@ -49,7 +75,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <Navbar profilePic={this.state.profilePicUrl} />
                 <main id="home">
                     <div className="wrapper">
                         <div id="intro">
