@@ -38,7 +38,8 @@ export default class Signup extends Component {
           if (res.token) {
             localStorage.setItem('token', res.token)
             localStorage.setItem('email', res.email)
-            localStorage.setItem('type_user', res.type_user)
+            localStorage.setItem('token_date_end', res.dateEnd)
+            
             window.location.reload()
           } else {
             alert('Could not sign you up')
