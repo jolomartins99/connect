@@ -68,9 +68,8 @@ export default class PublicProfileTab extends Component {
             newState[key] = res[key];
           }
         }
-        newState.imageHash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(res.email));
         
-        this.setState(newState, this.loadPhoto);
+        this.setState(newState);
       })
     } else {
       let newState = {};
@@ -90,9 +89,8 @@ export default class PublicProfileTab extends Component {
           newState[key] = data[key];
         }
       }
-      newState.imageHash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(data.email));
 
-      this.setState(newState, this.loadPhoto);
+      this.setState(newState);
     }
     
   }
@@ -111,13 +109,11 @@ export default class PublicProfileTab extends Component {
 
   uploadPhoto = (event) => {
     let file = event.target.files[0],
-        hash = this.state.imageHash;
-    
-    console.log(hash);
+        hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
     
     firebase.storage().ref("profilepics/" + hash + ".jpg").put(file).then((snapshot) => {
       firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
-        this.setState({image: url});
+        this.props.refreshProfilePic(url);
       })
       .catch(error => {
         console.log(error)
@@ -141,30 +137,14 @@ export default class PublicProfileTab extends Component {
     })
   }
 
-  loadDefaultPhoto = () => {
+  removePhoto = () => {
     firebase.storage().ref("profilepics/defaultAvatar.svg").getDownloadURL().then(url => {
-      this.setState({
-        image: url
-      })
-    })
-  }
+      this.props.refreshProfilePic(url);
 
-  loadPhoto = () => {
-    firebase.storage().ref("profilepics/" + this.state.imageHash + ".jpg").getDownloadURL().then(url => {
-      let newState = {};
-      newState.image = url;
-      localStorage.setItem("profilePicture", url);
-      this.setState(newState);
-    })
-    .catch(error => {
-      console.log("error");
-      console.log(error);
-      switch(error.code) {
-        case 'storage/object-not-found':
-          // file doesn't exist
-          this.loadDefaultPhoto();
-          break;
-      }
+      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
+      firebase.storage().ref("profilepics/" + hash + ".jpg").delete().catch(err => {
+        console.log("Error deleting profile picture in publicprofiletab.js", err);
+      })
     })
   }
 
@@ -217,10 +197,6 @@ export default class PublicProfileTab extends Component {
     .then(result => this.loadProfile(result));
   }
 
-  imageLoading = (event) => {
-    console.log(event.target.visibility);
-  }
-
   render() {
     const { tags } = this.state;
 
@@ -228,7 +204,7 @@ export default class PublicProfileTab extends Component {
       <div className="tab-content public-profile">
         <div className="profile-pic">
           <div>
-            <img alt="profile-pic" onLoad={this.imageLoading} src={this.state.image} />
+            <img alt="profile-pic" src={this.props.profilePic} />
           </div>
           <div>
             <h1 className="regular">Profile Picture</h1>
@@ -236,7 +212,7 @@ export default class PublicProfileTab extends Component {
             <p className="second">We're big on pictures around here.</p>
             <p className="second">Add an updated picture so you don't like</p>
             <button className="main round" onClick={this.openUploadDialog}>Upload new photo</button>
-            <button className="second round" onClick={this.loadDefaultPhoto}>Remove</button>
+            <button className="second round" onClick={this.removePhoto}>Remove</button>
           </div>
         </div>
         <div className="profile-info">

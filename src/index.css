@@ -236,7 +236,10 @@ nav .profile {
 
 nav .profile img {
   border-radius: 50%;
+  min-height: 2.5em;
   max-height: 2.5em;
+  min-width: 2.5em;
+  max-width: 2.5em;
   vertical-align: middle;
 }
 

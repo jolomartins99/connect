@@ -39,7 +39,7 @@ export default class Navbar extends Component {
                     { this.state.loggedIn ? (
                         <div className="profile">
                             <div>
-                                <img id="profile" src={localStorage.getItem('profilePicture')} alt="profile-pic" onClick={this.handleDropdown}></img>
+                                <img id="profile" src={this.props.profilePic} alt="profile-pic" onClick={this.handleDropdown}></img>
                                 <div id="dropdown">
                                     <a href="/settings">Settings</a>
                                     <a href="#" onClick={this.handleLogout}>Logout</a>

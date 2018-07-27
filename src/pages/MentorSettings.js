@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import sjcl from 'sjcl';
+import firebase from 'firebase';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -10,9 +12,38 @@ export default class MentorSettings extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            currentTab: 0
+        
+        let initState = {
+            currentTab: 0,
+            profilePicUrl: ""
+        };
+
+        this.state = initState;
+    }
+
+    componentDidMount() {
+        let newState = {}
+        if (localStorage.getItem("email") != null) {
+            let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem("email")));
+            firebase.storage().ref("profilepics/" + hash + ".jpg").getDownloadURL().then(url => {
+                newState.profilePicUrl = url;
+                this.setState(newState);
+            })
+            .catch(err => {
+                firebase.storage().ref("profilepics/defaultAvatar.svg").getDownloadURL().then(url => {
+                    newState.profilePicUrl = url;
+                    this.setState(newState);
+                }).catch(err => {
+                    console.log("MentorSettings.js : ", err);
+                })
+            })
         }
+    }
+
+    LoadPicture = (newUrl) => {
+        this.setState({
+            profilePicUrl: newUrl
+        });
     }
 
     handlePublicProfileTab = (event) => { this.setState({ currentTab: 0 }) }
@@ -23,7 +54,7 @@ export default class MentorSettings extends Component {
 
     showTab() {
         if (this.state.currentTab === 0) {
-            return <PublicProfileTab />
+            return <PublicProfileTab refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
         } else if (this.state.currentTab === 1) {
             return <AccountTab />
         } else {
@@ -37,7 +68,7 @@ export default class MentorSettings extends Component {
         let thirdButton = 'tab-button' + (this.state.currentTab === 2 ? ' active' : '');
         return (
             <div>
-                <Navbar refreshSettings={this.props.refreshSettings}/>
+                <Navbar profilePic={this.state.profilePicUrl}/>
                 <main id="mentor-settings">
                     <div className="wrapper">
                         <div className="tab-list">
