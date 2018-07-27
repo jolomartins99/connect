@@ -2,6 +2,21 @@ import React, { Component } from 'react'
 const { prompt, fetch, localStorage, alert } = window
 
 export default class AccountTab extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      reload: true
+    }
+  }
+
+  triggerReload = () => {
+    let newState = !this.state.reload
+    this.setState({
+      reload: newState
+    })
+  }
+
     changeEmail = () => {
       let newEmail = prompt('Please enter your new email')
       if (newEmail && newEmail.includes('@')) {
@@ -11,9 +26,9 @@ export default class AccountTab extends Component {
         }
         let fetchData = {
           method: 'PUT',
-          body: Object.entries(data).map(e => e.join('=')).join('&'),
+          body: JSON.stringify(data),
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
           }
         }
         console.log(fetchData)
@@ -23,7 +38,9 @@ export default class AccountTab extends Component {
             if (res.message) {
               alert(res.message)
             } else {
+              localStorage.setItem('email', newEmail)
               alert('Your email is now ' + newEmail)
+              this.triggerReload()
             }
           })
       } else {
@@ -38,14 +55,14 @@ export default class AccountTab extends Component {
         // Backend para mudar a password
         let data = {
           password: newPassword,
-          passwordConfirmation: newPasswordConfirm,
-          type_user: localStorage.getItem('type_user')
+          passwordConfirmation: newPasswordConfirm
+          // type_user: 'mentor'
         }
         let fetchData = {
           method: 'PUT',
-          body: Object.entries(data).map(e => e.join('=')).join('&'),
+          body: JSON.stringify(data),
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
           }
         }
         console.log(fetchData)
