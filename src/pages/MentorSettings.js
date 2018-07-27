@@ -12,12 +12,13 @@ export default class MentorSettings extends Component {
   constructor (props) {
     super(props)
 
-    let initState = {
+    this.state = {
+      token: this.props.token,
+      refreshToken: this.props.refreshToken,
       currentTab: 0,
       profilePicUrl: ''
     }
-
-    this.state = initState
+    console.log(this.state)
   }
 
   componentDidMount () {
