@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import BigCalendar from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
-
-import GoogleLogin from 'react-google-login'
 import firebase from 'firebase'
+
+// Compatiblity
+const { Headers, fetch, localStorage } = window
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
 
@@ -28,15 +29,19 @@ export default class SyncCalendarTab extends Component {
     }
   }
 
-  saveTokens(token, refreshToken) {
+  saveTokens (token, refreshToken) {
     let reqBody = {
       access_token: token,
       refresh_token: refreshToken
-    };
-    fetch("https://api.upframe.io/mentors/", {
-      method: "PUT",
-      mode: "cors",
-      body: JSON.stringify(reqBody)
+    }
+
+    fetch('https://api.upframe.io/mentors/token/' + localStorage.getItem('token'), {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(reqBody),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
   }
 
@@ -100,7 +105,6 @@ export default class SyncCalendarTab extends Component {
           refreshToken: result.user.refreshToken
         })
       })
-    
       //this.saveTokens(result.credential.accessToken, result.user.refreshToken);
     }).catch(err => {
       console.log(err)

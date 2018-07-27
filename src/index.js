@@ -9,7 +9,7 @@ import firebase from 'firebase'
 // Redirect
 import RedirectSettings from './pages/RedirectSettings'
 
-import Home from './pages/Home'
+//import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Settings from './pages/Settings'
