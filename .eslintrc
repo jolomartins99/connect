@@ -7,6 +7,8 @@
       }
   },
   "rules": {
-      "semi": 2
+      "semi": [2, "never"],
+      "one-var": [2, "always"],
+      "let": [2, "always"]
   }
 }

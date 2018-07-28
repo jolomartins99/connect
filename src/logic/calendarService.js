@@ -24,8 +24,8 @@ export class CalendarService extends Component {
 
   // Helper functions
   convertEvents (list) {
-    let converted = [],
-      num = 0
+    let converted = []
+    let num = 0
 
     for (let event of list) {
       if (event.status === 'confirmed') {

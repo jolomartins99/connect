@@ -41,7 +41,6 @@ export default class PublicProfileTab extends Component {
   }
 
   loadProfile = (sentData = undefined) => {
-    //let tagList = []
     if (sentData === undefined) {
       fetch('https://api.upframe.io/users/' + localStorage.getItem('token'), {
         method: 'GET',
@@ -58,7 +57,7 @@ export default class PublicProfileTab extends Component {
                 if (res[key] === '') continue
                 if (JSON.parse(res[key]).tags === '') continue
 
-                newState[key] = JSON.parse(res[key]).tags.map(value => {return { id: value, text: value }});
+                newState[key] = JSON.parse(res[key]).tags.map(value => { return { id: value, text: value } })
                 continue
               }
               newState[key] = res[key]
@@ -75,7 +74,7 @@ export default class PublicProfileTab extends Component {
             if (sentData[key] === '') continue
             if (JSON.parse(sentData[key]).tags === '') continue
 
-            newState[key] = JSON.parse(sentData[key]).tags.map(value => {return { id: value, text: value }});
+            newState[key] = JSON.parse(sentData[key]).tags.map(value => { return { id: value, text: value } })
             continue
           }
           newState[key] = sentData[key]
@@ -99,8 +98,8 @@ export default class PublicProfileTab extends Component {
   }
 
   uploadPhoto = (event) => {
-    let file = event.target.files[0],
-      hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem('email')))
+    let file = event.target.files[0]
+    let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem('email')))
 
     firebase.storage().ref('profilepics/' + hash + '.jpg').put(file).then((snapshot) => {
       firebase.storage().ref('profilepics/' + hash + '.jpg').getDownloadURL().then(url => {
@@ -164,8 +163,8 @@ export default class PublicProfileTab extends Component {
 
   /* Save new settings */
   saveChanges = (e) => {
-    let reqBody = this.state,
-      newTags = []
+    let reqBody = this.state
+    let newTags = []
 
     for (let field of reqBody.tags) {
       newTags.push(field.text)
@@ -200,7 +199,7 @@ export default class PublicProfileTab extends Component {
             <h1 className='regular'>Profile Picture</h1>
             <input type='file' accept='image/*' onChange={this.uploadPhoto} />
             <p className='second'>We're big on pictures around here.</p>
-            <p className='second'>Add an updated picture so you don't like a <span role="img" aria-label="robot">🤖</span></p>
+            <p className='second'>Add an updated picture so you don't like a <span role='img' aria-label='robot'>🤖</span></p>
             <button className='main round' onClick={this.openUploadDialog}>Upload new photo</button>
             <button className='second round' onClick={this.removePhoto}>Remove</button>
           </div>
