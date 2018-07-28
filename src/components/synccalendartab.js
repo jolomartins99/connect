@@ -16,19 +16,22 @@ export default class SyncCalendarTab extends Component {
 
     this.state = {
       calendars: [],
-      token: '',
+      token: this.props.gToken,
+      refreshToken: this.props.gRefreshToken,
       currId: 0,
       events: []
     }
+    
   }
 
   saveTokens (token, refreshToken) {
     let reqBody = {
       access_token: token,
-      refresh_token: refreshToken
+      refresh_token: refreshToken,
+      expiration: (moment.utc(moment().add(1, "hours")))
     }
 
-    fetch('https://api.upframe.io/mentors/token/' + localStorage.getItem('token'), {
+    fetch('http://localhost/users/token/' + localStorage.getItem('token'), {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify(reqBody),
@@ -73,12 +76,6 @@ export default class SyncCalendarTab extends Component {
       'prompt': 'consent'
     })
     firebase.auth().signInWithPopup(provider).then(result => {
-      // Agora que temos o token temos que ir buscar uma
-      // lista dos calendarios possiveis
-      // this.setState({
-      //   token: result.credential.accessToken,
-      //   refreshToken: result.user.refreshToken
-      // })
       this.getCalendarList(result.credential.accessToken)
         .then(res => res.json())
         .then(list => {

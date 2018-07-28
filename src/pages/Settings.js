@@ -29,16 +29,20 @@ export default class Settings extends Component {
         newState.isMentor = data.type_user === 'mentor'
         newState.loggedIn = ((!moment(new Date()).isAfter(data.token_date_end)) && window.localStorage.getItem('token') != null)
       })
-    // await fetch('https://api.upframe.io/users/token/' + localStorage.getItem('token'), {
-    //   method: 'GET',
-    //   mode: 'cors'
-    // })
-    // .then(res => res.json())
-    // .catch(err => console.log('Error: ', err))
-    // .then(data => {
-    //   newState.token = data.token
-    //   newState.refreshToken = data.refreshToken
-    // })
+    await fetch('http://localhost/users/token/' + localStorage.getItem('token'), {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .catch(err => console.log('Error: ', err))
+    .then(data => {
+      newState.token = data.access_token
+      newState.refreshToken = data.refresh_token
+      newState.tokenExpiration = moment(data.expiration).add(1, "hours")
+      if(moment(moment(data.expiration)).isAfter(moment(data.expiration).add(1, "hours"))) {
+        //this.refreshTokens();
+      }
+    })
     this.setState(newState)
   }
 
@@ -47,8 +51,8 @@ export default class Settings extends Component {
       <div>
         {this.state.loggedIn
           ? (this.state.isMentor
-            ? <MentorSettings token={this.state.token} refreshToken={this.state.refreshToken} />
-            : <UserSettings />)
+            ? <MentorSettings accessToken={this.state.token} refreshToken={this.state.refreshToken} />
+            : <UserSettings accessToken={this.state.token} refreshToken={this.state.refreshToken} />)
           : (
             <Login />
           )}

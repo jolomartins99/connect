@@ -8,16 +8,19 @@ import PublicProfileTab from '../components/publicprofiletab'
 import AccountTab from '../components/accounttab'
 import SyncCalendarTab from '../components/synccalendartab'
 
+const { localStorage } = window
+
 export default class UserSettings extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      token: this.props.token,
+      accessToken: this.props.accessToken,
       refreshToken: this.props.refreshToken,
       currentTab: 0,
-      profilePicUrl: ''
+      profilePicUrl: '',
     }
+
   }
 
   componentDidMount () {
@@ -51,17 +54,17 @@ export default class UserSettings extends Component {
 
   handleSyncTab = (event) => { this.setState({ currentTab: 2 }) }
 
-  showTab() {
+  showTab () {
     if (this.state.currentTab === 0) {
       return <PublicProfileTab refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
     } else if (this.state.currentTab === 1) {
       return <AccountTab />
     } else {
-      return <SyncCalendarTab />
+      return <SyncCalendarTab gToken={this.state.accessToken} gRefreshToken={this.state.refreshToken} />
     }
   }
 
-  render() {
+  render () {
     let firstButton = 'tab-button' + (this.state.currentTab === 0 ? ' active' : '')
     let secondButton = 'tab-button' + (this.state.currentTab === 1 ? ' active' : '')
     let thirdButton = 'tab-button' + (this.state.currentTab === 2 ? ' active' : '')
