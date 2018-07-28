@@ -4,6 +4,8 @@ import Navbar from '../components/navbar'
 
 import moment from 'moment'
 
+const { fetch, localStorage, alert } = window
+
 export default class Login extends Component {
   constructor (props) {
     super(props)

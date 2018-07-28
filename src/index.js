@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-//import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import firebase from 'firebase'
@@ -9,7 +9,7 @@ import firebase from 'firebase'
 // Redirect
 import RedirectSettings from './pages/RedirectSettings'
 
-//import Home from './pages/Home'
+// import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Settings from './pages/Settings'
@@ -36,9 +36,8 @@ ReactDOM.render(
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={Signup} />
 
-      
       {/* <Route path='/search' component={Search} /> */}
-           
+
       {/* Temporary */}
       <Route exact path='/' component={Search} />
       <Route exact path='/setting' component={RedirectSettings} />
@@ -48,4 +47,4 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-//registerServiceWorker()
+// registerServiceWorker()

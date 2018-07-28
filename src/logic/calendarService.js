@@ -2,7 +2,7 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
 import userService from './userService'
 
-const { fetch, Headers, localStorage } = window;
+const { fetch, Headers } = window
 
 export class CalendarService extends Component {
   /* let's get the engines working */

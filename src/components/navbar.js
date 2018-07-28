@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
+const { localStorage } = window
+
 export default class Navbar extends Component {
   constructor (props) {
     super(props)
@@ -31,7 +33,7 @@ export default class Navbar extends Component {
           <nav>
             <div className='wrapper'>
               <div className='logo'>
-                <Link to='/'><img src='/media/logotype.svg' alt="" /></Link>
+                <Link to='/'><img src='/media/logotype.svg' alt='' /></Link>
               </div>
               { this.state.loggedIn ? (
                 <div className='profile'>
@@ -39,7 +41,7 @@ export default class Navbar extends Component {
                     <img id='profile' src={this.props.profilePic} alt='profile-pic' onClick={this.handleDropdown} />
                     <div id='dropdown'>
                       <a href='/settings'>Settings</a>
-                      <button  onClick={this.handleLogout}>Logout</button>
+                      <button onClick={this.handleLogout}>Logout</button>
                     </div>
                   </div>
                 </div>

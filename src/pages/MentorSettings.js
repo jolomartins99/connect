@@ -8,6 +8,8 @@ import PublicProfileTab from '../components/publicprofiletab'
 import AccountTab from '../components/accounttab'
 import SyncCalendarTab from '../components/synccalendartab'
 
+const { localStorage } = window
+
 export default class MentorSettings extends Component {
   constructor (props) {
     super(props)
@@ -18,7 +20,6 @@ export default class MentorSettings extends Component {
       currentTab: 0,
       profilePicUrl: ''
     }
-    console.log(this.state)
   }
 
   componentDidMount () {
@@ -29,7 +30,7 @@ export default class MentorSettings extends Component {
         newState.profilePicUrl = url
         this.setState(newState)
       })
-        .catch(err => {
+        .catch(() => {
           firebase.storage().ref('profilepics/defaultAvatar.svg').getDownloadURL().then(url => {
             newState.profilePicUrl = url
             this.setState(newState)

@@ -19,16 +19,16 @@ export default class Settings extends Component {
 
   async componentWillMount () {
     let newState = {}
-    await fetch('https://api.upframe.io/users/' + localStorage.getItem('token'), {
+    await window.fetch('https://api.upframe.io/users/' + window.localStorage.getItem('token'), {
       method: 'GET',
       mode: 'cors'
     })
-    .then(res => res.json())
-    .catch(err => console.log('Error: ', err))
-    .then(data => {
-      newState.isMentor = data.type_user === 'mentor'
-      newState.loggedIn = ((!moment(new Date()).isAfter(data.token_date_end)) && localStorage.getItem('token') != null)
-    })
+      .then(res => res.json())
+      .catch(err => console.log('Error: ', err))
+      .then(data => {
+        newState.isMentor = data.type_user === 'mentor'
+        newState.loggedIn = ((!moment(new Date()).isAfter(data.token_date_end)) && window.localStorage.getItem('token') != null)
+      })
     // await fetch('https://api.upframe.io/users/token/' + localStorage.getItem('token'), {
     //   method: 'GET',
     //   mode: 'cors'

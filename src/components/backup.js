@@ -74,12 +74,12 @@ export default class SyncCalendarTab extends Component {
           <div>
             {
               display.map(index => {
-                <h1>{index.id}</h1>
+                return <h1>{index.id}</h1>
               })
             }
           </div>
         )
-        // ? 
+        /*
         return (
           <div>
             {
@@ -92,7 +92,7 @@ export default class SyncCalendarTab extends Component {
               })
             }
           </div>
-        )
+        ) */
       })
 
       // let checkBoxList
@@ -196,6 +196,7 @@ export default class SyncCalendarTab extends Component {
         // console.log('Mapa' + newCalendarMap)
         this.setState(newCalendarMap)
       }).catch(err => {
+        console.error(err)
         // let's recommend unlink + link
         // console.log(err);
         // alert("We highly recommend linking your account again");
@@ -225,7 +226,7 @@ export default class SyncCalendarTab extends Component {
           token: result.credential.accessToken,
           refreshToken: result.user.refreshToken
         })
-      }).catch(err => {
+      }).catch(() => {
         // console.log(err);
       })
     }

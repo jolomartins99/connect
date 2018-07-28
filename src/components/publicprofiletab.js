@@ -8,6 +8,8 @@ const KeyCodes = {
   enter: 13
 }
 
+const { fetch, localStorage, alert, Headers } = window
+
 const delimiters = [KeyCodes.comma, KeyCodes.enter]
 
 export default class PublicProfileTab extends Component {

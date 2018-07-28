@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 const { prompt, fetch, localStorage, alert } = window
 
 export default class AccountTab extends Component {
-
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {
       reload: true

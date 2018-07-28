@@ -33,7 +33,7 @@ export default class SyncCalendarTab extends Component {
       mode: 'cors',
       body: JSON.stringify(reqBody),
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     })
   }
@@ -73,40 +73,40 @@ export default class SyncCalendarTab extends Component {
       'prompt': 'consent'
     })
     firebase.auth().signInWithPopup(provider).then(result => {
-      //Agora que temos o token temos que ir buscar uma
-      //lista dos calendarios possiveis
+      // Agora que temos o token temos que ir buscar uma
+      // lista dos calendarios possiveis
       // this.setState({
       //   token: result.credential.accessToken,
       //   refreshToken: result.user.refreshToken
       // })
       this.getCalendarList(result.credential.accessToken)
-      .then(res => res.json())
-      .then(list => {
-        let output = []
-        list.items.map(element => {
-          output.push({ 
-            id: element.id, 
-            name: element.summary,
-            checked: false 
+        .then(res => res.json())
+        .then(list => {
+          let output = []
+          list.items.map(element => {
+            output.push({
+              id: element.id,
+              name: element.summary,
+              checked: false
+            })
+          })
+          return output
+        })
+        .then(calendarList => {
+          this.setState({
+            calendars: calendarList,
+            token: result.credential.accessToken,
+            refreshToken: result.user.refreshToken
           })
         })
-        return output
-      })
-      .then(calendarList => {
-        this.setState({
-          calendars: calendarList,
-          token: result.credential.accessToken,
-          refreshToken: result.user.refreshToken
-        })
-      })
-      this.saveTokens(result.credential.accessToken, result.user.refreshToken);
+      this.saveTokens(result.credential.accessToken, result.user.refreshToken)
     }).catch(err => {
       console.log(err)
     })
   }
 
-  getCalendarList(token) {
-    if (token !== "") {
+  getCalendarList (token) {
+    if (token !== '') {
       let customHeaders = new Headers()
       customHeaders.append('Authorization', 'Bearer ' + token)
       return fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',
@@ -154,7 +154,7 @@ export default class SyncCalendarTab extends Component {
       })
   }
 
-  convertEvents(element) {
+  convertEvents (element) {
     if (element.start.dateTime) {
       return {
         id: element.id,
@@ -170,43 +170,43 @@ export default class SyncCalendarTab extends Component {
         title: element.summary
       }
     }
-
   }
 
   getCalendarEvents = () => {
-    //Para todos os calendarios em this.state.calendars
-    //Vamos fazer o request e receber todas as respostas e converter 
+    // Para todos os calendarios em this.state.calendars
+    // Vamos fazer o request e receber todas as respostas e converter
     let checkedCalendars = this.state.calendars.filter(calendar => calendar.checked ? calendar : null)
     let calendarIds = checkedCalendars.map(calendar => calendar.id)
     let calendarPromises = calendarIds.map(calendarId => this.calendarEvents(calendarId))
     Promise.all(calendarPromises).then((done) => {
       let allEvents = []
       done.map(eachRequest => {
-          allEvents = allEvents.concat(eachRequest.items)}
+        allEvents = allEvents.concat(eachRequest.items)
+      }
       )
       return allEvents
     })
-    .then(final => {
-      let newState = final.map(element => this.convertEvents(element))
-      this.setState({
-        events: newState
+      .then(final => {
+        let newState = final.map(element => this.convertEvents(element))
+        this.setState({
+          events: newState
+        })
       })
-    })
   }
 
   render = () => {
     if (this.state.token) {
-      //const list = this.generateList() DEBUG
+      // const list = this.generateList() DEBUG
       return (
         <div>
           {
-            //Para cada calendario vamos criar uma checkbox
-            //Sempre que a checkbox mudar vamos mudar o que
-            //mostramos no calendario 
+            // Para cada calendario vamos criar uma checkbox
+            // Sempre que a checkbox mudar vamos mudar o que
+            // mostramos no calendario
             this.state.calendars.map((calendar) => {
               return (
                 <div key={calendar.id + 1}>
-                  <input type="checkbox" id={calendar.id} onChange={this.checkChange} defaultChecked={calendar.checked}/>
+                  <input type='checkbox' id={calendar.id} onChange={this.checkChange} defaultChecked={calendar.checked} />
                   <label>{calendar.name}</label>
                 </div>
               )
@@ -216,7 +216,7 @@ export default class SyncCalendarTab extends Component {
           <BigCalendar
             selectable
             defaultDate={new Date()}
-            defaultView="week"
+            defaultView='week'
             events={this.state.events}
             onSelectEvent={event => this.deleteFreeSlot(event)}
             onSelectSlot={slot => this.addFreeSlot(slot)}
@@ -226,7 +226,7 @@ export default class SyncCalendarTab extends Component {
     } else {
       return (
         <div>
-          <button className="main" onClick={this.googleLink}>Sync with Google Calendar</button>
+          <button className='main' onClick={this.googleLink}>Sync with Google Calendar</button>
         </div>
       )
     }

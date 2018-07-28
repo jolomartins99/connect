@@ -4,6 +4,6 @@ export default function () {
   return (
     <footer>
       Upframe &trade; 2018
-     </footer>
+    </footer>
   )
 }

@@ -19,15 +19,15 @@ export default class Home extends Component {
 
   componentDidMount () {
     let newState = {}
-    if (localStorage.getItem('email') != null) {
-      console.log(localStorage.getItem('email'))
-      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(localStorage.getItem('email')))
+    if (window.localStorage.getItem('email') != null) {
+      console.log(window.localStorage.getItem('email'))
+      let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(window.localStorage.getItem('email')))
       firebase.storage().ref('profilepics/' + hash + '.jpg').getDownloadURL().then(url => {
         newState.profilePicUrl = url
         console.log(url)
         this.setState(newState)
       })
-        .catch(err => {
+        .catch(() => {
           firebase.storage().ref('profilepics/defaultAvatar.svg').getDownloadURL().then(url => {
             newState.profilePicUrl = url
             console.log(url)
@@ -55,16 +55,16 @@ export default class Home extends Component {
         }
       }
       console.log(fetchData)
-      fetch('https://api.upframe.io/users/', fetchData)
+      window.fetch('https://api.upframe.io/users/', fetchData)
         .then(res => res.json())
         .then(res => {
           // Nesta resposta podemos ter erro ou então
           // um objeto user com token.
           if (res.token) {
-            localStorage.setItem('token', res.token)
+            window.localStorage.setItem('token', res.token)
             window.location.reload()
           } else {
-            alert('Could not signup')
+            window.alert('Could not signup')
           }
           console.log(res)
         })

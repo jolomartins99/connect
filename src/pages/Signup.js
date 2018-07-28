@@ -30,19 +30,19 @@ export default class Signup extends Component {
         }
       }
       console.log(fetchData)
-      fetch('https://api.upframe.io/users/', fetchData)
+      window.fetch('https://api.upframe.io/users/', fetchData)
         .then(res => res.json())
         .then(res => {
           // Nesta resposta podemos ter erro ou então
           // um objeto user com token.
           if (res.token) {
-            localStorage.setItem('token', res.token)
-            localStorage.setItem('email', res.email)
-            localStorage.setItem('token_date_end', res.dateEnd)
-            
+            window.localStorage.setItem('token', res.token)
+            window.localStorage.setItem('email', res.email)
+            window.localStorage.setItem('token_date_end', res.dateEnd)
+
             window.location.reload()
           } else {
-            alert('Could not sign you up')
+            window.alert('Could not sign you up')
           }
           console.log(res)
         })
@@ -59,7 +59,7 @@ export default class Signup extends Component {
     // handleUserTypeChange = (e) => {this.setState({userType : e.target.value})}
 
     render () {
-      if (localStorage.getItem('token')) {
+      if (window.localStorage.getItem('token')) {
         return <Redirect to='/settings' />
       } else {
         return (

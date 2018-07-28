@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
 import SearchTags from './searchtags'
-import MentorList from './mentorlist'
+// import MentorList from './mentorlist'
+
+const { alert } = window
 
 export default class SearchBar extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      searchText : '',
+      searchText: '',
       mentors: [{
         profilePic: 'https://steemitimages.com/0x0/http://ipfs.io/ipfs/QmTQo4cxDZ5MoszQAK93JyhFedeMuj7j4x5P7tQnvRi4A5',
         name: 'Ulisses',
@@ -25,8 +27,8 @@ export default class SearchBar extends Component {
   }
 
   handleKeyPress = (event) => {
-    if (event.key == 'Enter') {
-      //Fazemos a search e no fim
+    if (event.key === 'Enter') {
+      // Fazemos a search e no fim
       alert('Hello')
     }
   }
