@@ -4,7 +4,7 @@ import PublicProfileTab from '../components/publicprofiletab'
 import AccountTab from '../components/accounttab'
 import SyncCalendarTab from '../components/synccalendartab'
 
-export default class MentorSettings extends Component {
+export default class UserSettings extends Component {
   constructor (props) {
     super(props)
     this.state = {
