@@ -5,6 +5,8 @@ import MentorSettings from './MentorSettings'
 import UserSettings from './UserSettings'
 import Login from './Login'
 
+const { fetch, localStorage } = window
+
 export default class Settings extends Component {
   constructor (props) {
     super(props)
@@ -33,16 +35,16 @@ export default class Settings extends Component {
       method: 'GET',
       mode: 'cors'
     })
-    .then(res => res.json())
-    .catch(err => console.log('Error: ', err))
-    .then(data => {
-      newState.token = data.access_token
-      newState.refreshToken = data.refresh_token
-      newState.tokenExpiration = moment(data.expiration).add(1, "hours")
-      if(moment(moment(data.expiration)).isAfter(moment(data.expiration).add(1, "hours"))) {
-        //this.refreshTokens();
-      }
-    })
+      .then(res => res.json())
+      .catch(err => console.log('Error: ', err))
+      .then(data => {
+        newState.token = data.access_token
+        newState.refreshToken = data.refresh_token
+        newState.tokenExpiration = moment(data.expiration).add(1, 'hours')
+        if (moment(moment(data.expiration)).isAfter(moment(data.expiration).add(1, 'hours'))) {
+        // this.refreshTokens();
+        }
+      })
     this.setState(newState)
   }
 

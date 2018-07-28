@@ -21,14 +21,13 @@ export default class SyncCalendarTab extends Component {
       currId: 0,
       events: []
     }
-    
   }
 
   saveTokens (token, refreshToken) {
     let reqBody = {
       access_token: token,
       refresh_token: refreshToken,
-      expiration: (moment.utc(moment().add(1, "hours")))
+      expiration: (moment.utc(moment().add(1, 'hours')))
     }
 
     fetch('http://localhost/users/token/' + localStorage.getItem('token'), {

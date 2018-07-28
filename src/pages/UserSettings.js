@@ -18,9 +18,8 @@ export default class UserSettings extends Component {
       accessToken: this.props.accessToken,
       refreshToken: this.props.refreshToken,
       currentTab: 0,
-      profilePicUrl: '',
+      profilePicUrl: ''
     }
-
   }
 
   componentDidMount () {
