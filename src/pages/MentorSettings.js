@@ -70,7 +70,7 @@ export default class MentorSettings extends Component {
       return (
         <div>
           <Navbar profilePic={this.state.profilePicUrl} />
-          <main id='mentor-settings'>
+          <main id='settings'>
             <div className='wrapper'>
               <div className='tab-list'>
                 <button className={firstButton} onClick={this.handlePublicProfileTab}>Public Profile</button>

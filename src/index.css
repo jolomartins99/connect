@@ -365,12 +365,12 @@ main#login .wrapper p {
 
 /* Settings (Public profile tab)*/
 
-main#mentor-settings {
+main#settings {
   max-width: 100%;
   margin: calc(5% + 4em) 1em 0 1em;
 }
 
-#mentor-settings .wrapper {
+#settings .wrapper {
   justify-content: center;
   grid-template-columns: 15% 70% 15%;
   max-width: 100%;
@@ -378,19 +378,19 @@ main#mentor-settings {
   margin: auto;
 }
 
-#mentor-settings .public-profile {
+#settings .public-profile {
   justify-self: center;
 }
 
-#mentor-settings .public-profile input[type="file"] {
+#settings .public-profile input[type="file"] {
   display: none;
 }
 
-#mentor-settings .public-profile .profile-pic {
+#settings .public-profile .profile-pic {
   display: flex;
 }
 
-#mentor-settings .profile-pic img {
+#settings .profile-pic img {
   display: block;
   min-width: 9em;
   max-width: 9em;
@@ -398,54 +398,54 @@ main#mentor-settings {
   max-height: 9em;
 }
 
-#mentor-settings .public-profile .profile-pic div:first-of-type {
+#settings .public-profile .profile-pic div:first-of-type {
   margin-right: 2em;
 }
 
-#mentor-settings .public-profile div:nth-of-type(2) h1 {
+#settings .public-profile div:nth-of-type(2) h1 {
   font-weight: 400;
   margin: 0;
   font-size: 1.5em;
 }
 
-#mentor-settings .public-profile div:nth-of-type(2) button.main {
+#settings .public-profile div:nth-of-type(2) button.main {
   margin-left: 0;
 }
 
-#mentor-settings .public-profile div:nth-last-of-type(2) p:first-of-type {
+#settings .public-profile div:nth-last-of-type(2) p:first-of-type {
   margin-bottom: 0.25em;
 }
 
-#mentor-settings .public-profile div:nth-last-of-type(2) p:nth-of-type(2) {
+#settings .public-profile div:nth-last-of-type(2) p:nth-of-type(2) {
   margin-top: 0;
 }
 
-#mentor-settings .profile-info {
+#settings .profile-info {
   margin-top: 2em;
 }
 
-#mentor-settings .profile-info div.field-group {
+#settings .profile-info div.field-group {
   display: flex;
   flex-wrap: wrap;
 }
 
-#mentor-settings .profile-info div textarea {
+#settings .profile-info div textarea {
   resize: none;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-#mentor-settings .profile-info div input {
+#settings .profile-info div input {
   width: 100%;
 }
 
-#mentor-settings .profile-info p {
+#settings .profile-info p {
   margin-bottom: 0.5em;
   font-size: 1.1em;
 }
 
-#mentor-settings .profile-info .save {
+#settings .profile-info .save {
   text-align: center;
 }
 
