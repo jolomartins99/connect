@@ -1,7 +1,8 @@
+[![Build Status](https://travis-ci.org/upframe/connect.svg?branch=master)](https://travis-ci.org/upframe/connect)
+
 # 🦄 Connect
 
 Our mission at Upframe involves bringing students and mentors together in a whole new way. We want to revolutionize the way an entrepreneurial individual can contact more experienced peers and unlock the full potential of mentorship. For this reason we decided to develop **Connect**.
-
 
 # Installation
 
