@@ -41,7 +41,7 @@ export default class PublicProfileTab extends Component {
   }
 
   loadProfile = (sentData = undefined) => {
-    let tagList = []
+    //let tagList = []
     if (sentData === undefined) {
       fetch('https://api.upframe.io/users/' + localStorage.getItem('token'), {
         method: 'GET',
@@ -58,15 +58,7 @@ export default class PublicProfileTab extends Component {
                 if (res[key] === '') continue
                 if (JSON.parse(res[key]).tags === '') continue
 
-                // This all could be:
-                // newState[key] = JSON.parse(res[key]).tags.map(value => { id: value, text: value })
-                // continue
-
-                JSON.parse(res[key]).tags.map((value) => {
-                  tagList.push({id: value, text: value})
-                })
-
-                newState[key] = tagList
+                newState[key] = JSON.parse(res[key]).tags.map(value => {return { id: value, text: value }});
                 continue
               }
               newState[key] = res[key]
@@ -83,11 +75,7 @@ export default class PublicProfileTab extends Component {
             if (sentData[key] === '') continue
             if (JSON.parse(sentData[key]).tags === '') continue
 
-            JSON.parse(sentData[key]).tags.map((value, index) => {
-              tagList.push({ id: value, text: value })
-            })
-
-            newState[key] = tagList
+            newState[key] = JSON.parse(sentData[key]).tags.map(value => {return { id: value, text: value }});
             continue
           }
           newState[key] = sentData[key]
@@ -212,7 +200,7 @@ export default class PublicProfileTab extends Component {
             <h1 className='regular'>Profile Picture</h1>
             <input type='file' accept='image/*' onChange={this.uploadPhoto} />
             <p className='second'>We're big on pictures around here.</p>
-            <p className='second'>Add an updated picture so you don't like a 🤖</p>
+            <p className='second'>Add an updated picture so you don't like a <span role="img" aria-label="robot">🤖</span></p>
             <button className='main round' onClick={this.openUploadDialog}>Upload new photo</button>
             <button className='second round' onClick={this.removePhoto}>Remove</button>
           </div>

@@ -89,7 +89,9 @@ export default class SyncCalendarTab extends Component {
               name: element.summary,
               checked: false
             })
+            return 0;
           })
+
           return output
         })
         .then(calendarList => {
@@ -182,8 +184,8 @@ export default class SyncCalendarTab extends Component {
       let allEvents = []
       done.map(eachRequest => {
         allEvents = allEvents.concat(eachRequest.items)
-      }
-      )
+        return 0;
+      })
       return allEvents
     })
       .then(final => {

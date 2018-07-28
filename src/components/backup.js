@@ -187,8 +187,8 @@ export default class SyncCalendarTab extends Component {
     }
 
     getCalendarList () {
-      let promise = this.calendarList(),
-        newCalendarMap = { calendarNames: [] }
+      let promise = this.calendarList()
+      let newCalendarMap = { calendarNames: [] }
       promise.then(data => {
         for (let calendar of data.items) {
           newCalendarMap.calendarNames.push([calendar.id, calendar.summary])
