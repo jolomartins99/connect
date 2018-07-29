@@ -621,6 +621,8 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
   font-size: 1.2em;
 }
 
-.rbc-event {
-  background-color: var(--main);
+.free-time-slot {
+  border: 1px solid #000000
 }
+
+
