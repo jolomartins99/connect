@@ -14,6 +14,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Settings from './pages/Settings'
 import Search from './pages/Search'
+import Mentor from './pages/Mentor'
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -42,6 +43,7 @@ ReactDOM.render(
       <Route exact path='/' component={Search} />
       <Route exact path='/setting' component={RedirectSettings} />
       <Route exact path='/settings' component={Settings} />
+      <Route exact path='/people/:name' component={Mentor} />
     </div>
   </Router>,
   document.getElementById('root')
