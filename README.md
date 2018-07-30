@@ -28,4 +28,4 @@ allows us to recycle components throughout the app but maintain the code organiz
 
 # License
 
-[MIT © Upframe](../master/LICENSE)
+[GPL © Upframe](../master/LICENSE)
