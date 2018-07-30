@@ -531,6 +531,13 @@ main#settings {
 }
 /* End of Mentor of Cards */
 
+/* Mentors page */
+
+#mentor-page h1.pagination {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
 /* Tags */
 div.ReactTags__tags {
     position: relative;
