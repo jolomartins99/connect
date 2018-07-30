@@ -12,7 +12,7 @@ export default class Search extends Component {
     this.state = {
       mentors: [{
         profilePic: 'https://steemitimages.com/0x0/http://ipfs.io/ipfs/QmTQo4cxDZ5MoszQAK93JyhFedeMuj7j4x5P7tQnvRi4A5',
-        name: 'Ulisses',
+        name: 'Ulisses Ferreira',
         position: 'CTO',
         bio: 'I am awesome',
         tags: ['ux', 'ul']

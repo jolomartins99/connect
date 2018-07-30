@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class MentorList extends Component {
   constructor (props) {
@@ -22,6 +23,7 @@ export default class MentorList extends Component {
 
   mentorToElement = (mentor) => { // We turn it into an element and for each expertise tag
     return (
+      <Link to={'/people/' + this.getMentorLink(mentor.name)}>
       <div className='mentor-card'>
         <img className='mentor-card-image' src={mentor.profilePic} alt='upframe mentor' />
         <div className='mentor-card-info'>
@@ -33,7 +35,12 @@ export default class MentorList extends Component {
           {this.mentorTagsToElement(mentor.tags)}
         </ul>
       </div>
+      </Link>
     )
+  }
+
+  getMentorLink = (name) => {
+    return name.toLowerCase().replace(' ', '')
   }
 
   render () { // For each mentor...

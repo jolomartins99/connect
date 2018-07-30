@@ -66,17 +66,20 @@ export default class Mentor extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        newState = {
-          name: data.name,
-          imageUrl: data.imageUrl,
-          role: data.role,
-          company: data.company,
-          location: data.location,
-          tags: data.tags,
-          bio: data.bio,
-          freeSlots: data.freeSlots
+        console.log(data)
+        if (!data.error) {
+          newState = {
+            name: data.name,
+            imageUrl: data.imageUrl,
+            role: data.role,
+            company: data.company,
+            location: data.location,
+            tags: data.tags,
+            bio: data.bio,
+            freeSlots: data.freeSlots
+          }
+          this.setState(newState)
         }
-        this.setState(newState)
       })
   }
 
