@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import sjcl from 'sjcl'
 import firebase from 'firebase'
+import { Link } from 'react-router-dom'
 
 import Navbar from '../components/navbar'
 
@@ -57,7 +58,7 @@ export default class Mentor extends Component {
     }
     // Let's load info
     // Fazemos GET do estilo /mentors/nomeapelido
-    fetch('https://api.upframe.io/mentors/' + this.state.nameOfMentor, {
+    fetch('http://localhost/users/mentor/' + this.state.nameOfMentor, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -95,7 +96,7 @@ export default class Mentor extends Component {
       <div>
         <Navbar profilePic={this.state.profilePicUrl} />
         <main>
-          <h1>Directory > People > {this.state.name}</h1>
+          <Link to="/">Directory</Link> > <Link to="/">People</Link> > {this.state.name}
           <img alt='' src={this.state.imageUrl} />
           <p>{this.state.role} at {this.state.company}</p>
           <p>{this.state.location}</p>
