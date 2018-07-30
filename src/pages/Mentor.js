@@ -19,7 +19,7 @@ export default class Mentor extends Component {
       role: 'role',
       company: 'company',
       location: 'location',
-      tags: 'tags',
+      tags: [],
       bio: 'bio',
       freeSlots: [
         {
@@ -75,9 +75,23 @@ export default class Mentor extends Component {
             role: data.role,
             company: data.company,
             location: data.location,
-            tags: data.tags,
+            tags: JSON.parse(data.tags),
             bio: data.bio,
-            freeSlots: data.freeSlots
+            freeSlots: [
+              {
+                index: 0,
+                day: 11,
+                month: 'jun',
+                dateStart: '11:30',
+                dateEnd: '12:00'
+              }, {
+                index: 1,
+                day: 11,
+                month: 'may',
+                dateStart: '11:30',
+                dateEnd: '12:00'
+              }
+            ]
           }
           this.setState(newState)
         }
@@ -91,6 +105,15 @@ export default class Mentor extends Component {
     // Temos a informacao da sessao no codigo acima
   }
 
+  mentorTagsToElement = (tags) => {
+    console.log(tags)
+    return tags.map(tag => {
+      return (
+        <li className='mentor-tags-list-element'>{tag.text}</li>
+      )
+    })
+  }
+
   render () {
     return (
       <div>
@@ -100,7 +123,9 @@ export default class Mentor extends Component {
           <img alt='' src={this.state.imageUrl} />
           <p>{this.state.role} at {this.state.company}</p>
           <p>{this.state.location}</p>
-          {this.state.tags}
+          <ul className='mentor-card-tags'>
+            {this.mentorTagsToElement(this.state.tags)}
+          </ul>
           <p>{this.state.bio}</p>
           {/* {this.showFreeSlots()} */}
           {this.state.freeSlots.map(element => {
