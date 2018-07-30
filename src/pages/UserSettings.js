@@ -15,8 +15,6 @@ export default class UserSettings extends Component {
     super(props)
 
     this.state = {
-      accessToken: this.props.accessToken,
-      refreshToken: this.props.refreshToken,
       currentTab: 0,
       profilePicUrl: ''
     }
@@ -59,7 +57,7 @@ export default class UserSettings extends Component {
     } else if (this.state.currentTab === 1) {
       return <AccountTab />
     } else {
-      return <SyncCalendarTab gToken={this.state.accessToken} gRefreshToken={this.state.refreshToken} />
+      return <SyncCalendarTab />
     }
   }
 

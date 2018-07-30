@@ -174,7 +174,7 @@ export default class PublicProfileTab extends Component {
     let reqHeaders = new Headers({
       'Content-Type': 'application/json'
     })
-    fetch('https://api.upframe.io/users/' + this.state.token, {
+    fetch('http://localhost/users/' + this.state.token, {
       method: 'PUT',
       mode: 'cors',
       body: JSON.stringify(this.state),

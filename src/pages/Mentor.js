@@ -4,16 +4,17 @@ import firebase from 'firebase'
 
 import Navbar from '../components/navbar'
 
-export default class Mentor extends Component {
+const { fetch } = window
 
+export default class Mentor extends Component {
   constructor (props) {
     super(props)
-    
+
     this.state = {
       nameOfMentor: window.location.pathname.replace('/people/', ''),
       name: 'name',
-      imageUrl: 'url', //esta e a do mentor que estamos a ver
-      profilePicUrl: 'profile', //Esta eh a nossa
+      imageUrl: 'url', // esta e a do mentor que estamos a ver
+      profilePicUrl: 'profile', // Esta eh a nossa
       role: 'role',
       company: 'company',
       location: 'location',
@@ -37,7 +38,7 @@ export default class Mentor extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let newState = {}
     if (window.localStorage.getItem('email') != null) {
       let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(window.localStorage.getItem('email')))
@@ -54,8 +55,8 @@ export default class Mentor extends Component {
           })
         })
     }
-    //Let's load info
-    //Fazemos GET do estilo /mentors/nomeapelido
+    // Let's load info
+    // Fazemos GET do estilo /mentors/nomeapelido
     fetch('https://api.upframe.io/mentors/' + this.state.nameOfMentor, {
       method: 'GET',
       mode: 'cors',
@@ -63,37 +64,36 @@ export default class Mentor extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.json())
-    .then(data => {
-      newState = {
-        name: data.name,
-        imageUrl: data.imageUrl,
-        role: data.role,
-        company: data.company,
-        location: data.location,
-        tags: data.tags,
-        bio: data.bio,
-        freeSlots: data.freeSlots
-      }
-      this.setState(newState)
-    })
+      .then(response => response.json())
+      .then(data => {
+        newState = {
+          name: data.name,
+          imageUrl: data.imageUrl,
+          role: data.role,
+          company: data.company,
+          location: data.location,
+          tags: data.tags,
+          bio: data.bio,
+          freeSlots: data.freeSlots
+        }
+        this.setState(newState)
+      })
   }
 
   selectFreeSlot = (event) => {
     let num = event.target.id
     console.log(this.state.freeSlots[num])
-    //Temos que mostrar as opcoes de schedule de mentoria
-    //Temos a informacao da sessao no codigo acima 
+    // Temos que mostrar as opcoes de schedule de mentoria
+    // Temos a informacao da sessao no codigo acima
   }
 
-  render() {
-
+  render () {
     return (
       <div>
         <Navbar profilePic={this.state.profilePicUrl} />
         <main>
           <h1>Directory > People > {this.state.name}</h1>
-          <img src={this.state.imageUrl}></img>
+          <img alt='' src={this.state.imageUrl} />
           <p>{this.state.role} at {this.state.company}</p>
           <p>{this.state.location}</p>
           {this.state.tags}
@@ -101,7 +101,7 @@ export default class Mentor extends Component {
           {/* {this.showFreeSlots()} */}
           {this.state.freeSlots.map(element => {
             return (
-              <div id={element.index} className="free-time-slot" onClick={this.selectFreeSlot}>
+              <div id={element.index} className='free-time-slot' onClick={this.selectFreeSlot}>
                 <p id={element.index}>{element.day} of {element.month}</p>
                 <p id={element.index}>{element.dateStart} to {element.dateEnd}</p>
               </div>
