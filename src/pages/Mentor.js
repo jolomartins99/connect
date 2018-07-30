@@ -75,7 +75,7 @@ export default class Mentor extends Component {
             role: data.role,
             company: data.company,
             location: data.location,
-            tags: JSON.parse(data.tags),
+            tags: JSON.parse(data.tags).tags,
             bio: data.bio,
             freeSlots: [
               {

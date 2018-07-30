@@ -164,12 +164,12 @@ export default class PublicProfileTab extends Component {
   /* Save new settings */
   saveChanges = (e) => {
     let reqBody = this.state
-    // let newTags = []
+    let newTags = []
 
-    // for (let field of reqBody.tags) {
-    //   newTags.push(field.text)
-    // }
-    // reqBody.tags = {'tags': newTags}
+    for (let field of reqBody.tags) {
+      newTags.push(field.text)
+    }
+    reqBody.tags = {'tags': newTags}
 
     let reqHeaders = new Headers({
       'Content-Type': 'application/json'
