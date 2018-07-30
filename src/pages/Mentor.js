@@ -109,7 +109,7 @@ export default class Mentor extends Component {
     console.log(tags)
     return tags.map(tag => {
       return (
-        <li className='mentor-tags-list-element'>{tag.text}</li>
+        <li className='mentor-tags-list-element'>{tag}</li>
       )
     })
   }
