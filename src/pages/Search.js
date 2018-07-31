@@ -82,9 +82,7 @@ export default class Search extends Component {
           <div>
             <SearchBar searchQuery={this.searchQuery} />
           </div>
-          <MentorList mentors={this.state.mentors} />
-        </main>
-        <div className='results-wrapper'>
+          <div className='results-wrapper'>
           <div className='left'>
             <MentorList mentors={this.state.mentors} />
           </div>
@@ -95,6 +93,7 @@ export default class Search extends Component {
             <img className="spotify-event" src="https://preview.ibb.co/i2Lsoo/photo_2018_07_31_00_03_23.jpg" alt="spotify"/>
           </div>
         </div>
+        </main>
       </div>
     )
   }
