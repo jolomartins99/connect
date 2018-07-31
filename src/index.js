@@ -33,14 +33,18 @@ firebase.initializeApp(config)
 ReactDOM.render(
   <Router>
     <div>
-      {/* <Route exact path='/' component={Home} /> */}
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/signup' component={Signup} />
+
 
       {/* <Route path='/search' component={Search} /> */}
 
       {/* Temporary */}
       <Switch>
+
+        {/* <Route exact path='/' component={Home} /> */}
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+
+        
         <Route exact path='/' component={Search} />
         <Route exact path='/setting' component={RedirectSettings} />
         <Route exact path='/settings' component={Settings} />
