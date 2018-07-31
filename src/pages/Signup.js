@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import sjcl from 'sjcl'
 
 export default class Signup extends Component {
   constructor (props) {
@@ -9,6 +10,7 @@ export default class Signup extends Component {
       email: '',
       password: '',
       passwordConfirmation: '',
+      search_key: '',
       type_user: 'mentor',
       message: ''
     }
@@ -20,7 +22,9 @@ export default class Signup extends Component {
         email: this.state.email,
         password: this.state.password,
         passwordConfirmation: this.state.passwordConfirmation,
-        type_user: this.state.type_user
+        type_user: this.state.type_user,
+        picture_hash: sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(this.state.email)),
+        search_key: this.state.search_key
       }
       let fetchData = {
         method: 'POST',
@@ -56,6 +60,8 @@ export default class Signup extends Component {
 
     handlePasswordConfirmationChange = (e) => { this.setState({passwordConfirmation: e.target.value}) }
 
+    handleSearchKeyChange = (e) => { this.setState({search_key: e.target.value}) }
+
     // handleUserTypeChange = (e) => {this.setState({userType : e.target.value})}
 
     render () {
@@ -72,10 +78,8 @@ export default class Signup extends Component {
             <input onChange={this.handlePasswordChange} type='password' />
             <p>Write your password (again)</p>
             <input onChange={this.handlePasswordConfirmationChange} type='password' />
-            {/* <select onChange={this.handleUserTypeChange}>
-                        <option value="user">User</option>
-                        <option value="mentor">Mentor</option>
-                    </select> */}
+            <p>How do you want people to find you?</p>
+            https://connect.upframe.io/<input onChange={this.handleSearchKeyChange}></input>
             <button onClick={this.signup}>Submit</button>
           </div>
         )

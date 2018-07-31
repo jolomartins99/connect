@@ -53,7 +53,7 @@ export default class UserSettings extends Component {
 
   showTab () {
     if (this.state.currentTab === 0) {
-      return <PublicProfileTab refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
+      return <PublicProfileTab mentor={false} refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
     } else if (this.state.currentTab === 1) {
       return <AccountTab />
     } else {

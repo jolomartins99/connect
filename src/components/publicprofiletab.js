@@ -25,6 +25,7 @@ export default class PublicProfileTab extends Component {
       name: '',
       role: '',
       image: '',
+      serach_key: '',
       tags: [],
       suggestions: []
     }
@@ -221,13 +222,24 @@ export default class PublicProfileTab extends Component {
             <p>Company</p>
             <input className='second' type='text' onChange={this.onCompanyChange} value={this.state.company} />
           </div>
-          <div className='field-group'>
-            <p>Website</p>
-            <input className='second' type='text' onChange={this.onHomepageChange} value={this.state.homepage} />
-          </div>
+          {this.props.mentor ? (
+            <div className='field-group'>
+              <p>Website</p>
+              <input className='second' type='text' onChange={this.onHomepageChange} value={this.state.homepage} />
+            </div>
+          ) : (
+            <div className='field-group'>
+              <p>LinkedIn page</p>
+              <input className='second' type='text' onChange={this.onHomepageChange} value={this.state.homepage} />
+            </div>
+          )}
           <div className='field-group'>
             <p>Bio</p>
             <textarea rows='5' className='second' type='text' onChange={this.onBioChange} value={this.state.bio} />
+          </div>
+          <span className='hr' />
+          <div className='field-group'>
+            https://connect.upframe.io/people/<input>{this.state.searchKey}</input>
           </div>
           <span className='hr' />
           <div>

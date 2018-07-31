@@ -53,7 +53,7 @@ export default class MentorSettings extends Component {
 
     showTab () {
       if (this.state.currentTab === 0) {
-        return <PublicProfileTab refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
+        return <PublicProfileTab mentor={true} refreshProfilePic={this.LoadPicture} profilePic={this.state.profilePicUrl} />
       } else if (this.state.currentTab === 1) {
         return <AccountTab />
       } else {
