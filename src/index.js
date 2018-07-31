@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 // import registerServiceWorker from './registerServiceWorker'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import firebase from 'firebase'
 
@@ -40,10 +40,12 @@ ReactDOM.render(
       {/* <Route path='/search' component={Search} /> */}
 
       {/* Temporary */}
-      <Route exact path='/' component={Search} />
-      <Route exact path='/setting' component={RedirectSettings} />
-      <Route exact path='/settings' component={Settings} />
-      <Route exact path='/people/:name' component={Mentor} />
+      <Switch>
+        <Route exact path='/' component={Search} />
+        <Route exact path='/setting' component={RedirectSettings} />
+        <Route exact path='/settings' component={Settings} />
+        <Route exact path='/people/:name' component={Mentor} />
+      </Switch>
     </div>
   </Router>,
   document.getElementById('root')
