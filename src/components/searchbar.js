@@ -29,7 +29,7 @@ export default class SearchBar extends Component {
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // Fazemos a search e no fim
-      alert('Hello')
+      this.props.searchQuery(event.target.value)
     }
   }
 

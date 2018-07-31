@@ -66,18 +66,26 @@ export default class Search extends Component {
     })
   }
 
+  searchQuery = (search) => {
+    fetch('https://api.upframe.io/search/' + search)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+    })
+  }
+
   render () {
     return (
       <div>
         <Navbar profilePic={this.state.profilePicUrl} />
         <main id='search'>
           <div>
-            <SearchBar />
+            <SearchBar searchQuery={this.searchQuery} />
           </div>
           <MentorList mentors={this.state.mentors} />
         </main>
-        <div className="results-wrapper">
-          <div className="left">
+        <div className='results-wrapper'>
+          <div className='left'>
             <MentorList mentors={this.state.mentors} />
           </div>
           <div className="right">
