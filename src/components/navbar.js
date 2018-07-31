@@ -40,7 +40,7 @@ export default class Navbar extends Component {
                   <div>
                     <img id='profile' src={this.props.profilePic} alt='profile-pic' onClick={this.handleDropdown} />
                     <div id='dropdown'>
-                      <a href='/settings'>Settings</a>
+                      <Link to='/settings'>Settings</Link>
                       <button onClick={this.handleLogout}>Logout</button>
                     </div>
                   </div>

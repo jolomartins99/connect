@@ -119,7 +119,7 @@ export default class Mentor extends Component {
       <div>
         <Navbar profilePic={this.state.profilePicUrl} />
         <main>
-          <Link to="/">Directory</Link> > <Link to="/">People</Link> > {this.state.name}
+          <Link to='/'>Directory</Link> > <Link to='/'>People</Link> > {this.state.name}
           <img alt='' src={this.state.imageUrl} />
           <p>{this.state.role} at {this.state.company}</p>
           <p>{this.state.location}</p>
