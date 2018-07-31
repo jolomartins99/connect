@@ -23,6 +23,7 @@ export default class Login extends Component {
       }
       let fetchData = {
         method: 'POST',
+        mode: 'cors',
         body: Object.entries(data).map(e => e.join('=')).join('&'),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
