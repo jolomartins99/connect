@@ -6,6 +6,8 @@ import MentorList from '../components/mentorlist'
 import Navbar from '../components/navbar'
 import SearchBar from '../components/searchbar'
 
+const { fetch } = window
+
 export default class Search extends Component {
   constructor (props) {
     super(props)
@@ -68,10 +70,10 @@ export default class Search extends Component {
 
   searchQuery = (search) => {
     fetch('https://api.upframe.io/search/' + search)
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+      })
   }
 
   render () {
@@ -88,7 +90,7 @@ export default class Search extends Component {
             <MentorList mentors={this.state.mentors} />
           </div>
           <div className='right'>
-            <div className='text-spotify'>Get 1 month of Spotify Premium - for free <span role="img" aria-label="Hands up">🙌</span></div>
+            <div className='text-spotify'>Get 1 month of Spotify Premium - for free <span role='img' aria-label='Hands up'>🙌</span></div>
             <div className='text-spotify-small'>Help us understand your<br /> challenges as an entrepreneur and<br /> we'll get you 1 month of Spotify<br /> Premium + exclusive access to UPF.</div>
             <button className='main fill round spotify'>Let's do it</button>
             <img className='spotify-event' src='https://preview.ibb.co/i2Lsoo/photo_2018_07_31_00_03_23.jpg' alt='spotify' />
