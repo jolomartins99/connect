@@ -89,6 +89,7 @@ textarea {
 input[type="button"],
 input[type="submit"],
 button {
+  font-size: 1em;
   color: #d0d2d6;
   padding: 0.75em;
   margin: 1em;
@@ -301,7 +302,7 @@ span.hr {
 main {
   margin-top: calc(5% + 4em);
   max-width: 90vw;
-  margin: calc(5% + 4em) auto 0 auto;
+  margin: calc(5% + 4em) auto 4em auto;
 }
 
 main .wrapper {
@@ -451,8 +452,15 @@ main#settings {
 
 /* End of Settings */
 
+/* Mentor Cards General */
+
+.mentor-card {
+  box-shadow: 0 0.2px 2px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 0.25em;
+}
+
 /* Mentor Cards */
-.mentor-tags-list-element {
+#search .mentor-tags-list-element {
   cursor: pointer;
   background: #eee;
   border-radius: 3px 0 0 3px;
@@ -468,47 +476,45 @@ main#settings {
   transition: color 0.2s
 }
 
-.mentor-tags-list {
+#search .mentor-tags-list {
   list-style: none;
   margin: 10px 0 0 0;
   overflow: hidden;
   padding: 0;
 }
 
-.mentor-card {
+#search .mentor-card {
   display: grid;
   grid-template-columns: 200px auto;
   grid-template-rows: auto 50px;
   grid-template-areas:
     "img info"
     "img tags";
-  box-shadow: 0 0.2px 2px 0 rgba(0, 0, 0, 0.5);
   background: white;
   color: black;
-  border-radius: 4px;
   transition: 0.3s;
   max-height: 200px;
   margin: auto auto 50px auto;
   max-width: 50em
 }
 
-.mentor-card:hover {
+#search .mentor-card:hover {
   box-shadow: 0 0.1px 2px 0 rgba(0,0,0,0.5);
 }
 
-.mentor-card-image {
+#search .mentor-card-image {
   grid-area: img;
   max-width: 200px;
   max-height: 200px;
   border-radius: 4px 0px 0px 4px;
 }
 
-.mentor-card-info {
+#search .mentor-card-info {
   grid-area: info;
   padding-left: 20px;
 }
 
-.mentor-card-tags {
+#search .mentor-card-tags {
   grid-area: tags;
   list-style: none;
   margin: 10px 0 0 10px;
@@ -516,7 +522,7 @@ main#settings {
   padding: 0;
 }
 
-.mentor-card-tags > li {
+#search .mentor-card-tags > li {
   background: #eee;
   border-radius: 3px 0 0 3px;
   color: #999;
@@ -533,9 +539,92 @@ main#settings {
 
 /* Mentors page */
 
+#mentor-page .container .wrapper {
+  max-width: 70%;
+  width: 50em;
+  grid-row-gap: 2em;
+}
+
 #mentor-page h1.pagination {
   font-size: 0.8em;
   text-transform: uppercase;
+  margin: 0;
+  font-weight: 400;
+}
+
+#mentor-page h1.pagination a {
+  margin: 0 0.5em;
+}
+
+#mentor-page h1.pagination a:first-of-type {
+  margin-left: 0;
+}
+
+#mentor-page .mentor-card {
+  padding: 1em 2em 2em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#mentor-page .mentor-card p {
+  color: rgb(100, 100, 100);
+}
+
+#mentor-page .mentor-card #profile-pic {
+  min-width: 12em;
+  min-height: 12em;
+  max-width: 12em;
+  max-height: 12em;
+}
+
+#mentor-page .mentor-card #profile-pic img {
+  width: 100%;
+  height: 100%;
+}
+
+#mentor-page .mentor-card div#info h1 {
+  margin: 0;
+  font-weight: 400;
+}
+
+#mentor-page .mentor-card #slots {
+  display: flex;
+  font-size: 0.9em;
+}
+
+#mentor-page .mentor-card .free-time-slot {
+  display: flex;
+  border-radius: 0.25em;
+  border: 1px solid #d0d2d6;
+  padding: 0em 1em;
+  margin-right: 1em;
+  align-items: center;
+  height: 3.5em;
+}
+
+#mentor-page .mentor-card .free-time-slot:hover {
+  cursor: pointer;
+}
+
+#mentor-page .mentor-card .free-time-slot p:first-of-type {
+  margin: 0 1em 0 0;
+  text-align: center;
+}
+
+#mentor-page .mentor-card .free-time-slot p span#month {
+  color: rgb(254, 59, 40);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#mentor-page .mentor-card .free-time-slot p span#month::after {
+  content: attr(data-day);
+  display: block;
+  color: black;
+}
+
+#mentor-page .mentor-card #slots button.main {
+  margin: 0;
 }
 
 /* Tags */

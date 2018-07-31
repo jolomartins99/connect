@@ -74,8 +74,8 @@ export default class Search extends Component {
           <div>
             <SearchBar />
           </div>
+          <MentorList mentors={this.state.mentors} />
         </main>
-        <MentorList mentors={this.state.mentors} />
       </div>
     )
   }
