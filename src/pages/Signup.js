@@ -79,7 +79,7 @@ export default class Signup extends Component {
             <p>Write your password (again)</p>
             <input onChange={this.handlePasswordConfirmationChange} type='password' />
             <p>How do you want people to find you?</p>
-            https://connect.upframe.io/<input onChange={this.handleSearchKeyChange}></input>
+            https://connect.upframe.io/<input onChange={this.handleSearchKeyChange} />
             <button onClick={this.signup}>Submit</button>
           </div>
         )
