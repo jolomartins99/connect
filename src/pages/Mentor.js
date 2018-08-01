@@ -59,11 +59,7 @@ export default class Mentor extends Component {
 
     // Let's load info
     // Fazemos GET do estilo /mentors/nomeapelido
-<<<<<<< HEAD
-    fetch('https://api.upframe.io/users/mentors/' + this.state.nameOfMentor, {
-=======
     fetch('http://api.upframe.io/profile/' + this.state.nameOfMentor, {
->>>>>>> 22b114d1c242619cd7b971a1b4688b4f986066dc
       method: 'GET',
       mode: 'cors',
       headers: {
