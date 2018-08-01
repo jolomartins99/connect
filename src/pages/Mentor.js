@@ -115,6 +115,8 @@ export default class Mentor extends Component {
       let el = document.querySelectorAll(`.free-time-slot[id="${i}"] p`)[0]
       el.insertAdjacentHTML('afterEnd', element.day)
       i++
+
+      return 0
     })
   }
 
