@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import SearchTags from './searchtags'
 // import MentorList from './mentorlist'
 
-const { alert } = window
-
 export default class SearchBar extends Component {
   constructor (props) {
     super(props)
