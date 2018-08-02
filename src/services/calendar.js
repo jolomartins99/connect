@@ -142,6 +142,7 @@ export class CalendarService extends Component {
       .then(list => {
         let output = []
         list.items.map(element => {
+          if (element.summary === 'Upframe Connect') this.calendarID = element.id
           output.push({
             id: element.id,
             name: element.summary,
@@ -202,6 +203,55 @@ export class CalendarService extends Component {
         end: moment(element.end.date, 'YYYY-MM-DD').toDate(),
         title: element.summary
       }
+    }
+  }
+
+  /**
+   * Calendar Management (creation)
+   *
+   * @description creates Upframe Free Time Slots Calendar
+   */
+  createUpframeCalendar = () => {
+    fetch('https://www.googleapis.com/calendar/v3/calendars', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Authorization': 'Bearer ' + this.accessToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({summary: 'Upframe Connect'})
+    })
+  }
+
+  saveSlots = (events) => {
+    for (let event of events) {
+      let eventBody = {
+        start: {
+          dateTime: moment(event.start),
+          timeZone: 'UTC'
+        },
+        end: {
+          dateTime: moment(event.end),
+          timeZone: 'UTC'
+        },
+        summary: event.title
+      }
+
+      fetch(`https://www.googleapis.com/calendar/v3/calendars/${this.calendarID}/events`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Authorization': 'Bearer ' + this.accessToken,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventBody)
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'confirmed') {
+            console.log('Added a slot')
+          }
+        })
     }
   }
 }

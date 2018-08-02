@@ -25,7 +25,7 @@ export default class PublicProfileTab extends Component {
       name: '',
       role: '',
       image: '',
-      serach_key: '',
+      search_key: '',
       tags: [],
       suggestions: []
     }
@@ -55,9 +55,7 @@ export default class PublicProfileTab extends Component {
           for (let key in res) {
             if (res.hasOwnProperty(key)) {
               if (key === 'tags') {
-                for (let tag of res[key]) {
-                  newState[key] = res[key].map(value => { return { id: value, text: value } })
-                }
+                newState[key] = res[key].map(value => { return { id: value, text: value } })
 
                 continue
               }
@@ -72,9 +70,7 @@ export default class PublicProfileTab extends Component {
       for (let key in sentData) {
         if (sentData.hasOwnProperty(key)) {
           if (key === 'tags') {
-            for (let tag of sentData[key]) {
-              newState[key] = sentData[key].map(value => { return { id: value, text: value } })
-            }
+            newState[key] = sentData[key].map(value => { return { id: value, text: value } })
 
             continue
           }

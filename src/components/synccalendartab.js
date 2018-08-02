@@ -40,7 +40,7 @@ export default class SyncCalendarTab extends Component {
   }
 
   deleteFreeSlot = (event) => {
-    if (event.title === 'Upframe Free Slot') {
+    if (event.title === 'Upframe Free Slot' && event.tag === 'upframe-free-slot') {
       let listOfEvents = this.state.events
       this.setState({
         events: listOfEvents.filter(singleEvent => singleEvent.id !== event.id)
@@ -55,12 +55,17 @@ export default class SyncCalendarTab extends Component {
       id: currentId,
       start: slot.start,
       end: slot.end,
-      title: 'Upframe Free Slot'
+      title: 'Upframe Free Slot',
+      tag: 'upframe-free-slot'
     })
     this.setState({
       events: currentEvents,
       currId: currentId + 1
     })
+  }
+
+  saveSlots = () => {
+    Calendar.saveSlots(this.state.events.filter(event => event.tag === 'upframe-free-slot'))
   }
 
   googleLink = () => {
@@ -86,7 +91,7 @@ export default class SyncCalendarTab extends Component {
           this.setState({
             sync: true,
             calendars: calendarList
-          })
+          }, Calendar.createUpframeCalendar)
         })
     }).catch(err => {
       console.log(err)
@@ -134,6 +139,7 @@ export default class SyncCalendarTab extends Component {
               )
             })
           }
+          <button className='main' onClick={this.saveSlots}>Save free time slots</button>
           <BigCalendar
             selectable
             defaultDate={new Date()}
