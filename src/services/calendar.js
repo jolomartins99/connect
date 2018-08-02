@@ -87,6 +87,10 @@ export class CalendarService extends Component {
       expiration: tokens.expiration
     }
 
+    this.accessToken = tokens.accessToken
+    this.refToken = tokens.refToken
+    this.expiration = tokens.expiration
+
     fetch('https://api.upframe.io/users/token/' + this.userToken, {
       method: 'POST',
       mode: 'cors',

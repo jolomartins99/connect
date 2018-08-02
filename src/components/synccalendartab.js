@@ -81,9 +81,13 @@ export default class SyncCalendarTab extends Component {
       }
       Calendar.saveToken(tokens)
 
-      this.setState({
-        sync: true
-      })
+      Calendar.getCalendarList()
+        .then(calendarList => {
+          this.setState({
+            sync: true,
+            calendars: calendarList
+          })
+        })
     }).catch(err => {
       console.log(err)
     })

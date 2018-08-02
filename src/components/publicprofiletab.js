@@ -55,10 +55,10 @@ export default class PublicProfileTab extends Component {
           for (let key in res) {
             if (res.hasOwnProperty(key)) {
               if (key === 'tags') {
-                if (res[key] === '') continue
-                if (JSON.parse(res[key]).tags === '') continue
+                for (let tag of res[key]) {
+                  newState[key] = res[key].map(value => { return { id: value, text: value } })
+                }
 
-                newState[key] = JSON.parse(res[key]).tags.map(value => { return { id: value, text: value } })
                 continue
               }
               newState[key] = res[key]
@@ -72,10 +72,10 @@ export default class PublicProfileTab extends Component {
       for (let key in sentData) {
         if (sentData.hasOwnProperty(key)) {
           if (key === 'tags') {
-            if (sentData[key] === '') continue
-            if (JSON.parse(sentData[key]).tags === '') continue
+            for (let tag of sentData[key]) {
+              newState[key] = sentData[key].map(value => { return { id: value, text: value } })
+            }
 
-            newState[key] = JSON.parse(sentData[key]).tags.map(value => { return { id: value, text: value } })
             continue
           }
           newState[key] = sentData[key]
@@ -170,8 +170,8 @@ export default class PublicProfileTab extends Component {
     for (let field of reqBody.tags) {
       newTags.push(field.text)
     }
-    reqBody.tags = {'tags': newTags}
 
+    reqBody.tags = newTags
     let reqHeaders = new Headers({
       'Content-Type': 'application/json'
     })
